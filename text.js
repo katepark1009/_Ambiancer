@@ -2,10 +2,12 @@ class Text{
   constructor(){
     this.articles = [];
     this.poems = [];
+    this.articleElement = null;
+    this.poemElement = null;
   }
   getNewsData(query, day=30, month=4, year=2019){
-    var formattedDate = year+"-"+month+"-"+day;
-    var formattedQuery = {
+    let formattedDate = year+"-"+month+"-"+day;
+    let formattedQuery = {
       happy:["puppy","pizza"],
       sad:["dead","accident"],
       chill:["cafe","vacation"],
@@ -13,9 +15,9 @@ class Text{
       romantic:["love","flower"],
       confident:["business","skydiving"]
     }
-    var randomIndex = Math.floor(Math.random()*formattedQuery[query].length);
-    var search = formattedQuery[query][randomIndex];
-    var ajaxOptions = {
+    let randomIndex = Math.floor(Math.random()*formattedQuery[query].length);
+    let search = formattedQuery[query][randomIndex];
+    let ajaxOptions = {
       url: 'https://newsapi.org/v2/everything',
       method: 'get',
       dataType: 'json',
@@ -31,7 +33,7 @@ class Text{
     $.ajax(ajaxOptions);
   }
   getPoems(query){
-    var formattedQuery = {
+    let formattedQuery = {
       happy:["puppy"],
       sad:["dead"],
       chill:["cafe"],
@@ -39,10 +41,10 @@ class Text{
       romantic:["love"],
       confident:["business"]
     }
-    var randomIndex = Math.floor(Math.random()*formattedQuery[query].length);
-    var search = formattedQuery[query][randomIndex];
-    var url = "http://poetrydb.org/lines/"+search;
-    var ajaxOptions = {
+    let randomIndex = Math.floor(Math.random()*formattedQuery[query].length);
+    let search = formattedQuery[query][randomIndex];
+    let url = "http://poetrydb.org/lines/"+search;
+    let ajaxOptions = {
       url: url,
       method: 'get',
       dataType: 'json',
@@ -54,11 +56,31 @@ class Text{
   newsDataSuccess(response){
     console.log(response);
     this.articles = response.articles;
-    for(var article of response.articles){
-    }
+    let randomIndex = Math.floor(Math.random()*response.articles.length);
+    let title = $("<div>").addClass("article-title").text("Title: "+response.articles[randomIndex].title);
+    let author = $("<div>").addClass("article-author").text("Author: "+response.articles[randomIndex].author);
+    let text = $("<div>").addClass("article-text").text("Poem: "+response.articles[randomIndex].content);
+    let article = $("<div>").addClass("article");
+    article.append(title);
+    article.append(author);
+    article.append(text);
+    this.articleElement = article;
+    console.log(this.articleElement);
+    $(".ambience-screen").append(this.articleElement);
   }
   poemSuccess(response){
     console.log(response);
     this.poems = response;
+    let randomIndex = Math.floor(Math.random()*response.length);
+    let title = $("<div>").addClass("poem-title").text("Title: "+response[randomIndex].title);
+    let author = $("<div>").addClass("poem-author").text("Author: "+response[randomIndex].author);
+    let text = $("<div>").addClass("poem-text").text("Poem: "+response[randomIndex].lines.join(" "));
+    let poem = $("<div>").addClass("poem");
+    poem.append(title);
+    poem.append(author);
+    poem.append(text);
+    this.poemElement = poem;
+    console.log(this.poemElement);
+    $(".ambience-screen").append(this.poemElement);
   }
 }
