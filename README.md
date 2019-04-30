@@ -11,7 +11,7 @@ Hackathon project involving the combination of different data sources into an ap
   - must pass data to subsequent functions with callbacks upon getting their data
   
 - Must be issue-managed via meistertask or trello
-  - name your project 2.19 Team [your team number] Hackathon
+  - name your project 3.19 Team [your team number] Hackathon
 
 ### Judging Criteria
 - **Appeal** : is it visually appealing / well put together
