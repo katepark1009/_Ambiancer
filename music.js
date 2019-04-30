@@ -6,7 +6,7 @@ class bgMusic{
         this.handleSuccess = this.handleSuccess.bind(this);
     }
     getMusic( mood ) {
-        let moods = {
+        const moods = {
             happy: ['happy', 'happy instrumental'],
             sad: ['breakup', 'leaving', 'lonely'],
             hype: ['crunk', 'hyphy', 'upbeat'],
