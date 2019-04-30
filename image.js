@@ -50,5 +50,3 @@ class Images {
         $('.candles').css("background-image", "url(" + this.randomImage + ")");
     }
   }
-  
-
