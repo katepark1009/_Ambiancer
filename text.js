@@ -59,7 +59,7 @@ class Text{
     let randomIndex = Math.floor(Math.random()*response.articles.length);
     let title = $("<div>").addClass("article-title").text("Title: "+response.articles[randomIndex].title);
     let author = $("<div>").addClass("article-author").text("Author: "+response.articles[randomIndex].author);
-    let text = $("<div>").addClass("article-text").text("Poem: "+response.articles[randomIndex].content);
+    let text = $("<div>").addClass("article-text").text("Article: "+response.articles[randomIndex].content);
     let article = $("<div>").addClass("article");
     article.append(title);
     article.append(author);
