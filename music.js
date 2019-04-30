@@ -55,16 +55,15 @@ class bgMusic{
 
         let iFrame = $('<iframe>');
         iFrame.attr({
-            src: `http://www.youtube.com/embed/${randomVideo.id}`,
+            src: `http://www.youtube.com/embed/${randomVideo.id}?autoplay=1`,
             id: 'player',
             type: 'text/html',
-            width: 640,
-            height: 360,
+            width: 640, // 160
+            height: 360, // 120
             frameborder: 0,
             allow: 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture;'
         });
         console.log('the final element will be: ', iFrame);
         $('.ambience-screen').append(iFrame);
-
     }
 }
