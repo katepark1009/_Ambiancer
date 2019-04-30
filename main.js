@@ -13,7 +13,7 @@ function onload(){
   $(".confident").on("click",function(){switchToAmbience("confident")});
 }
 function switchToAmbience(mood){
-  $(".home-screen").hide();
+  $(".home-screen").hide(1000);
   images.getImages();
   text.getNewsData(mood);
   text.getPoems(mood);
