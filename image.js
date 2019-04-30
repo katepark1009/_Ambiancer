@@ -8,7 +8,6 @@ class Images {
     }
     getImages() {
       $.getJSON(this.url, data => {
-          debugger;
         if (parseInt(data.totalHits) > 0) {
           $.each(data.hits, (i, hit) => {
             this.images.push(hit.largeImageURL);
@@ -32,4 +31,3 @@ class Images {
       }
     }
   }
-  
