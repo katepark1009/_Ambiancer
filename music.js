@@ -33,7 +33,6 @@ class bgMusic{
         $.ajax(ajaxOptions);
     }
     handleSuccess( result ){
-        debugger;
         if (result.success) {
             console.log('the result is...', result);
 

@@ -10,12 +10,12 @@ class Images {
       this.newDiv;
       this.mood = mood;
       this.ambience = {
-          'Happy': ['happy', 'joy'],
-          'Sad': ['sad'],
-          'Confident': ['successful'],
-          'Chill': ['cafe', 'ambience'],
-          'Romantic': ['adventurous'],
-          'Hype': ['urban', 'courageous']
+          'happy': ['happy', 'joy'],
+          'sad': ['sad'],
+          'confident': ['successful'],
+          'chill': ['cafe', 'ambience'],
+          'romantic': ['adventurous'],
+          'hype': ['urban', 'courageous']
       }
     }
     getImages(mood) {

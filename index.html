@@ -7,10 +7,10 @@
   src="https://code.jquery.com/jquery-3.4.0.min.js"
   integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
   crossorigin="anonymous"></script>
-    <script type="text/javascript" src="music.js"></script>
-    <script type="text/javascript" src="text.js"></script>
-    <script type="text/javascript" src="image.js"></script>
-    <script type="text/javascript" src="main.js"></script>
+  <script type="text/javascript" src="music.js"></script>
+  <script type="text/javascript" src="text.js"></script>
+  <script type="text/javascript" src="image.js"></script>
+  <script type="text/javascript" src="main.js"></script>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
   </head>
@@ -59,8 +59,59 @@
     </div>
 
 
-    <div class="ambience-screen">
-      
+    <div id = 'fullpage' class="ambience-screen">
+      <p class='main-title'>Ambiencer</p>
+      <div class = "menu-container">
+      <nav id= "navigation-menu">
+        <ul>
+          <li><a href="#section-1" class="menu"><div class = 'menu-div'>Youtube</div></a></li>
+          <li><a href="#section-2" class="menu"><div class = 'menu-div'>News</div></a></li>
+          <li><a href="#section-3" class="menu"><div class = 'menu-div'>Poem</div></a></li>
+          <li><a href="#section-4" class="menu"><div class = 'menu-div'>Other</div></a></li>
+        </ul>
+      </nav>
+      </div>
+
+      <div id="fullpage">
+        <div id="section-1" class="section1">Youtube section</div>
+        <div id="section-2" class="section2">News section</div>
+        <div id="section-3" class="section3">Poem section</div>
+        <div id="section-4" class="section4">Other section</div>
+      </div>
+    </div>  
+<!-- 
+    <div class="content-container">
+      <section id="section-1" class = "youtube _mPS2id-t">
+        <div class="content">
+          <p></p>
+        </div>
+      </section>
+      <section id="section-2" class = "poem _mPS2id-t">
+        <div class="content">
+          <p></p>
+        </div>
+      </section>
+      <section id="section-3" class = "news _mPS2id-t">
+        <div class="content">
+          <p></p>
+        </div>
+      </section>
+      <section id="section-4" class = "else _mPS2id-t">
+        <div class="content">
+          <p></p>
+        </div>
+      </section>
     </div>
+    </div> -->
+    <!-- <script>
+      new fullpage('#fullpage', {
+	//options here
+  	autoScrolling:true,
+  	scrollHorizontally: true
+    });
+
+//methods
+    fullpage_api.setAllowScrolling(true); -->
+    </script>
   </body>
 </html>

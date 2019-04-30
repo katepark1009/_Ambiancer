@@ -15,6 +15,13 @@ body{
   font-family: 'Bitter', serif;
   text-shadow: 2px 3px 1px white;
 }
+.main-title{
+  font-size: 4.5rem;
+  font-weight: bold;
+  font-family: 'Bitter', serif;
+  text-shadow: 2px 3px 1px white;
+  padding-left: 4%;
+}
 .subtitle{
   font-size: 2rem;
   font-style: italic;
@@ -83,4 +90,32 @@ pre{
 }
 .moods-row{
   height:20%;
+}
+.section1, .section2, .section3, .section4 {
+  background-color: lightgreen;
+  height: 80vh;
+  border: 1px solid black;
+}
+li {
+  all: unset;
+  display: inline-block;
+  width: 23%;
+  text-align: center;
+}
+.menu-container {
+  background-color: lightgray;
+  /* opacity: .5; */
+  height: 10%;
+}
+a {
+  /* all: unset; */
+  font-size: 2rem;
+  color: black;
+  font-family: 'Bitter', serif;
+}
+.navigation-menu {
+  height: 100%;
+}
+ul {
+  height: 100%;
 }
