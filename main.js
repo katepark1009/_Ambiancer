@@ -1,3 +1,7 @@
+var images = new Images();
+var text = new Text();
+var music = new bgMusic();
+
 $(document).ready(onload);
 
 function onload(){
@@ -7,14 +11,11 @@ function onload(){
   $(".hype").on("click",switchToAmbience);
   $(".romantic").on("click",switchToAmbience);
   $(".confident").on("click",switchToAmbience);
-  var images = new Images();
-  var text = new Text();
-  var music = new bgMusic();
-  images.getImages();
-  text.getNewsData("happy");
-  text.getPoems("happy");
-  music.getMusic("happy");
 }
-function switchToAmbience(){
+function switchToAmbience(mood){
   $(".home-screen").hide();
+  images.getImages();
+  text.getNewsData(mood);
+  text.getPoems(mood);
+  music.getMusic(mood);
 }
