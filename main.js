@@ -1,18 +1,19 @@
+var images = new Images();
+var text = new Text();
+
 $(document).ready(onload);
 
 function onload(){
-  $(".happy").on("click",switchToAmbience);
-  $(".sad").on("click",switchToAmbience);
-  $(".chill").on("click",switchToAmbience);
-  $(".hype").on("click",switchToAmbience);
-  $(".romantic").on("click",switchToAmbience);
-  $(".confident").on("click",switchToAmbience);
-  var images = new Images();
-  var text = new Text();
-  images.getImages();
-  text.getNewsData("happy");
-  text.getPoems("happy");
+  $(".happy").on("click",function(){switchToAmbience("happy")});
+  $(".sad").on("click",function(){switchToAmbience("sad")});
+  $(".chill").on("click",function(){switchToAmbience("chill")});
+  $(".hype").on("click",function(){switchToAmbience("hype")});
+  $(".romantic").on("click",function(){switchToAmbience("romantic")});
+  $(".confident").on("click",function(){switchToAmbience("confident")});
 }
-function switchToAmbience(){
+function switchToAmbience(mood){
   $(".home-screen").hide();
+  images.getImages();
+  text.getNewsData(mood);
+  text.getPoems(mood);
 }
