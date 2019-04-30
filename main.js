@@ -4,6 +4,9 @@ function onload(){
   getNewsData();
   getPoem("happy");
   $(".happy").on("click",switchToAmbience);
+  
+  var images = new Images();
+  images.getImages();
 }
 function getNewsData(){
   ajaxOptions = {
