@@ -33,9 +33,9 @@ class bgMusic{
         $.ajax(ajaxOptions);
     }
     handleSuccess( result ){
-        debugger;
         if (result.success) {
             console.log('the result is...', result);
+            this.render(result);
 
         } else {
             console.log('connection made, but request was denied...', result);
@@ -43,5 +43,28 @@ class bgMusic{
     }
     handleAjaxError( result ){
         console.log('the error object...', result);
+    }
+    render( result ){
+
+    // <iframe id = "player" type = "text / html" width = "640" height = "360"
+    //     src = "http://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1&origin=http://example.com"
+    //     frameborder = "0"> </ iframe>
+    // <iframe width="560" height="315" src="https://www.youtube.com/embed/W9CLdkkNn20" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        let randomIndex = Math.floor(Math.random()*result.video.length);
+        let randomVideo = result.video[randomIndex];
+
+        let iFrame = $('<iframe>');
+        iFrame.attr({
+            src: `http://www.youtube.com/embed/${randomVideo.id}`,
+            id: 'player',
+            type: 'text/html',
+            width: 640,
+            height: 360,
+            frameborder: 0,
+            allow: 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture;'
+        });
+        console.log('the final element will be: ', iFrame);
+        $('.ambience-screen').append(iFrame);
+
     }
 }
