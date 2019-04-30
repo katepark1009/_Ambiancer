@@ -14,7 +14,7 @@ function onload(){
 }
 function switchToAmbience(mood){
   $(".home-screen").hide();
-  images.getImages();
+  images.getImages(mood);
   text.getNewsData(mood);
   text.getPoems(mood);
   music.getMusic(mood);
