@@ -1,7 +1,13 @@
 body{
   position: relative;
-  font-size: 0;
   margin: 0;
+}
+button{
+  all: unset;
+  cursor: pointer;
+  padding: 5px;
+  background-color:whitesmoke;
+  box-shadow: 2px 3px 3px #041310;
 }
 .ambience-screen{
   font-family: "Roboto", sans-serif;
@@ -13,6 +19,20 @@ body{
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
+.blank-row{
+  height: 80%;
+}
+.candles{
+  background-image: url("images/candles.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.candles-row{
+  height: 100%;
+}
+.container-fluid{
+  height: 100%;
+}
 .home-screen{
   font-family: "Roboto", sans-serif;
   position: absolute;
@@ -20,11 +40,12 @@ body{
   height: 100vh;
   z-index: 1;
   justify-content: center;
-  background-image: url("images/candles.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
-.moods{
-  position: absolute;
-
+.moods-container{
+  height: 100%;
+}
+.moods-row{
+  height:20%;
 }
