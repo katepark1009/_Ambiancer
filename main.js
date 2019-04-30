@@ -9,6 +9,8 @@ function onload(){
   $(".hype").on("click",switchToAmbience);
   $(".romantic").on("click",switchToAmbience);
   $(".confident").on("click",switchToAmbience);
+  var images = new Images();
+  images.getImages();
 }
 function getNewsData(){
   ajaxOptions = {
