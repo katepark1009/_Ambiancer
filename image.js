@@ -1,15 +1,26 @@
 
 class Images {
-    constructor() {
-      this.ambience = ["happy", "sad", "chill", "urban","confident", "romantic"];
+    constructor(mood) {
+    //   this.ambience = ["happy", "sad", "cafe", "urban", "ambience", 'successful','courageous','adventurous'];
       this.api_KEY = "12346261-e063da4b76d894b5549aed673";
       this.url = "https://pixabay.com/api/?key="+this.api_KEY+"&q="+encodeURIComponent('baloon');
       this.images = [];
       this.ramdom;
       this.randomImage;
       this.newDiv;
+      this.mood = mood;
+      this.ambience = {
+          'Happy': ['happy', 'joy'],
+          'Sad': ['sad'],
+          'Confident': ['successful'],
+          'Chill': ['cafe', 'ambience'],
+          'Romantic': ['adventurous'],
+          'Hype': ['urban', 'courageous']
+      }
     }
-    getImages() {
+    getImages(mood) {
+        var randomIndex = Math.floor(Math.random()*this.ambience[mood].length);
+        this.url = "https://pixabay.com/api/?key="+this.api_KEY+"&q="+encodeURIComponent(this.ambience[mood][randomIndex]);
       $.getJSON(this.url, data => {
         if (parseInt(data.totalHits) > 0) {
           $.each(data.hits, (i, hit) => {
