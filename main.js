@@ -13,8 +13,8 @@ function onload(){
   $(".confident").on("click",function(){switchToAmbience("confident")});
 }
 function switchToAmbience(mood){
-  $(".home-screen").hide(1000);
-  images.getImages();
+  $(".home-screen").hide();
+  images.getImages(mood);
   text.getNewsData(mood);
   text.getPoems(mood);
   music.getMusic(mood);
