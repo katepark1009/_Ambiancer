@@ -5,6 +5,9 @@ class Images {
       this.api_KEY = "12346261-e063da4b76d894b5549aed673";
       this.url = "https://pixabay.com/api/?key="+this.api_KEY+"&q="+encodeURIComponent('baloon');
       this.images = [];
+      this.ramdom;
+      this.randomImage;
+      this.newDiv;
     }
     getImages() {
       $.getJSON(this.url, data => {
@@ -20,14 +23,21 @@ class Images {
       });
     }
     randomImages() {
-      var random;
       for (var i = 0; i < 10; i++) {
-        random = Math.floor(Math.random() * this.images.length);
-        var randomImage = this.images.splice(random, 1);
-        var newDiv = $("<div>")
+        this.random = Math.floor(Math.random() * this.images.length);
+        this.randomImage = this.images.splice(this.random, 1);
+        this.newDiv = $("<div>")
           .addClass("col-2 img")
-          .css("background-image", "url(" + randomImage + ")");
-        $(".wrap").append(newDiv);
+          .css("background-image", "url(" + this.randomImage + ")");
       }
     }
+    renderImage(str){ //Parent class name in parameter, will append new div.
+        str = '.' + str;
+        $(str).append(newDiv);
+    }
+    makeBackground(){
+        $('.candles').css("background-image", "url(" + this.randomImage + ")");
+    }
   }
+  
+

@@ -1,13 +1,48 @@
+@import url('https://fonts.googleapis.com/css?family=Bitter|Cormorant+Unicase|Gugi|Raleway');
+/* font-family: 'Gugi', cursive;
+font-family: 'Cormorant Unicase', serif;
+font-family: 'Raleway', sans-serif;
+font-family: 'Bitter', serif; */
+
 body{
   position: relative;
   margin: 0;
 }
+.title{
+  padding-top: 15%;
+  font-size: 4.5rem;
+  font-weight: bold;
+  font-family: 'Bitter', serif;
+  text-shadow: 2px 3px 1px white;
+}
+.subtitle{
+  font-size: 2rem;
+  font-style: italic;
+  font-family: 'Bitter', serif;
+  text-shadow: 1px 1px 1px white;
+}
 button{
   all: unset;
+  height: 100%;
+  width: 100%;
+  text-align: center;
   cursor: pointer;
   padding: 5px;
   background-color:whitesmoke;
   box-shadow: 2px 3px 3px #041310;
+  font-family: 'Cormorant Unicase', serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 10px;
+}
+pre{
+  font-family: 'Cormorant Unicase', serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.happy-col, .sad-col, .chill-col, .hype-col, .romantic-col, .confident-col{
+  height: 105px;
+  border-radius: 4px;
 }
 .ambience-screen{
   font-family: "Roboto", sans-serif;
@@ -23,7 +58,7 @@ button{
   height: 80%;
 }
 .candles{
-  background-image: url("images/candles.jpg");
+  background-image: url("images/bg1.jpg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
