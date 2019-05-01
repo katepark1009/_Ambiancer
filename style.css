@@ -89,7 +89,7 @@ pre{
   height:90%;
   overflow-y: auto;
 }
-.article-title, .article-author, .poem-title, .poem-author, .poem-text, .article-text{
+.article-title, .article-author, .poem-title, .poem-author, .poem-text, .article-text, .news-feed-row{
   display: flex;
   justify-content: center;
 }
@@ -268,4 +268,10 @@ ul {
   display:inline-block;
   width: 33%;
   font-size: 1.3rem;
+}
+.news-feed{
+  display:inline-block;
+  width: 33%;
+  height: 650px;
+  overflow-y: auto;
 }
