@@ -25,6 +25,7 @@ class Text{
         q: search,
         from: formattedDate,
         sortBy: "popularity",
+        language: "en",
         apiKey: "5e6556e5beed49609afc392ff37eb5b6"
       },
       success: this.newsDataSuccess,
@@ -67,7 +68,7 @@ class Text{
     article.append(author);
     article.append(text);
     this.articleElement = article;
-    $(".ambience-screen").append(this.articleElement);
+    $(".section2").append(this.articleElement);
   }
   poemSuccess(response){
     console.log("poems:",response);
@@ -81,6 +82,6 @@ class Text{
     poem.append(author);
     poem.append(text);
     this.poemElement = poem;
-    $(".ambience-screen").append(this.poemElement);
+    $(".section3").append(this.poemElement);
   }
 }
