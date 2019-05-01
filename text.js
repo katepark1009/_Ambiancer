@@ -25,6 +25,7 @@ class Text{
         q: search,
         from: formattedDate,
         sortBy: "popularity",
+        language: "en",
         apiKey: "5e6556e5beed49609afc392ff37eb5b6"
       },
       success: this.newsDataSuccess,
@@ -54,22 +55,23 @@ class Text{
     $.ajax(ajaxOptions);
   }
   newsDataSuccess(response){
-    console.log(response);
+    console.log("articles:",response);
     this.articles = response.articles;
     let randomIndex = Math.floor(Math.random()*response.articles.length);
     let title = $("<div>").addClass("article-title").text("Title: "+response.articles[randomIndex].title);
     let author = $("<div>").addClass("article-author").text("Author: "+response.articles[randomIndex].author);
-    let text = $("<div>").addClass("article-text").text("Article: "+response.articles[randomIndex].content);
+    let textIndex = response.articles[randomIndex].content.indexOf("[+");
+    let formattedText = response.articles[randomIndex].content.substring(0,textIndex);
+    let text = $("<div>").addClass("article-text").text("Article: "+formattedText);
     let article = $("<div>").addClass("article");
     article.append(title);
     article.append(author);
     article.append(text);
     this.articleElement = article;
-    console.log(this.articleElement);
-    // $("fullpage2").append(this.articleElement);
+    $(".mini-div-news").append(this.articleElement);
   }
   poemSuccess(response){
-    console.log(response);
+    console.log("poems:",response);
     this.poems = response;
     let randomIndex = Math.floor(Math.random()*response.length);
     let title = $("<div>").addClass("poem-title").text("Title: "+response[randomIndex].title);
@@ -80,7 +82,6 @@ class Text{
     poem.append(author);
     poem.append(text);
     this.poemElement = poem;
-    console.log(this.poemElement);
-    // $("#fullpage2").append(this.poemElement);
+    $(".mini-div-poem").append(this.poemElement);
   }
 }

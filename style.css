@@ -78,6 +78,13 @@ pre{
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
+.article{
+  height:33%;
+}
+.article-text{
+  height:90%;
+  overflow-y: auto;
+}
 .blank-row{
   height: 80%;
 }
@@ -107,6 +114,13 @@ pre{
 }
 .moods-row{
   height:20%;
+}
+.poem{
+  height:33%;
+}
+.poem-text{
+  height: 90%;
+  overflow-y: auto;
 }
 .section1, .section2, .section3, .section4 {
   min-height: 80vh;
