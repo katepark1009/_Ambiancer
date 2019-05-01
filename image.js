@@ -11,11 +11,11 @@ class Images {
       this.mood = mood;
       this.ambience = {
           'happy': ['happy', 'joy'],
-          'sad': ['sad'],
-          'confident': ['successful'],
-          'chill': ['cafe', 'ambience'],
-          'romantic': ['adventurous'],
-          'hype': ['urban', 'courageous']
+          'sad': ['sad', 'gloomy','rainy'],
+          'confident': ['successful', 'achievement'],
+          'chill': ['cafe', 'ambience', 'free'],
+          'romantic': ['adventurous', 'rose', 'wedding'],
+          'hype': ['urban', 'courageous', 'city']
       }
     }
     getImages(mood) {
@@ -31,7 +31,10 @@ class Images {
         } else {
           console.log("No hits");
         }
-      });
+      })
+      // .done(function(){
+      //   $('.loading').hide();
+      // });
     }
     randomImages() {
       var newImageArray = [];
@@ -44,6 +47,9 @@ class Images {
       $('.section2').css("background-image", "url(" + newImageArray[1] + ")");
       $('.section3').css("background-image", "url(" + newImageArray[2] + ")");
       $('.section4').css("background-image", "url(" + newImageArray[3] + ")");
+      
+      // setInterval(function(){  $('.loading').hide(); }, 1500);
+     
     }
     // renderImage(str){ //Parent class name in parameter, will append new div.
     //     str = '.' + str;

@@ -33,10 +33,14 @@ body{
   text-shadow: 1px 1px 1px white;
 }
 .subtitle2{
-  padding-top: 22%;
+  left: 31%;
+  color: rgb(250, 236, 210);
+  text-align: center;
+  position: absolute;
+  bottom: 6%;
   font-size: 2rem;
   font-family: 'Bitter', serif;
-  text-shadow: 1px 1px 1px white;
+  text-shadow: 1px 1px 1px rgb(46, 41, 41);
   text-align: center;
 }
 .subtitle-mainpage{
@@ -210,6 +214,13 @@ ul {
   box-shadow: 2px 3px 3px #041310;
   cursor: pointer;
   color: white;
+}
+.current-mood {
+  display: inline-block;
+  font-family: 'Bitter', serif;
+  font-size: 2.3rem;
+  text-decoration: underline;
+  color: rgb(49, 45, 45);
 }
 .mini-div{
   color: white;
