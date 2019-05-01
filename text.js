@@ -68,7 +68,7 @@ class Text{
     article.append(author);
     article.append(text);
     this.articleElement = article;
-    $(".section2").append(this.articleElement);
+    $(".mini-div-news").append(this.articleElement);
   }
   poemSuccess(response){
     console.log("poems:",response);
@@ -82,6 +82,6 @@ class Text{
     poem.append(author);
     poem.append(text);
     this.poemElement = poem;
-    $(".section3").append(this.poemElement);
+    $(".mini-div-poem").append(this.poemElement);
   }
 }

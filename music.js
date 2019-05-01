@@ -55,6 +55,6 @@ class MusicPlayer{
             allow: 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture;'
         });
         console.log('the final element will be: ', iFrame);
-        $('.section1').append(iFrame);
+        $('.mini-div-video').append(iFrame);
     }
 }

@@ -5,6 +5,7 @@ let text = new Text();
 let music = new MusicPlayer();
 
 function onload(){
+  $('#fullpage').hide();
   $(".happy").on("click",function(){switchToAmbience("happy");});
   $(".sad").on("click",function(){switchToAmbience("sad");});
   $(".chill").on("click",function(){switchToAmbience("chill");});
@@ -14,6 +15,7 @@ function onload(){
 }
 function switchToAmbience(mood){
   $(".home-screen").hide();
+  $('#fullpage').show();
   images.getImages(mood);
   text.getNewsData(mood);
   text.getPoems(mood);
