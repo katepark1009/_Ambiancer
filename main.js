@@ -42,6 +42,7 @@ function switchToAmbience(mood){
   $('.current-mood').text(' ; '+mood)
 }
 function returnToMain(){
+  $('.mini-div-video').empty();
   $(".home-screen").css({
     'opacity': 1,
     'visibility': 'visible',
