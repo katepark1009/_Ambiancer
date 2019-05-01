@@ -57,6 +57,8 @@ class Text{
     $.ajax(ajaxOptions);
   }
   newsDataSuccess(response){
+    $(".article-title").empty();
+    $(".article-author").empty();
     console.log("articles:",response);
     this.articles = response.articles;
     let randomIndex = Math.floor(Math.random()*response.articles.length);
@@ -69,6 +71,8 @@ class Text{
     $(".article-text").text("Article: "+formattedText);
   }
   poemSuccess(response){
+    $(".poem-title").empty();
+    $(".poem-author").empty();
     console.log("poems:",response);
     this.poems = response;
     let randomIndex = Math.floor(Math.random()*response.length);
