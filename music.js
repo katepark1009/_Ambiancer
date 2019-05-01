@@ -1,6 +1,6 @@
 
 
-class bgMusic{
+class MusicPlayer{
     constructor( ) {
         this.handleAjaxError = this.handleAjaxError.bind(this);
         this.handleSuccess = this.handleSuccess.bind(this);
@@ -16,7 +16,6 @@ class bgMusic{
         };
         let randomIndex = Math.floor(Math.random()*moodVariations[mood].length);
         let searchWord = moodVariations[mood][randomIndex];
-
         let ajaxOptions = {
             url: 'http://s-apis.learningfuze.com/hackathon/youtube/search.php',
             method: 'post',
