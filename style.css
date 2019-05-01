@@ -295,4 +295,6 @@ ul {
   width: 70%;
   font-size: 1.3rem;
 }
-p
+.newsfeed-title:hover{
+  cursor: pointer;
+}

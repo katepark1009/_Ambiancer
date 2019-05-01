@@ -62,7 +62,7 @@ class Text{
       let article = response.articles.splice(randomIndex,1)[0];
       if(article.content){
         this.articles.push(article);
-        let articleTitle = $("<p>").addClass("text").text(article.title);
+        let articleTitle = $("<p>").addClass("text newsfeed-title").text(article.title);
         let firstBr = $("<br>");
         let secondBr = $("<br>");
         articleTitle.on("click",this.handleTitleClick);
