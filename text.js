@@ -57,7 +57,8 @@ class Text{
     $(".article-title").empty();
     $(".article-author").empty();
     let randomIndex;
-    while(response.articles.length > 0){
+    let counter = 0;
+    while(response.articles.length > 0 && counter < 5){
       randomIndex = Math.floor(Math.random()*response.articles.length);
       let article = response.articles.splice(randomIndex,1)[0];
       if(article.content){
@@ -67,6 +68,7 @@ class Text{
         let secondBr = $("<br>");
         articleTitle.on("click",this.handleTitleClick);
         $(".news-feed").append(articleTitle).append(firstBr).append(secondBr);
+        counter++;
       }
       else{
       }
@@ -150,5 +152,17 @@ class Text{
    $(".row3").append(articleTitle);
    $(".row4").append(articleAuthor);
    $(".row2").append(articleText);
+ }
+ resetNewsFeed(){
+   $(".section2").empty();
+   let newsfeed = $("<div>").addClass("news-feed col-12");
+   let newsfeedTitle = $("<div>").addClass("news-feed-title col-12");
+   let newsfeedHeader = $("<h1>").text("News Feed:");
+   let row5 = $("<div>").addClass("row5 row");
+   let row6 = $("<div>").addClass("row6 row");
+   newsfeedTitle.append(newsfeedHeader);
+   row5.append(newsfeedTitle);
+   row6.append(newsfeed);
+   $(".section2").append(row5).append(row6);
  }
 }

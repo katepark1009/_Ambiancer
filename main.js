@@ -54,6 +54,7 @@ function returnToMain(){
     'transition': 'opacity 1.5s linear'
   });
   $('#fullpage').hide();
+  text.resetNewsFeed();
 }
 
 function generateHeaderText(mood){
