@@ -6,6 +6,8 @@
     <script
     src="https://code.jquery.com/jquery-3.4.0.js"
     crossorigin="anonymous"></script>
+    <script type="text/javascript" src="weather.js"></script>
+    <script type="text/javascript" src="clock.js"></script>
     <script type="text/javascript" src="giphy.js"></script>
     <script type="text/javascript" src="music.js"></script>
     <script type="text/javascript" src="text.js"></script>
@@ -22,8 +24,13 @@
             <div class="moods-container container">
               <div class="blank-row row">
                 <div class="blank col-sm">
+                  <div class="weather"></div>
                   <div class="title">Ambiencer</div>
                   <div class="subtitle">THe best way to Set your mood</div>
+                  <div class="js-clock">
+                    <p class='clock'>00:00</p>
+                    <p class='sayhi'></p>
+                  </div>
                   <div class="subtitle2">Choose your ambience below </div>
                 </div>
               </div>
@@ -47,7 +54,7 @@
                         <button type="button" name="button" class="romantic"><pre>Romantic</pre></button>
                       </div>
                       <div class="confident-col col-sm-2">
-                        <button type="button" name="button" class="confident"><pre>Confident</pre></button>
+                        <button type="button" name="button" class="confident"><pre>motivated</pre></button>
                       </div>
                     </div>
                   </div>
@@ -96,25 +103,14 @@
 
           <div id="section-2" class="section2">
             <div class="row">
-              <div class="col-12 mini-div article-info">
-                <div class="row">
-                  <div class="col-12 article-title">
-
-                  </div>
-
-                </div>
-                <div class="row">
-                  <div class="col-12 article-author">
-
-                  </div>
-                </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-12 mini-div article-text"></div>
+              <div class="news-feed-title col-12">
+                <h1>News Feed:</h1>
               </div>
             </div>
-
+            <div class="row">
+              <div class="news-feed col-12">
+              </div>
+            </div>
           <!--// Poem section header text-->
           <div class="header-poem col-12"><h1></h1></div>
 

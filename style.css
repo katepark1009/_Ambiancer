@@ -9,7 +9,7 @@ body{
   margin: 0;
 }
 .title{
-  padding-top: 15%;
+  padding-top: 4%;
   font-size: 4.5rem;
   font-weight: bold;
   font-family: 'Bitter', serif;
@@ -89,7 +89,7 @@ pre{
   height:90%;
   overflow-y: auto;
 }
-.article-title, .article-author, .poem-title, .poem-author, .poem-text, .article-text{
+.article-title, .article-author, .poem-title, .poem-author, .poem-text, .article-text, .news-feed-row{
   display: flex;
   justify-content: center;
 }
@@ -246,8 +246,44 @@ ul {
   width: 33%;
   text-align: center
 }
+.clock {
+  left: 34%;
+  color: white;
+  position: absolute;
+  bottom: 19%;
+  font-size: 5rem;
+  font-family: 'Bitter', serif;
+  text-shadow: 1px 1px 1px rgb(46, 41, 41);
+  text-align: center;
+}
+.sayhi {
+  left: 37%;
+  color: white;
+  text-align: center;
+  position: absolute;
+  bottom: 12%;
+  font-size: 3rem;
+  font-family: 'Raleway', sans-serif;
+  text-shadow: 1px 1px 1px rgb(46, 41, 41);
+  text-align: center;
+}
+.weather {
+  font-size: 1.5rem;
+  font-family: 'Raleway', sans-serif;
+  text-shadow: 1px 1px 1px white;
+  position: absolute;
+  right: -12%;
+  color: gray;
+  padding-top: 1%;
+}
 .text{
   display:inline-block;
   width: 33%;
   font-size: 1.3rem;
+}
+.news-feed{
+  display:inline-block;
+  width: 33%;
+  height: 650px;
+  overflow-y: auto;
 }
