@@ -93,7 +93,6 @@ class Text{
     // var postString = response[randomIndex].lines;
     // console.log('postString :', postString);
     // while(postString.length<0) {
-    //   for(var i = 0; i < postString.length; i++) {
     //     var newLine = $('<p>').text(postString[i]);
     //     if(postString[i] === "") {
     //       newLine = $('<br>');
@@ -110,7 +109,6 @@ class Text{
     var semiIndex = postString.indexOf(";");
     var periodIndex = postString.indexOf(".");
     var commaIndex = postString.indexOf(",");
-
     while(semiIndex > -1){
       preString += postString.substring(0,semiIndex+1);
       postString = postString.substring(semiIndex+1,postString.length);
