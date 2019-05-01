@@ -1,6 +1,6 @@
 
 
-class bgMusic{
+class MusicPlayer{
     constructor( ) {
         this.handleAjaxError = this.handleAjaxError.bind(this);
         this.handleSuccess = this.handleSuccess.bind(this);

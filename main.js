@@ -1,8 +1,8 @@
+$(document).ready(onload);
+
 let images = new Images();
 let text = new Text();
-let music = new bgMusic();
-
-$(document).ready(onload);
+let music = new MusicPlayer();
 
 function onload(){
   $(".happy").on("click",function(){switchToAmbience("happy");});
