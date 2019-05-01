@@ -2,14 +2,14 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>textAPI</title>
+    <title>Ambiencer</title>
     <script
-  src="https://code.jquery.com/jquery-3.4.0.js"
-  crossorigin="anonymous"></script>
-  <script type="text/javascript" src="music.js"></script>
-  <script type="text/javascript" src="text.js"></script>
-  <script type="text/javascript" src="image.js"></script>
-  <script type="text/javascript" src="main.js"></script>
+    src="https://code.jquery.com/jquery-3.4.0.js"
+    crossorigin="anonymous"></script>
+    <script type="text/javascript" src="music.js"></script>
+    <script type="text/javascript" src="text.js"></script>
+    <script type="text/javascript" src="image.js"></script>
+    <script type="text/javascript" src="main.js"></script>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
   </head>
@@ -60,11 +60,14 @@
 
 
     <div id = 'fullpage' class="ambience-screen">
-      <p class='main-title'>Ambiencer</p> 
-      <p class="subtitle-mainpage">THe best way to Set your mood</p>     
+      <div class = 'title-bg'>
+        <p class='main-title'>Ambiencer</p>
+        <p class="subtitle-mainpage">The best way to Set your MOOD</p>
+        <div class="goback">Change ambience</div>
+      </div>
       <div id="fullpage2">
         <div class = "menu-container">
-    
+
           <nav id= "navigation-menu">
             <ul>
               <li><a href="#section-1" class="menu"><div class = 'menu-div'>Youtube</div></a></li>
@@ -73,7 +76,7 @@
               <li><a href="#section-4" class="menu"><div class = 'menu-div'>Other</div></a></li>
             </ul>
           </nav>
-         
+
           <div id="section-1" class="section1 row">
             <!-- can add or change col - * -->
             <div class="col-6 mini-div">
@@ -81,23 +84,45 @@
             </div>
             <div class="col-6 mini-div"></div>
           </div>
-          <div id="section-2" class="section2 row">News section
-              <div class="col-6 mini-div">
-                  <p class="section-title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas animi quia dolorem! Consequuntur expedita maxime ipsum maiores perferendis vero, aperiam ex ad voluptates est nobis architecto voluptas! Obcaecati, commodi? Rem.</p>
+
+          <div id="section-2" class="section2">News section
+            <div class="row">
+              <div class="col-6 mini-div article-info">
+                <div class="row">
+                  <div class="col-12 article-title">
+
+                  </div>
+
                 </div>
-                <div class="col-6 mini-div"></div>
+                <div class="row">
+                  <div class="col-12 article-author">
+
+                  </div>
+                </div>
+                </div>
+              <div class="col-6 mini-div article-text"></div>
+            </div>
           </div>
-          <div id="section-3" class="section3 row">Poem section
-              <div class="col-6 mini-div">
-                  <p class="section-title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas animi quia dolorem! Consequuntur expedita maxime ipsum maiores perferendis vero, aperiam ex ad voluptates est nobis architecto voluptas! Obcaecati, commodi? Rem.</p>
+
+          <div id="section-3" class="section3">Poem section
+            <div class="row">
+              <div class="col-6 mini-div poem-info">
+                <div class="row">
+                  <div class="col-12 poem-title">
+
+                  </div>
                 </div>
-                <div class="col-6 mini-div"></div>
-          </div>
-          <div id="section-4" class="section4 row">Other section
-              <div class="col-6 mini-div">
-                  <p class="section-title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas animi quia dolorem! Consequuntur expedita maxime ipsum maiores perferendis vero, aperiam ex ad voluptates est nobis architecto voluptas! Obcaecati, commodi? Rem.</p>
+                <div class="row">
+                  <div class="col-12 poem-author">
+
+                  </div>
                 </div>
-                <div class="col-6 mini-div"></div>
+              </div>
+              <div class="col-6 mini-div poem-text"></div>
+            </div>
+        </div>
+          <div id="section-4" class="section4">Other section
+
           </div>
 
         </div>
@@ -136,6 +161,5 @@
 
 //methods
     fullpage_api.setAllowScrolling(true); -->
-    </script>
   </body>
 </html>

@@ -39,17 +39,14 @@ class Images {
         this.random = Math.floor(Math.random() * this.images.length);
         this.randomImage = this.images.splice(this.random, 1);
         newImageArray.push(this.randomImage);
-        // this.newDiv = $("<div>")
-        //   .addClass("col-2 img")
-        //   .css("background-image", "url(" + this.randomImage + ")");
       }
       $('.section1').css("background-image", "url(" + newImageArray[0] + ")");
       $('.section2').css("background-image", "url(" + newImageArray[1] + ")");
       $('.section3').css("background-image", "url(" + newImageArray[2] + ")");
       $('.section4').css("background-image", "url(" + newImageArray[3] + ")");
     }
-    renderImage(str){ //Parent class name in parameter, will append new div.
-        str = '.' + str;
-        $(str).append(newDiv);
-    }
+    // renderImage(str){ //Parent class name in parameter, will append new div.
+    //     str = '.' + str;
+    //     $(str).append(newDiv);
+    // }
   }
