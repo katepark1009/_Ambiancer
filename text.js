@@ -62,7 +62,7 @@ class Text{
       let article = response.articles.splice(randomIndex,1)[0];
       if(article.content){
         this.articles.push(article);
-        let articleTitle = $("<p>").text(article.title);
+        let articleTitle = $("<p>").addClass("text").text(article.title);
         let firstBr = $("<br>");
         let secondBr = $("<br>");
         articleTitle.on("click",this.handleTitleClick);
@@ -138,10 +138,13 @@ class Text{
    let row2 = $("<div>").addClass("row2 row");
    let row3 = $("<div>").addClass("row3 row");
    let row4 = $("<div>").addClass("row4 row");
-   let articleAuthor = $("<div>").addClass("col-12 article-author").text(chosenArticle.author);
+   let titleHeader = $("<h1>").text(chosenArticle.title);
+   let textParagraph = $("<p>").addClass("text").text(formattedText);
+   let authorHeader = $("<h2>").text("Author: "+chosenArticle.author);
+   let articleAuthor = $("<div>").addClass("col-12 article-author").append(authorHeader);
    let articleInfo = $("<div>").addClass("col-12 mini-div article-info");
-   let articleText = $("<div>").addClass("col-12 mini-div article-text").text(formattedText);
-   let articleTitle = $("<div>").addClass("col-12 article-title").text(chosenArticle.title);
+   let articleText = $("<div>").addClass("col-12 mini-div article-text").append(textParagraph);
+   let articleTitle = $("<div>").addClass("col-12 article-title").append(titleHeader);
    $(".section2").append(row1).append(row2);
    $(".row1").append(articleInfo);
    $(".article-info").append(row3).append(row4);

@@ -241,7 +241,7 @@ ul {
 .mini-div{
   color: white;
 }
-.formatted-poem-text{
+.formatted-poem-text, .news-feed, .news-feed-title{
   display: inline-block;
   width: 33%;
   text-align: center
@@ -287,3 +287,4 @@ ul {
   height: 650px;
   overflow-y: auto;
 }
+p
