@@ -123,7 +123,8 @@ pre{
   overflow-y: auto;
 }
 .section1, .section2, .section3, .section4 {
-  min-height: 80vh;
+  color: white;
+  min-height: 90vh;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
@@ -141,10 +142,13 @@ pre{
   background-color: rgba(0, 0, 0, 0.5);
   z-index: -1;
 }
+.section1 {
+  justify-content: center;
+}
 .section-title{
   padding-top: 2%;
   font-family: 'Raleway', sans-serif;
-  font-size: 2rem;
+  font-size: 3.5rem;
   font-weight: bold;
   text-align: center;
   color: mintcream;
@@ -185,7 +189,6 @@ ul {
   height: 100%;
 }
 .section-title {
-  font-size: 1rem;
   color: whitesmoke;
   font-family: 'Bitter', serif;
 }
