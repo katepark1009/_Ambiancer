@@ -119,7 +119,7 @@ pre{
   height:33%;
 }
 .poem-text{
-  height: 90%;
+  height: 300px;
   overflow-y: auto;
 }
 .section1, .section2, .section3, .section4 {

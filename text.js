@@ -2,8 +2,10 @@ class Text{
   constructor(){
     this.articles = [];
     this.poems = [];
-    this.articleElement = null;
-    this.poemElement = null;
+    this.articleInfo = null;
+    this.articleText = null;
+    this.poemInfo = null;
+    this.poemText = null;
   }
   getNewsData(query, day=30, month=4, year=2019){
     let formattedDate = year+"-"+month+"-"+day;
@@ -58,30 +60,22 @@ class Text{
     console.log("articles:",response);
     this.articles = response.articles;
     let randomIndex = Math.floor(Math.random()*response.articles.length);
-    let title = $("<div>").addClass("article-title").text("Title: "+response.articles[randomIndex].title);
-    let author = $("<div>").addClass("article-author").text("Author: "+response.articles[randomIndex].author);
+    var articleTitle = $("<h1>").text("Title: "+response.articles[randomIndex].title);
+    var articleAuthor = $("<h2>").text("Author: "+response.articles[randomIndex].author);
+    $(".article-title").append(articleTitle);
+    $(".article-author").append(articleAuthor);
     let textIndex = response.articles[randomIndex].content.indexOf("[+");
     let formattedText = response.articles[randomIndex].content.substring(0,textIndex);
-    let text = $("<div>").addClass("article-text").text("Article: "+formattedText);
-    let article = $("<div>").addClass("article");
-    article.append(title);
-    article.append(author);
-    article.append(text);
-    this.articleElement = article;
-    $(".mini-div-news").append(this.articleElement);
+    $(".article-text").text("Article: "+formattedText);
   }
   poemSuccess(response){
     console.log("poems:",response);
     this.poems = response;
     let randomIndex = Math.floor(Math.random()*response.length);
-    let title = $("<div>").addClass("poem-title").text("Title: "+response[randomIndex].title);
-    let author = $("<div>").addClass("poem-author").text("Author: "+response[randomIndex].author);
-    let text = $("<div>").addClass("poem-text").text("Poem: "+response[randomIndex].lines.join(" "));
-    let poem = $("<div>").addClass("poem");
-    poem.append(title);
-    poem.append(author);
-    poem.append(text);
-    this.poemElement = poem;
-    $(".mini-div-poem").append(this.poemElement);
+    var poemTitle = $("<h1>").text("Title: "+response[randomIndex].title);
+    var poemAuthor = $("<h2>").text("Author: "+response[randomIndex].author);
+    $(".poem-title").append(poemTitle);
+    $(".poem-author").append(poemAuthor);
+    $(".poem-text").text("Poem: "+response[randomIndex].lines.join(" "));
   }
 }
