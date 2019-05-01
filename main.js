@@ -12,6 +12,8 @@ function onload(){
   $(".hype").on("click",function(){switchToAmbience("hype");});
   $(".romantic").on("click",function(){switchToAmbience("romantic");});
   $(".confident").on("click",function(){switchToAmbience("confident");});
+  $(".goback").on("click", function(){returnToMain();});
+  $(".main-title").on("click", function(){returnToMain();});
 }
 function switchToAmbience(mood){
   $(".home-screen").hide();
@@ -20,4 +22,8 @@ function switchToAmbience(mood){
   text.getNewsData(mood);
   text.getPoems(mood);
   music.getMusic(mood);
+}
+function returnToMain(){
+  $(".home-screen").show();
+  $('#fullpage').hide();
 }
