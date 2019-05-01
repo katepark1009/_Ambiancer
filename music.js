@@ -46,7 +46,7 @@ class MusicPlayer{
         let randomPlaylist = result.playlists.id[randomIndex];
         let iFrame = $('<iframe>');
         iFrame.attr({
-            src: `http://www.youtube.com/embed/videoseries?list=${randomPlaylist}`,
+            src: `http://www.youtube.com/embed?disablekb=1&fs=0&rel=0&modestbranding=1&showinfo=0&autoplay=1&listType=playlist&list=${randomPlaylist}`,
             id: 'player',
             type: 'text/html',
             width: 800, // 160
