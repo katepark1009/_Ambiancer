@@ -6,6 +6,16 @@ let music = new MusicPlayer();
 let giphy = new Giphy();
 
 function onload(){
+  $('a').on('click', event => {
+    if (event.currentTarget.hash !== ''){
+      event.preventDefault();
+      let hash = event.currentTarget.hash;
+      console.log('this is the jquery hash: ', $(hash).offset().top);
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top - $('#navigation-menu').height()
+      }, 600);
+    }
+  });
   $('#fullpage').hide();
   $(".happy").on("click",function(){switchToAmbience("happy");});
   $(".sad").on("click",function(){switchToAmbience("sad");});
