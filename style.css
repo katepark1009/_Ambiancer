@@ -42,7 +42,7 @@ body{
 .subtitle-mainpage{
   display: inline-block;
   font-family: 'Bitter', serif;
-  font-size: 1rem;
+  font-size: 1.2rem;
   padding-left: 2%;
 }
 button{
@@ -128,6 +128,8 @@ pre{
   background-size: 100% 100%;
   position: relative;
   z-index: -1;
+  margin:0;
+  padding-top: 1%;
 }
 .section-title{
   padding-top: 2%;
@@ -152,17 +154,22 @@ li {
 }
 a {
   /* all: unset; */
-  font-size: 2rem;
+  font-size: 1.25rem;
   color: black;
   font-family: 'Bitter', serif;
+}
+.menu-div {
+  padding-top: 3%;
 }
 #navigation-menu {
   position: sticky;
   height: 100%;
   top: 0;
   background-color: lightgray;
-  height: 5rem;
-  padding-top: 1.5%;
+  height: 3.5rem;
+  font-size: 1.25rem;
+  background-image: url("images/bg-gray.jpg");
+  background-size: 25%;
 }
 ul {
   height: 100%;
@@ -171,4 +178,23 @@ ul {
   font-size: 1rem;
   color: whitesmoke;
   font-family: 'Bitter', serif;
+}
+.title-bg {
+  background-image: url("images/bg-aura2.gif");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.goback {
+  position: absolute;
+  display: inline-block;
+  font-family: 'Bitter', serif;
+  font-size: 1.5rem;
+  right: 3%;
+  top: 2%;
+  border: 1px solid white;
+  padding: 1.7%;
+  border-radius: 15px;
+  box-shadow: 2px 3px 3px #041310;
+  cursor: pointer;
+  color: white;
 }

@@ -10,6 +10,12 @@
   <script type="text/javascript" src="text.js"></script>
   <script type="text/javascript" src="image.js"></script>
   <script type="text/javascript" src="main.js"></script>
+  <script type='text/javascript' src='unitegallery/js/unitegallery.min.js'></script> 
+		
+		<link rel='stylesheet' href='unitegallery/css/unite-gallery.css' type='text/css' /> 
+		<script type='text/javascript' src='unitegallery/themes/default/ug-theme-default.js'></script> 
+    <link rel='stylesheet' href='unitegallery/themes/default/ug-theme-default.css' type='text/css' /> 
+    
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
   </head>
@@ -60,8 +66,11 @@
 
 
     <div id = 'fullpage' class="ambience-screen">
-      <p class='main-title'>Ambiencer</p> 
-      <p class="subtitle-mainpage">THe best way to Set your mood</p>     
+      <div class = 'title-bg'>
+        <p class='main-title'>Ambiencer</p> 
+        <p class="subtitle-mainpage">The best way to Set your MOOD</p>  
+        <div class="goback">Change ambience</div>
+      </div>   
       <div id="fullpage2">
         <div class = "menu-container">
     
@@ -94,10 +103,50 @@
                 <div class="col-6 mini-div"></div>
           </div>
           <div id="section-4" class="section4">Other section
-              <div class="col-6 mini-div">
-                  <p class="section-title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas animi quia dolorem! Consequuntur expedita maxime ipsum maiores perferendis vero, aperiam ex ad voluptates est nobis architecto voluptas! Obcaecati, commodi? Rem.</p>
-                </div>
-                <div class="col-6 mini-div"></div>
+            <div id="gallery" style="">
+		
+              <img alt="Youtube With Images"
+			 data-type="youtube"
+			 src="thumbs/youtube_thumb.jpg"
+			 data-image="images/youtube_image.jpg"		 
+			 data-videoid="A3PDXmYoF5U"
+			 data-description="Youtube video description">
+	
+		<img alt="Youtube Without Images"
+			 data-type="youtube"
+			 data-videoid="A3PDXmYoF5U"
+			 data-description="Youtube video description">
+
+		<img alt="Vimeo Video"
+			 data-type="vimeo"
+			 src="thumbs/vimeo_thumb.jpg"
+			 data-image="images/vimeo_image.jpg"		 
+			 data-videoid="73234449"
+			 data-description="Vimeo Video Description">
+
+		<img alt="Html5 Video"
+			 src="thumbs/html5_video_thumb.png"
+			 data-type="html5video"
+			 data-image="thumbs/html5_video_image.png"
+			 data-videoogv="http://video-js.zencoder.com/oceans-clip.ogv"
+			 data-videowebm="http://video-js.zencoder.com/oceans-clip.webm"
+			 data-videomp4="http://video-js.zencoder.com/oceans-clip.mp4"
+	    	 data-description="Html5 Video Description">
+
+		<img alt="Wistia Video"			
+			 src="thumbs/wistia_thumb.jpg"
+			 data-image="images/wistia_image.jpg"		 
+			 data-videoid="9oedgxuciv"
+			 data-description="Wistia video description!">
+
+		<img alt="Sound Cloud Track"			
+			 src="thumbs/sound_cloud_thumb.jpg"
+			 data-type="soundcloud"
+			 data-image="images/sound_cloud_image.jpg"
+			 data-trackid="8390970"
+			 data-description="SoundCloud track description">
+            
+            </div>
           </div>
 
         </div>
@@ -136,6 +185,12 @@
 
 //methods
     fullpage_api.setAllowScrolling(true); -->
-    </script>
+    <script type="text/javascript"> 
+			
+			jQuery(document).ready(function(){ 
+				jQuery("#gallery").unitegallery(); 
+			}); 
+		
+		</script>  
   </body>
 </html>
