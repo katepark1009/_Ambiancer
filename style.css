@@ -305,4 +305,11 @@ ul {
   display:inline-block;
   width: 70%;
   font-size: 1.3rem;
+<<<<<<< HEAD
 }
+.newsfeed-title:hover{
+  cursor: pointer;
+}
+=======
+}
+>>>>>>> 8a04cd9fa0594c382638256af1b0b4e3b88a3ce6
