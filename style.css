@@ -125,8 +125,18 @@ pre{
 .section1, .section2, .section3, .section4 {
   min-height: 80vh;
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: cover;
   position: relative;
+  z-index: -1;
+}
+.section1:after, .section2:after, .section3:after, .section4:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  display: block;
+  background-color: rgba(0, 0, 0, 0.5);
   z-index: -1;
 }
 .section-title{
