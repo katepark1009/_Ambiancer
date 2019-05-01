@@ -8,10 +8,10 @@ class MusicPlayer{
     getMusic( mood ) {
         const moodVariations = {
             happy: ['happy', 'upbeat'],
-            sad: ['sad', 'instrumental sad'],
+            sad: ['sad'],
             motivated: ['inspirational', 'motivational'],
             hype: ['hype', 'hyphy', 'crunk', 'party'],
-            chill: ['lo-fi', 'chill instrumental', 'instrumental jazz'],
+            chill: ['lo-fi', 'smooth jazz'],
             romantic: ['ballad', 'romantic']
         };
         let randomIndex = Math.floor(Math.random() * moodVariations[mood].length);
@@ -42,7 +42,7 @@ class MusicPlayer{
         console.log('the error object...', result);
     }
     render( result ){
-        if (result.playlists.id) {
+        if (result.playlists) {
             let randomIndex = Math.floor(Math.random() * result.playlists.id.length);
             let randomPlaylist = result.playlists.id[randomIndex];
             let iFrame = $('<iframe>');
@@ -57,7 +57,23 @@ class MusicPlayer{
             });
             console.log('the final element will be: ', iFrame);
             $('.mini-div-video').append(iFrame);
+        } else if (result.id.length >= 1){
+            let randomIndex = Math.floor(Math.random() * result.playlists.id.length);
+            let randomSong = result.video[randomIndex].id;
+            let iFrame = $('<iframe>');
+            iFrame.attr({
+                src: `http://www.youtube.com/embed/${randomSong}?autoplay=1&fs=0&modestbranding=1&rel=0`,
+                id: 'player',
+                type: 'text/html',
+                width: 800, // 160
+                height: 450, // 120
+                frameborder: 0,
+                allow: 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture;'
+            });
+            console.log('the final element will be: ', iFrame);
+            $('.mini-div-video').append(iFrame);
         }
         console.log('video not found, the resulst is: ', result.playlists);
+
     }
 }
