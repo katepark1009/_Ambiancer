@@ -3,7 +3,7 @@ $(document).ready(onload);
 let images = new Images();
 let text = new Text();
 let music = new MusicPlayer();
-let pinterest = new Pinterest();
+let giphy = new Giphy();
 
 function onload(){
   $('#fullpage').hide();
@@ -28,7 +28,7 @@ function switchToAmbience(mood){
   text.getNewsData(mood);
   text.getPoems(mood);
   music.getMusic(mood);
-  pinterest.getData();
+  giphy.getData();
   $('.current-mood').text(' ; '+mood)
 }
 function returnToMain(){

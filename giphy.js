@@ -1,5 +1,5 @@
 
-class giphy{
+class Giphy{
     constructor(){
 
     }
