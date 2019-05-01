@@ -7,14 +7,14 @@ class MusicPlayer{
     }
     getMusic( mood ) {
         const moodVariations = {
-            happy: ['happy', 'upbeat', 'feel good'],
-            sad: ['sad', 'lonely', 'breakup', 'heartache', 'depressing'],
-            confident: ['GOAT', 'confidence'],
-            hype: ['hype', 'hyphy', 'crunk'],
-            chill: ['lo-fi', 'relaxing', 'chill', 'chill instrumental'],
-            romantic: ['instrumental ballad', 'romantic', 'love']
+            happy: ['happy', 'upbeat'],
+            sad: ['sad', 'instrumental sad'],
+            motivated: ['inspirational', 'motivational'],
+            hype: ['hype', 'hyphy', 'crunk', 'party'],
+            chill: ['lo-fi', 'chill instrumental', 'instrumental jazz'],
+            romantic: ['ballad', 'romantic']
         };
-        let randomIndex = Math.floor(Math.random()*moodVariations[mood].length);
+        let randomIndex = Math.floor(Math.random() * moodVariations[mood].length);
         let searchWord = moodVariations[mood][randomIndex];
         let ajaxOptions = {
             url: 'http://s-apis.learningfuze.com/hackathon/youtube/search.php',
@@ -42,20 +42,22 @@ class MusicPlayer{
         console.log('the error object...', result);
     }
     render( result ){
-        let randomIndex = Math.floor(Math.random()*result.playlists.id.length);
-        let randomPlaylist = result.playlists.id[randomIndex];
-        let iFrame = $('<iframe>');
-        iFrame.attr({
-            src: `http://www.youtube.com/embed/videoseries?list=${randomPlaylist}`,
-            id: 'player',
-            type: 'text/html',
-            width: 800, // 160
-            height: 450, // 120
-            frameborder: 0,
-            allow: 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture;'
-        });
-        console.log('the final element will be: ', iFrame);
-        $('.mini-div-video').empty();
-        $('.mini-div-video').append(iFrame);
+        if (result.playlists.id) {
+            let randomIndex = Math.floor(Math.random() * result.playlists.id.length);
+            let randomPlaylist = result.playlists.id[randomIndex];
+            let iFrame = $('<iframe>');
+            iFrame.attr({
+                src: `http://www.youtube.com/embed?autoplay=1&disablekb=1&fs=0&rel=0&modestbranding=1&listType=playlist&list=${randomPlaylist}`,
+                id: 'player',
+                type: 'text/html',
+                width: 800, // 160
+                height: 450, // 120
+                frameborder: 0,
+                allow: 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture;'
+            });
+            console.log('the final element will be: ', iFrame);
+            $('.mini-div-video').append(iFrame);
+        }
+        console.log('video not found, the resulst is: ', result.playlists);
     }
 }
