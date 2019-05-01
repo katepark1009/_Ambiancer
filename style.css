@@ -153,6 +153,17 @@ pre{
 .section1 {
   justify-content: center;
 }
+.header-music, .header-news, .header-poem, .header-other {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 10vh;
+  background: black;
+  color: white;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+}
 .section-title{
   padding-top: 2%;
   font-family: 'Raleway', sans-serif;
@@ -192,6 +203,7 @@ a {
   font-size: 1.25rem;
   background-image: url("images/bg-gray.jpg");
   background-size: 25%;
+  z-index: 10;
 }
 ul {
   height: 100%;
