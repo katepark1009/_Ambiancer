@@ -60,6 +60,7 @@ class Text{
     $(".article-title").empty();
     $(".article-author").empty();
     console.log("articles:",response);
+    console.log("articles.content:",response.articles[0].content);
     this.articles = response.articles;
     let randomIndex;
     do{
@@ -84,10 +85,26 @@ class Text{
     console.log("poems:",response);
     this.poems = response;
     let randomIndex = Math.floor(Math.random()*response.length);
-    var poemTitle = $("<h1>").text(response[randomIndex].title);
-    var poemAuthor = $("<h2>").text("Author: "+response[randomIndex].author);
+    var poemTitle = $("<p>").text(response[randomIndex].title);
+    var poemAuthor = $("<p>").text("Author: "+response[randomIndex].author);
     $(".poem-title").append(poemTitle);
     $(".poem-author").append(poemAuthor);
+
+    // var postString = response[randomIndex].lines;
+    // console.log('postString :', postString);
+    // while(postString.length<0) {
+    //   for(var i = 0; i < postString.length; i++) {
+    //     var newLine = $('<p>').text(postString[i]);
+    //     if(postString[i] === "") {
+    //       newLine = $('<br>');
+    //     }
+    //     $('.poem-text').append(newLine)
+    //   }
+    // }
+
+    
+
+
     var preString = "";
     var postString = response[randomIndex].lines.join(" ");
     var semiIndex = postString.indexOf(";");

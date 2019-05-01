@@ -130,6 +130,21 @@ pre{
   height: 650px;
   overflow-y: auto;
 }
+.poem-title {
+  font-size: 2.5rem;
+  font-family: 'Raleway', sans-serif;
+  text-shadow: 1px 1px 1px grey;
+  color: white;
+  padding-top: 1%;
+}
+.poem-author{
+  font-size: 1rem;
+  font-family: 'Raleway', sans-serif;
+  text-shadow: 1px 1px 1px grey;
+  color: white;
+  padding-top: 1%;
+  padding: 0;
+}
 .section1, .section2, .section3, .section4 {
   color: white;
   min-height: 95vh;
