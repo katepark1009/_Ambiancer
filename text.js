@@ -1,11 +1,6 @@
 class Text{
   constructor(){
     this.articles = [];
-    this.poems = [];
-    this.articleInfo = null;
-    this.articleText = null;
-    this.poemInfo = null;
-    this.poemText = null;
   }
   getNewsData(query, day=30, month=4, year=2019){
     let formattedDate = year+"-"+month+"-"+day;
@@ -62,15 +57,20 @@ class Text{
     console.log("articles:",response);
     this.articles = response.articles;
     let randomIndex;
-    do{
+    while(response.articles.length > 0){
       randomIndex = Math.floor(Math.random()*response.articles.length);
-    }while(!response.articles[randomIndex].content)
-    var articleTitle = $("<h1>").text(response.articles[randomIndex].title);
+      let article = response.articles.splice(randomIndex,1);
+      this.articles.push(article);
+      let articleTitle = $("<h1>").text(response.articles[randomIndex].title);
+      articleTitle.on("click",handleTitleClick);
+    }
+
+    let articleAuthor;
     if(response.articles[randomIndex].author){
-      var articleAuthor = $("<h2>").text("Author: "+response.articles[randomIndex].author);
+      articleAuthor = $("<h2>").text("Author: "+response.articles[randomIndex].author);
     }
     else{
-      var articleAuthor = $("<h2>").text("Author: Unknown");
+      articleAuthor = $("<h2>").text("Author: Unknown");
     }
     $(".article-title").append(articleTitle);
     $(".article-author").append(articleAuthor);
@@ -84,15 +84,15 @@ class Text{
     console.log("poems:",response);
     this.poems = response;
     let randomIndex = Math.floor(Math.random()*response.length);
-    var poemTitle = $("<h1>").text(response[randomIndex].title);
-    var poemAuthor = $("<h2>").text("Author: "+response[randomIndex].author);
+    let poemTitle = $("<h1>").text(response[randomIndex].title);
+    let poemAuthor = $("<h2>").text("Author: "+response[randomIndex].author);
     $(".poem-title").append(poemTitle);
     $(".poem-author").append(poemAuthor);
-    var preString = "";
-    var postString = response[randomIndex].lines.join(" ");
-    var semiIndex = postString.indexOf(";");
-    var periodIndex = postString.indexOf(".");
-    var commaIndex = postString.indexOf(",");
+    let preString = "";
+    let postString = response[randomIndex].lines.join(" ");
+    let semiIndex = postString.indexOf(";");
+    let periodIndex = postString.indexOf(".");
+    let commaIndex = postString.indexOf(",");
 
     while(semiIndex > -1){
       preString += postString.substring(0,semiIndex+1);
@@ -127,4 +127,29 @@ class Text{
     preString += postString;
     $(".poem-text").html("<p class='text'>"+preString+"</p>");
   }
+}
+function handleTitleClick(){
+  $(".section2").empty();
+  let title = $(this).text();
+  let chosenArticle;
+  for(let article of this.articles){
+    if(article.title === title){
+      chosenArticle = article;
+      break;
+    }
+  }
+  let row1 = $("<div>").addClass("row1 row");
+  let row2 = $("<div>").addClass("row2 row");
+  let row3 = $("<div>").addClass("row3 row");
+  let row4 = $("<div>").addClass("row4 row");
+  let articleAuthor = $("<div>").addClass("col-12 article-author").text(chosenArticle.author);
+  let articleInfo = $("<div>").addClass("col-12 mini-div article-info");
+  let articleText = $("<div>").addClass("col-12 mini-div article-text").text(chosenArticle.content);
+  let articleTitle = $("<div>").addClass("col-12 article-title").text(chosenArticle.title);
+  $(".section2").append(row1).append(row2);
+  $(".row1").append(articleInfo);
+  $(".article-info").append(row3).append(row4);
+  $(".row3").append(articleTitle);
+  $(".row4").append(articleAuthor);
+  $(".row2").append(articleText);
 }
