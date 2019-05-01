@@ -12,7 +12,7 @@ function onload(){
       let hash = event.currentTarget.hash;
       console.log('this is the jquery hash: ', $(hash).offset().top);
       $('html, body').animate({
-        scrollTop: $(hash).offset().top - $('#navigation-menu').height()
+        scrollTop: $(hash).offset().top - ($('#navigation-menu').height() + $('.header-music').height())
       }, 600);
     }
   });
@@ -53,40 +53,40 @@ function returnToMain(){
 }
 
 function generateHeaderText(mood){
-  const videoHeader = $('.header-music h1');
-  const newsHeader = $('.header-news h1');
-  const poemHeader = $('.header-poem h1');
-  const otherHeader = $('.header-other h1');
+  let videoHeader = $('.header-music h1');
+  let newsHeader = $('.header-news h1');
+  let poemHeader = $('.header-poem h1');
+  let otherHeader = $('.header-other h1');
 
   switch(mood){
     case 'happy':
       videoHeader.text('Lift your spirit with a Song');
       newsHeader.text('Get some heartwarming news');
-      poemHeader.text('');
+      poemHeader.text('Think happy thoughts');
       otherHeader.text('');
       break;
     case 'sad':
-      videoHeader.text('');
-      newsHeader.text('');
-      poemHeader.text('');
+      videoHeader.text('Sometimes you just gotta let it out');
+      newsHeader.text('Some articles that may open the flood gates');
+      poemHeader.text('Let\'s go deep into the burrows of your heart');
       otherHeader.text('');
       break;
     case 'motivated':
-      videoHeader.text('Get pumped with a song');
-      newsHeader.text('');
-      poemHeader.text('');
+      videoHeader.text('Get pumped up');
+      newsHeader.text('Some articles to get you motivated');
+      poemHeader.text('Find inspiration from your soul');
       otherHeader.text('');
       break;
     case 'hype':
       videoHeader.text('Let\'s get the party started..');
-      newsHeader.text('');
+      newsHeader.text('What\'s poppin\' in the news');
       poemHeader.text('');
       otherHeader.text('');
       break;
     case 'chill':
       videoHeader.text('Relax your mind with some smooth beats');
-      newsHeader.text('');
-      poemHeader.text('');
+      newsHeader.text('Some casual reading for you');
+      poemHeader.text('Grab a cup o\' joe and have a seat');
       otherHeader.text('');
       break;
     case 'romantic':

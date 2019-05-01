@@ -164,9 +164,6 @@ pre{
   border-top: 1px solid white;
   border-bottom: 1px solid white;
 }
-.header-music h1, .header-news h1, .header-poem h1, .header-other h1 {
-  margin:auto;
-}
 .section-title{
   padding-top: 2%;
   font-family: 'Raleway', sans-serif;
