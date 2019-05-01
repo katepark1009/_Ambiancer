@@ -5,6 +5,7 @@ let text = new Text();
 let music = new MusicPlayer();
 let giphy = new Giphy();
 let clock = new Clock();
+let weather = new Weather();
 
 function onload(){
   $('a').on('click', event => {
@@ -27,6 +28,7 @@ function onload(){
   $(".goback").on("click", function(){returnToMain();});
   $(".main-title").on("click", function(){returnToMain();});
   clock.init();
+  weather.init();
 }
 function switchToAmbience(mood){
   $(".home-screen").css({
