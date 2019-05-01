@@ -306,16 +306,32 @@ ul {
 }
 .text{
   display:inline-block;
-  width: 70%;
+  width: 100%;
   font-size: 1.3rem;
 }
 .newsfeed-title:hover{
   cursor: pointer;
 }
-.news-feed-container {
-  width: 33%;
+.news-feed-title{
+  text-shadow:1px 1px 2px black;
+  border-bottom:1px solid black;
+}
+/*.news-feed-container, .news-article-container{*/
+  /*width: 40%;*/
+  /*margin:auto;*/
+  /*text-align:center;*/
+/*}*/
+.news-feed-container, .news-article-container {
+  display: inline-block;
+  width:60%;
+  padding: 0 0 15px 0;
+  text-align: center;
+  background: #2d2d2d;
+  border: 1px solid black;
+  margin:auto;
 }
 .newsfeed-title {
-  border: 1px solid black;
+  padding-bottom:5px;
+  border-bottom: 1px solid black;
   margin:0;
 }
