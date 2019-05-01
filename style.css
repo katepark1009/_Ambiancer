@@ -264,3 +264,8 @@ ul {
   color: gray;
   padding-top: 1%;
 }
+.text{
+  display:inline-block;
+  width: 33%;
+  font-size: 1.3rem;
+}

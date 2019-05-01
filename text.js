@@ -61,14 +61,22 @@ class Text{
     $(".article-author").empty();
     console.log("articles:",response);
     this.articles = response.articles;
-    let randomIndex = Math.floor(Math.random()*response.articles.length);
+    let randomIndex;
+    do{
+      randomIndex = Math.floor(Math.random()*response.articles.length);
+    }while(!response.articles[randomIndex].content)
     var articleTitle = $("<h1>").text(response.articles[randomIndex].title);
-    var articleAuthor = $("<h2>").text("Author: "+response.articles[randomIndex].author);
+    if(response.articles[randomIndex].author){
+      var articleAuthor = $("<h2>").text("Author: "+response.articles[randomIndex].author);
+    }
+    else{
+      var articleAuthor = $("<h2>").text("Author: Unknown");
+    }
     $(".article-title").append(articleTitle);
     $(".article-author").append(articleAuthor);
     let textIndex = response.articles[randomIndex].content.indexOf("[+");
     let formattedText = response.articles[randomIndex].content.substring(0,textIndex);
-    $(".article-text").text(formattedText);
+    $(".article-text").html("<p class='text'>"+formattedText+"</p>");
   }
   poemSuccess(response){
     $(".poem-title").empty();
@@ -117,6 +125,6 @@ class Text{
       commaIndex = postString.indexOf(",");
     }
     preString += postString;
-    $(".poem-text").html("<div class='formatted-poem-text'>"+preString+"</div>");
+    $(".poem-text").html("<p class='text'>"+preString+"</p>");
   }
 }
