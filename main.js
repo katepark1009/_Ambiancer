@@ -12,7 +12,7 @@ function onload(){
     if (event.currentTarget.hash !== ''){
       event.preventDefault();
       let hash = event.currentTarget.hash;
-      console.log('this is the jquery hash: ', $(hash).offset().top);
+      console.log('this is the position of the target: ', $(hash).offset().top);
       $('html, body').animate({
         scrollTop: $(hash).offset().top - ($('#navigation-menu').height() + $('.header-music').height())
       }, 600);
