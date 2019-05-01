@@ -80,6 +80,43 @@ class Text{
     var poemAuthor = $("<h2>").text("Author: "+response[randomIndex].author);
     $(".poem-title").append(poemTitle);
     $(".poem-author").append(poemAuthor);
-    $(".poem-text").text("Poem: "+response[randomIndex].lines.join(" "));
+    var preString = "";
+    var postString = response[randomIndex].lines.join(" ");
+    var semiIndex = postString.indexOf(";");
+    var periodIndex = postString.indexOf(".");
+    var commaIndex = postString.indexOf(",");
+
+    while(semiIndex > -1){
+      preString += postString.substring(0,semiIndex+1);
+      postString = postString.substring(semiIndex+1,postString.length);
+      postString = postString.split("");
+      postString.unshift("<br><br>");
+      postString = postString.join("");
+      semiIndex = postString.indexOf(";");
+    }
+    preString += postString;
+    postString = preString;
+    preString = "";
+    while(periodIndex > -1){
+      preString += postString.substring(0,periodIndex+1);
+      postString = postString.substring(periodIndex+1,postString.length);
+      postString = postString.split("");
+      postString.unshift("<br><br>");
+      postString = postString.join("");
+      periodIndex = postString.indexOf(".");
+    }
+    preString += postString;
+    postString = preString;
+    preString = "";
+    while(commaIndex > -1){
+      preString += postString.substring(0,commaIndex+1);
+      postString = postString.substring(commaIndex+1,postString.length);
+      postString = postString.split("");
+      postString.unshift("<br><br>");
+      postString = postString.join("");
+      commaIndex = postString.indexOf(",");
+    }
+    preString += postString;
+    $(".poem-text").html("<div>Poem: "+preString+"</div>");
   }
 }
