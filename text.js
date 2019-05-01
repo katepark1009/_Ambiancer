@@ -62,13 +62,13 @@ class Text{
     console.log("articles:",response);
     this.articles = response.articles;
     let randomIndex = Math.floor(Math.random()*response.articles.length);
-    var articleTitle = $("<h1>").text("Title: "+response.articles[randomIndex].title);
+    var articleTitle = $("<h1>").text(response.articles[randomIndex].title);
     var articleAuthor = $("<h2>").text("Author: "+response.articles[randomIndex].author);
     $(".article-title").append(articleTitle);
     $(".article-author").append(articleAuthor);
     let textIndex = response.articles[randomIndex].content.indexOf("[+");
     let formattedText = response.articles[randomIndex].content.substring(0,textIndex);
-    $(".article-text").text("Article: "+formattedText);
+    $(".article-text").text(formattedText);
   }
   poemSuccess(response){
     $(".poem-title").empty();
@@ -76,7 +76,7 @@ class Text{
     console.log("poems:",response);
     this.poems = response;
     let randomIndex = Math.floor(Math.random()*response.length);
-    var poemTitle = $("<h1>").text("Title: "+response[randomIndex].title);
+    var poemTitle = $("<h1>").text(response[randomIndex].title);
     var poemAuthor = $("<h2>").text("Author: "+response[randomIndex].author);
     $(".poem-title").append(poemTitle);
     $(".poem-author").append(poemAuthor);
@@ -117,6 +117,6 @@ class Text{
       commaIndex = postString.indexOf(",");
     }
     preString += postString;
-    $(".poem-text").html("<div>Poem: "+preString+"</div>");
+    $(".poem-text").html("<div class='formatted-poem-text'>"+preString+"</div>");
   }
 }
