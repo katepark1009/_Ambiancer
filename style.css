@@ -89,6 +89,10 @@ pre{
   height:90%;
   overflow-y: auto;
 }
+.article-title, .article-author, .poem-title, .poem-author, .poem-text, .article-text{
+  display: flex;
+  justify-content: center;
+}
 .blank-row{
   height: 80%;
 }
@@ -123,7 +127,7 @@ pre{
   height:33%;
 }
 .poem-text{
-  height: 300px;
+  height: 650px;
   overflow-y: auto;
 }
 .section1, .section2, .section3, .section4 {
@@ -224,4 +228,9 @@ ul {
 }
 .mini-div{
   color: white;
+}
+.formatted-poem-text{
+  display: inline-block;
+  width: 33%;
+  text-align: center
 }
