@@ -10,12 +10,10 @@ function onload(){
     if (event.currentTarget.hash !== ''){
       event.preventDefault();
       let hash = event.currentTarget.hash;
-      console.log('this is the hash: ', hash);
+      console.log('this is the jquery hash: ', $(hash).offset().top);
       $('html, body').animate({
-        scrollTop: $(hash).offset().top
-      }, 800, ()=> {
-        window.location.hash = hash;
-      });
+        scrollTop: $(hash).offset().top - 56
+      }, 800);
     }
   });
   $('#fullpage').hide();

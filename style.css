@@ -128,7 +128,7 @@ pre{
 }
 .section1, .section2, .section3, .section4 {
   color: white;
-  min-height: 90vh;
+  min-height: 95vh;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
