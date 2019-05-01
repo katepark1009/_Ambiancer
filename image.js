@@ -1,6 +1,6 @@
 
 class Images {
-    constructor(mood) {
+    constructor() {
     //   this.ambience = ["happy", "sad", "cafe", "urban", "ambience", 'successful','courageous','adventurous'];
       this.api_KEY = "12346261-e063da4b76d894b5549aed673";
       this.url = "https://pixabay.com/api/?key="+this.api_KEY+"&q="+encodeURIComponent('baloon');
@@ -8,18 +8,18 @@ class Images {
       this.ramdom;
       this.randomImage;
       this.newDiv;
-      this.mood = mood;
       this.ambience = {
           'happy': ['happy', 'joy'],
           'sad': ['sad', 'gloomy','rainy'],
-          'confident': ['successful', 'achievement'],
-          'chill': ['cafe', 'ambience', 'free'],
-          'romantic': ['adventurous', 'rose', 'wedding'],
+          'motivated': ['successful', 'motivational'],
+          'chill': ['ambience', 'free', 'adventurous'],
+          'romantic': ['rose', 'wedding'],
           'hype': ['urban', 'courageous', 'city']
       }
     }
     getImages(mood) {
         var randomIndex = Math.floor(Math.random()*this.ambience[mood].length);
+        console.log('random mood-image search keyword :', this.ambience[mood][randomIndex]);
         this.url = "https://pixabay.com/api/?key="+this.api_KEY+"&q="+encodeURIComponent(this.ambience[mood][randomIndex]);
       $.getJSON(this.url, data => {
         if (parseInt(data.totalHits) > 0) {

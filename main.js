@@ -4,6 +4,7 @@ let images = new Images();
 let text = new Text();
 let music = new MusicPlayer();
 let giphy = new Giphy();
+let clock = new Clock();
 
 function onload(){
   $('a').on('click', event => {
@@ -22,9 +23,10 @@ function onload(){
   $(".chill").on("click",function(){switchToAmbience("chill");});
   $(".hype").on("click",function(){switchToAmbience("hype");});
   $(".romantic").on("click",function(){switchToAmbience("romantic");});
-  $(".confident").on("click",function(){switchToAmbience("confident");});
+  $(".confident").on("click",function(){switchToAmbience("motivated");});
   $(".goback").on("click", function(){returnToMain();});
   $(".main-title").on("click", function(){returnToMain();});
+  clock.init();
 }
 function switchToAmbience(mood){
   $(".home-screen").css({
@@ -38,7 +40,7 @@ function switchToAmbience(mood){
   text.getNewsData(mood);
   text.getPoems(mood);
   music.getMusic(mood);
-  giphy.getData();
+  giphy.getData(mood);
   $('.current-mood').text(' ; '+mood)
 }
 function returnToMain(){
