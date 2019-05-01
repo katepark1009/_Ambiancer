@@ -234,3 +234,8 @@ ul {
   width: 33%;
   text-align: center
 }
+.text{
+  display:inline-block;
+  width: 33%;
+  font-size: 1.3rem;
+}
