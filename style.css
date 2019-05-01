@@ -222,13 +222,13 @@ a {
 }
 #navigation-menu {
   position: sticky;
-  height: 100%;
   top: 0;
   background-color: lightgray;
   height: 3.5rem;
   font-size: 1.25rem;
   background-image: url("images/bg-gray.jpg");
   background-size: 25%;
+  z-index:10;
 }
 ul {
   height: 100%;
