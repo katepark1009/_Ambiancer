@@ -38,7 +38,7 @@ class Images {
     }
     randomImages() {
       var newImageArray = [];
-      for (var i = 0; i < 10; i++) {
+      for (var i = 0; i < 5; i++) {
         this.random = Math.floor(Math.random() * this.images.length);
         this.randomImage = this.images.splice(this.random, 1);
         newImageArray.push(this.randomImage);

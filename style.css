@@ -89,9 +89,20 @@ pre{
   height:90%;
   overflow-y: auto;
 }
+.article-title{
+  font-size: 2.5rem;
+  font-family: 'Raleway', sans-serif;
+  text-shadow: 1px 1px 1px grey;
+  color: white;
+  padding-top: 1%;
+}
+.poem-author{
+  font-style: italic;
+}
 .article-title, .article-author, .poem-title, .poem-author, .poem-text, .article-text{
   display: flex;
   justify-content: center;
+  font-family: 'Raleway', sans-serif;
 }
 .blank-row{
   height: 80%;
@@ -129,6 +140,21 @@ pre{
 .poem-text{
   height: 650px;
   overflow-y: auto;
+}
+.poem-title {
+  font-size: 2rem;
+  font-family: 'Raleway', sans-serif;
+  text-shadow: 1px 1px 1px grey;
+  color: white;
+  padding-top: 1%;
+}
+.poem-author{
+  font-size: 1rem;
+  font-family: 'Raleway', sans-serif;
+  text-shadow: 1px 1px 1px grey;
+  color: white;
+  padding-top: 1%;
+  padding: 0;
 }
 .section1, .section2, .section3, .section4 {
   color: white;
@@ -245,7 +271,7 @@ ul {
   text-align: center;
 }
 .sayhi {
-  left: 37%;
+  left: 35%;
   color: white;
   text-align: center;
   position: absolute;
@@ -260,12 +286,12 @@ ul {
   font-family: 'Raleway', sans-serif;
   text-shadow: 1px 1px 1px white;
   position: absolute;
-  right: -12%;
+  right: 0%;
   color: gray;
   padding-top: 1%;
 }
 .text{
   display:inline-block;
-  width: 33%;
+  width: 70%;
   font-size: 1.3rem;
 }

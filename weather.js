@@ -2,6 +2,7 @@ class Weather{
     constructor(){
         this.api_key = "97649e666d867598790f35d22987b2be";
         this.coords = 'coords';
+        this.handleGeoSuccess = this.handleGeoSuccess.bind(this);
     }
     getWeather (lat,lng) {
         fetch (`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${this.api_key}&units=imperial`
@@ -34,7 +35,10 @@ class Weather{
         this.getWeather(latitude, longitude);
     }
     askForCoords() {
-        navigator.geolocation.getCurrentPosition(handleGeoSuccess, handleGeoError)
+        navigator.geolocation.getCurrentPosition(this.handleGeoSuccess, this.handleGeoError)
+    }
+    handleGeoError(){
+        console.log('error')
     }
     loadCoords(){
         const loadCoords = localStorage.getItem(this.coords);

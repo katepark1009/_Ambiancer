@@ -65,12 +65,12 @@ class Text{
     do{
       randomIndex = Math.floor(Math.random()*response.articles.length);
     }while(!response.articles[randomIndex].content)
-    var articleTitle = $("<h1>").text(response.articles[randomIndex].title);
+    var articleTitle = $("<p>").text(response.articles[randomIndex].title);
     if(response.articles[randomIndex].author){
-      var articleAuthor = $("<h2>").text("Author: "+response.articles[randomIndex].author);
+      var articleAuthor = $("<p>").text("Author: "+response.articles[randomIndex].author);
     }
     else{
-      var articleAuthor = $("<h2>").text("Author: Unknown");
+      var articleAuthor = $("<p>").text("Author: Unknown");
     }
     $(".article-title").append(articleTitle);
     $(".article-author").append(articleAuthor);
@@ -84,8 +84,8 @@ class Text{
     console.log("poems:",response);
     this.poems = response;
     let randomIndex = Math.floor(Math.random()*response.length);
-    var poemTitle = $("<h1>").text(response[randomIndex].title);
-    var poemAuthor = $("<h2>").text("Author: "+response[randomIndex].author);
+    var poemTitle = $("<p>").text(response[randomIndex].title);
+    var poemAuthor = $("<p>").text("- Author: "+response[randomIndex].author+ " -" );
     $(".poem-title").append(poemTitle);
     $(".poem-author").append(poemAuthor);
     var preString = "";
@@ -115,16 +115,16 @@ class Text{
     }
     preString += postString;
     postString = preString;
-    preString = "";
-    while(commaIndex > -1){
-      preString += postString.substring(0,commaIndex+1);
-      postString = postString.substring(commaIndex+1,postString.length);
-      postString = postString.split("");
-      postString.unshift("<br><br>");
-      postString = postString.join("");
-      commaIndex = postString.indexOf(",");
-    }
-    preString += postString;
+    // preString = "";
+    // while(commaIndex > -1){
+    //   preString += postString.substring(0,commaIndex+1);
+    //   postString = postString.substring(commaIndex+1,postString.length);
+    //   postString = postString.split("");
+    //   postString.unshift("<br><br>");
+    //   postString = postString.join("");
+    //   commaIndex = postString.indexOf(",");
+    // }
+    // preString += postString;
     $(".poem-text").html("<p class='text'>"+preString+"</p>");
   }
 }
