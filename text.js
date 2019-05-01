@@ -66,7 +66,7 @@ class Text{
     article.append(text);
     this.articleElement = article;
     console.log(this.articleElement);
-    $(".ambience-screen").append(this.articleElement);
+    // $("fullpage2").append(this.articleElement);
   }
   poemSuccess(response){
     console.log(response);
@@ -81,6 +81,6 @@ class Text{
     poem.append(text);
     this.poemElement = poem;
     console.log(this.poemElement);
-    $(".ambience-screen").append(this.poemElement);
+    // $("#fullpage2").append(this.poemElement);
   }
 }

@@ -21,12 +21,29 @@ body{
   font-family: 'Bitter', serif;
   text-shadow: 2px 3px 1px white;
   padding-left: 4%;
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 1%;
+  margin-bottom: 1%;
 }
 .subtitle{
   font-size: 2rem;
   font-style: italic;
   font-family: 'Bitter', serif;
   text-shadow: 1px 1px 1px white;
+}
+.subtitle2{
+  padding-top: 22%;
+  font-size: 2rem;
+  font-family: 'Bitter', serif;
+  text-shadow: 1px 1px 1px white;
+  text-align: center;
+}
+.subtitle-mainpage{
+  display: inline-block;
+  font-family: 'Bitter', serif;
+  font-size: 1rem;
+  padding-left: 2%;
 }
 button{
   all: unset;
@@ -92,9 +109,19 @@ pre{
   height:20%;
 }
 .section1, .section2, .section3, .section4 {
-  background-color: lightgreen;
-  height: 80vh;
-  border: 1px solid black;
+  min-height: 80vh;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  position: relative;
+  z-index: -1;
+}
+.section-title{
+  padding-top: 2%;
+  font-family: 'Raleway', sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  color: mintcream;
 }
 li {
   all: unset;
@@ -103,9 +130,11 @@ li {
   text-align: center;
 }
 .menu-container {
+  position: sticky;
   background-color: lightgray;
   /* opacity: .5; */
   height: 10%;
+  top: 0;
 }
 a {
   /* all: unset; */
@@ -113,9 +142,19 @@ a {
   color: black;
   font-family: 'Bitter', serif;
 }
-.navigation-menu {
+#navigation-menu {
+  position: sticky;
   height: 100%;
+  top: 0;
+  background-color: lightgray;
+  height: 5rem;
+  padding-top: 1.5%;
 }
 ul {
   height: 100%;
+}
+.section-title {
+  font-size: 1rem;
+  color: whitesmoke;
+  font-family: 'Bitter', serif;
 }
