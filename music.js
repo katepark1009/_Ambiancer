@@ -7,14 +7,14 @@ class MusicPlayer{
     }
     getMusic( mood ) {
         const moodVariations = {
-            happy: ['happy', 'upbeat', 'feel good'],
-            sad: ['sad', 'lonely', 'breakup', 'heartache', 'depressing'],
-            confident: ['GOAT', 'confidence'],
-            hype: ['hype', 'hyphy', 'crunk'],
+            happy: ['happy', 'instrumental upbeat', 'feel good'],
+            sad: ['instrumental sad', 'lonely', 'breakup', 'depressing'],
+            confident: ['confidence', 'inspirational', 'motivational'],
+            hype: ['hype', 'hyphy', 'crunk', 'party'],
             chill: ['lo-fi', 'relaxing', 'chill', 'chill instrumental'],
-            romantic: ['instrumental ballad', 'romantic', 'love']
+            romantic: ['instrumental ballad', 'instrumental romantic', 'love']
         };
-        let randomIndex = Math.floor(Math.random()*moodVariations[mood].length);
+        let randomIndex = Math.floor(Math.random() * moodVariations[mood].length);
         let searchWord = moodVariations[mood][randomIndex];
         let ajaxOptions = {
             url: 'http://s-apis.learningfuze.com/hackathon/youtube/search.php',

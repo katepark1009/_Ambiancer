@@ -12,8 +12,8 @@ function onload(){
       let hash = event.currentTarget.hash;
       console.log('this is the jquery hash: ', $(hash).offset().top);
       $('html, body').animate({
-        scrollTop: $(hash).offset().top - 56
-      }, 800);
+        scrollTop: $(hash).offset().top - $('#navigation-menu').height()
+      }, 600);
     }
   });
   $('#fullpage').hide();
