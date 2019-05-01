@@ -3,6 +3,7 @@ $(document).ready(onload);
 let images = new Images();
 let text = new Text();
 let music = new MusicPlayer();
+let pinterest = new Pinterest();
 
 function onload(){
   $('#fullpage').hide();
@@ -16,14 +17,25 @@ function onload(){
   $(".main-title").on("click", function(){returnToMain();});
 }
 function switchToAmbience(mood){
-  $(".home-screen").hide();
+  $(".home-screen").css({
+    'visibility': 'hidden',
+    'opacity': 0,
+    'transition': 'visibility 0s 2.5s, opacity 2s linear'
+  });
   $('#fullpage').show();
+  $('.loading').show();
   images.getImages(mood);
   text.getNewsData(mood);
   text.getPoems(mood);
   music.getMusic(mood);
+  pinterest.getData();
+  $('.current-mood').text(' ; '+mood)
 }
 function returnToMain(){
-  $(".home-screen").show();
+  $(".home-screen").css({
+    'opacity': 1,
+    'visibility': 'visible',
+    'transition': 'opacity 1.5s linear'
+  });
   $('#fullpage').hide();
 }
