@@ -49,12 +49,13 @@ class MusicPlayer{
             src: `http://www.youtube.com/embed/videoseries?list=${randomPlaylist}`,
             id: 'player',
             type: 'text/html',
-            width: 640, // 160
-            height: 360, // 120
+            width: 800, // 160
+            height: 450, // 120
             frameborder: 0,
             allow: 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture;'
         });
         console.log('the final element will be: ', iFrame);
+        $('.mini-div-video').empty();
         $('.mini-div-video').append(iFrame);
     }
 }
