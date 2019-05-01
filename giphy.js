@@ -5,15 +5,15 @@ class giphy{
     }
     getData(){
         $.ajax({
-            url: "api.giphy.com",
+            url: "http://api.giphy.com/v1/gifs/random",
             method: 'get',
-            dataType: "jsonp",
+            dataType: "json",
             data: {'api_key':'YLjpVMp6srGgsLBYTk6S27FLYQx9P9RR', 
                 'tag': 'fun',
                 'rating': 'g'
             },
             success: function(data) {
-                console.log(data);
+                console.log(data.data.image_url);
             }
          });
     }
