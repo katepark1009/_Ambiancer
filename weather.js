@@ -37,9 +37,6 @@ class Weather{
     askForCoords() {
         navigator.geolocation.getCurrentPosition(this.handleGeoSuccess, this.handleGeoError)
     }
-    handleGeoError(){
-        console.log('error')
-    }
     loadCoords(){
         const loadCoords = localStorage.getItem(this.coords);
          if (loadCoords === null) {
@@ -51,5 +48,8 @@ class Weather{
     }
    init() {
     this.loadCoords();
-   }    
+   }
+   handleGeoError(){
+        console.log('there was an error');
+   }
 }
