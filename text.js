@@ -1,11 +1,8 @@
 class Text{
   constructor(){
     this.articles = [];
-    this.poems = [];
-    this.articleInfo = null;
-    this.articleText = null;
-    this.poemInfo = null;
-    this.poemText = null;
+    this.newsDataSuccess = this.newsDataSuccess.bind(this);
+    this.handleTitleClick = this.handleTitleClick.bind(this);
   }
   getNewsData(query, day=30, month=4, year=2019){
     let formattedDate = year+"-"+month+"-"+day;
@@ -63,21 +60,21 @@ class Text{
     console.log("articles.content:",response.articles[0].content);
     this.articles = response.articles;
     let randomIndex;
-    do{
+    while(response.articles.length > 0){
       randomIndex = Math.floor(Math.random()*response.articles.length);
-    }while(!response.articles[randomIndex].content)
-    var articleTitle = $("<h1>").text(response.articles[randomIndex].title);
-    if(response.articles[randomIndex].author){
-      var articleAuthor = $("<h2>").text("Author: "+response.articles[randomIndex].author);
+      let article = response.articles.splice(randomIndex,1)[0];
+      if(article.content){
+        this.articles.push(article);
+        let articleTitle = $("<p>").text(article.title);
+        let firstBr = $("<br>");
+        let secondBr = $("<br>");
+        articleTitle.on("click",this.handleTitleClick);
+        $(".news-feed").append(articleTitle).append(firstBr).append(secondBr);
+      }
+      else{
+
+      }
     }
-    else{
-      var articleAuthor = $("<h2>").text("Author: Unknown");
-    }
-    $(".article-title").append(articleTitle);
-    $(".article-author").append(articleAuthor);
-    let textIndex = response.articles[randomIndex].content.indexOf("[+");
-    let formattedText = response.articles[randomIndex].content.substring(0,textIndex);
-    $(".article-text").html("<p class='text'>"+formattedText+"</p>");
   }
   poemSuccess(response){
     $(".poem-title").empty();
@@ -89,10 +86,10 @@ class Text{
     var poemAuthor = $("<p>").text("Author: "+response[randomIndex].author);
     $(".poem-title").append(poemTitle);
     $(".poem-author").append(poemAuthor);
-
     // var postString = response[randomIndex].lines;
     // console.log('postString :', postString);
     // while(postString.length<0) {
+    //   for(var i = 0; i < postString.length; i++) {
     //     var newLine = $('<p>').text(postString[i]);
     //     if(postString[i] === "") {
     //       newLine = $('<br>');
@@ -100,23 +97,11 @@ class Text{
     //     $('.poem-text').append(newLine)
     //   }
     // }
-
-    
-
-
     var preString = "";
     var postString = response[randomIndex].lines.join(" ");
     var semiIndex = postString.indexOf(";");
     var periodIndex = postString.indexOf(".");
     var commaIndex = postString.indexOf(",");
-    while(semiIndex > -1){
-      preString += postString.substring(0,semiIndex+1);
-      postString = postString.substring(semiIndex+1,postString.length);
-      postString = postString.split("");
-      postString.unshift("<br><br>");
-      postString = postString.join("");
-      semiIndex = postString.indexOf(";");
-    }
     preString += postString;
     postString = preString;
     preString = "";
@@ -142,4 +127,31 @@ class Text{
     preString += postString;
     $(".poem-text").html("<p class='text'>"+preString+"</p>");
   }
+  handleTitleClick(event){
+   $(".section2").empty();
+   let title = $(event.target).text();
+   let chosenArticle;
+   for(let article of this.articles){
+     if(article.title === title){
+       chosenArticle = article;
+       break;
+     }
+   }
+   let textIndex = chosenArticle.content.indexOf("[+");
+   let formattedText = chosenArticle.content.substring(0,textIndex);
+   let row1 = $("<div>").addClass("row1 row");
+   let row2 = $("<div>").addClass("row2 row");
+   let row3 = $("<div>").addClass("row3 row");
+   let row4 = $("<div>").addClass("row4 row");
+   let articleAuthor = $("<div>").addClass("col-12 article-author").text(chosenArticle.author);
+   let articleInfo = $("<div>").addClass("col-12 mini-div article-info");
+   let articleText = $("<div>").addClass("col-12 mini-div article-text").text(formattedText);
+   let articleTitle = $("<div>").addClass("col-12 article-title").text(chosenArticle.title);
+   $(".section2").append(row1).append(row2);
+   $(".row1").append(articleInfo);
+   $(".article-info").append(row3).append(row4);
+   $(".row3").append(articleTitle);
+   $(".row4").append(articleAuthor);
+   $(".row2").append(articleText);
+ }
 }

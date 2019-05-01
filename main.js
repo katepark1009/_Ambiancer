@@ -3,7 +3,7 @@ $(document).ready(onload);
 let images = new Images();
 let text = new Text();
 let music = new MusicPlayer();
-let giphy = new Giphy();
+// let giphy = new Giphy();
 let clock = new Clock();
 let weather = new Weather();
 
@@ -42,7 +42,7 @@ function switchToAmbience(mood){
   text.getNewsData(mood);
   text.getPoems(mood);
   music.getMusic(mood);
-  giphy.getData(mood);
+  // giphy.getData(mood);
   $('.current-mood').text(' ; '+mood)
 }
 function returnToMain(){
