@@ -4,8 +4,19 @@ let images = new Images();
 let text = new Text();
 let music = new MusicPlayer();
 let giphy = new Giphy();
+let clock = new Clock();
 
 function onload(){
+  $('a').on('click', event => {
+    if (event.currentTarget.hash !== ''){
+      event.preventDefault();
+      let hash = event.currentTarget.hash;
+      console.log('this is the jquery hash: ', $(hash).offset().top);
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top - $('#navigation-menu').height()
+      }, 600);
+    }
+  });
   $('#fullpage').hide();
   $(".happy").on("click",function(){switchToAmbience("happy");});
   $(".sad").on("click",function(){switchToAmbience("sad");});
@@ -15,6 +26,7 @@ function onload(){
   $(".confident").on("click",function(){switchToAmbience("motivated");});
   $(".goback").on("click", function(){returnToMain();});
   $(".main-title").on("click", function(){returnToMain();});
+  clock.init();
 }
 function switchToAmbience(mood){
   $(".home-screen").css({
@@ -32,6 +44,7 @@ function switchToAmbience(mood){
   $('.current-mood').text(' ; '+mood)
 }
 function returnToMain(){
+  $('.mini-div-video').empty();
   $(".home-screen").css({
     'opacity': 1,
     'visibility': 'visible',

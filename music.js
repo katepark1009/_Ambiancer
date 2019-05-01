@@ -7,14 +7,14 @@ class MusicPlayer{
     }
     getMusic( mood ) {
         const moodVariations = {
-            happy: ['happy', 'upbeat', 'feel good'],
-            sad: ['sad', 'lonely', 'breakup', 'heartache', 'depressing'],
-            confident: ['GOAT', 'confidence'],
-            hype: ['hype', 'hyphy', 'crunk'],
+            happy: ['happy', 'instrumental upbeat', 'feel good'],
+            sad: ['instrumental sad', 'lonely', 'breakup', 'depressing'],
+            confident: ['confidence', 'inspirational', 'motivational'],
+            hype: ['hype', 'hyphy', 'crunk', 'party'],
             chill: ['lo-fi', 'relaxing', 'chill', 'chill instrumental'],
-            romantic: ['instrumental ballad', 'romantic', 'love']
+            romantic: ['instrumental ballad', 'instrumental romantic', 'love']
         };
-        let randomIndex = Math.floor(Math.random()*moodVariations[mood].length);
+        let randomIndex = Math.floor(Math.random() * moodVariations[mood].length);
         let searchWord = moodVariations[mood][randomIndex];
         let ajaxOptions = {
             url: 'http://s-apis.learningfuze.com/hackathon/youtube/search.php',
@@ -46,7 +46,7 @@ class MusicPlayer{
         let randomPlaylist = result.playlists.id[randomIndex];
         let iFrame = $('<iframe>');
         iFrame.attr({
-            src: `http://www.youtube.com/embed/videoseries?list=${randomPlaylist}`,
+            src: `http://www.youtube.com/embed?autoplay=1&disablekb=1&fs=0&rel=0&modestbranding=1&listType=playlist&list=${randomPlaylist}`,
             id: 'player',
             type: 'text/html',
             width: 800, // 160
@@ -55,7 +55,6 @@ class MusicPlayer{
             allow: 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture;'
         });
         console.log('the final element will be: ', iFrame);
-        $('.mini-div-video').empty();
         $('.mini-div-video').append(iFrame);
     }
 }
