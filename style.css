@@ -166,6 +166,9 @@ pre{
   margin:0;
   padding-top: 1%;
 }
+.section2{
+  margin:auto;
+}
 .section1:after, .section2:after, .section3:after, .section4:after {
   content: '';
   position: absolute;
@@ -176,7 +179,7 @@ pre{
   background-color: rgba(0, 0, 0, 0.5);
   z-index: -1;
 }
-.section1 {
+.section1, .section2 {
   justify-content: center;
 }
 .header-music, .header-news, .header-poem, .header-other {
@@ -305,11 +308,14 @@ ul {
   display:inline-block;
   width: 70%;
   font-size: 1.3rem;
-<<<<<<< HEAD
 }
 .newsfeed-title:hover{
   cursor: pointer;
 }
-=======
+.news-feed-container {
+  width: 33%;
 }
->>>>>>> 8a04cd9fa0594c382638256af1b0b4e3b88a3ce6
+.newsfeed-title {
+  border: 1px solid black;
+  margin:0;
+}

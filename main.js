@@ -96,7 +96,7 @@ function generateHeaderText(mood){
     case 'romantic':
       videoHeader.text('Set the mood right with a song');
       newsHeader.text('Love is in the air. Check out these stories');
-      poemHeader.text('Mi cheri, mi amor');
+      poemHeader.text('My cherie, amour');
       otherHeader.text('');
       break;
     default:
