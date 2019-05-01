@@ -40,6 +40,7 @@ function switchToAmbience(mood){
   music.getMusic(mood);
   giphy.getData();
   $('.current-mood').text(' ; '+mood)
+  generateHeaderText(mood);
 }
 function returnToMain(){
   $('.mini-div-video').empty();
@@ -49,4 +50,56 @@ function returnToMain(){
     'transition': 'opacity 1.5s linear'
   });
   $('#fullpage').hide();
+}
+
+function generateHeaderText(mood){
+  const videoHeader = $('.header-music h1');
+  const newsHeader = $('.header-news h1');
+  const poemHeader = $('.header-poem h1');
+  const otherHeader = $('.header-other h1');
+
+  switch(mood){
+    case 'happy':
+      videoHeader.text('Lift your spirit with a Song');
+      newsHeader.text('Get some heartwarming news');
+      poemHeader.text('');
+      otherHeader.text('');
+      break;
+    case 'sad':
+      videoHeader.text('');
+      newsHeader.text('');
+      poemHeader.text('');
+      otherHeader.text('');
+      break;
+    case 'motivated':
+      videoHeader.text('Get pumped with a song');
+      newsHeader.text('');
+      poemHeader.text('');
+      otherHeader.text('');
+      break;
+    case 'hype':
+      videoHeader.text('Let\'s get the party started..');
+      newsHeader.text('');
+      poemHeader.text('');
+      otherHeader.text('');
+      break;
+    case 'chill':
+      videoHeader.text('Relax your mind with some smooth beats');
+      newsHeader.text('');
+      poemHeader.text('');
+      otherHeader.text('');
+      break;
+    case 'romantic':
+      videoHeader.text('Set the mood right with a song');
+      newsHeader.text('Love is in the air. Check out these stories');
+      poemHeader.text('Mi cheri, mi amor');
+      otherHeader.text('');
+      break;
+    default:
+      videoHeader.text('Video');
+      newsHeader.text('News');
+      poemHeader.text('Poem');
+      otherHeader.text('Other');
+      break;
+  }
 }
