@@ -29,7 +29,7 @@ class Clock {
             case 14:
             case 15:
             case 16:
-                $('.sayhi').text('Good efternoon!')
+                $('.sayhi').text('Good afternoon!')
                 break;
             case 17:
             case 18:

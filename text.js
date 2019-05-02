@@ -1,8 +1,11 @@
 class Text{
   constructor(){
     this.articles = [];
+    this.url = "";
     this.newsDataSuccess = this.newsDataSuccess.bind(this);
     this.handleTitleClick = this.handleTitleClick.bind(this);
+    this.handleNewsfeedButton = this.handleNewsfeedButton.bind(this);
+    this.handleArticleButton = this.handleArticleButton.bind(this);
   }
   getNewsData(query, day=30, month=4, year=2019){
     let formattedDate = year+"-"+month+"-"+day;
@@ -54,6 +57,7 @@ class Text{
     $.ajax(ajaxOptions);
   }
   newsDataSuccess(response){
+    console.log('response article:', response.articles[0]);
     $(".article-title").empty();
     $(".article-author").empty();
     let randomIndex;
@@ -133,12 +137,14 @@ class Text{
        break;
      }
    }
+   this.url = chosenArticle.url;
    let textIndex = chosenArticle.content.indexOf("[+");
    let formattedText = chosenArticle.content.substring(0,textIndex);
    let row1 = $("<div>").addClass("row1 row");
    let row2 = $("<div>").addClass("row2 row");
    let row3 = $("<div>").addClass("row3 row");
    let row4 = $("<div>").addClass("row4 row");
+   let row7 = $("<div>").addClass("row7 row");
    let titleHeader = $("<h1>").text(chosenArticle.title);
    let textParagraph = $("<p>").addClass("text").text(formattedText);
    let authorHeader = $("<h2>").text("Author: "+chosenArticle.author);
@@ -146,12 +152,23 @@ class Text{
    let articleInfo = $("<div>").addClass("col-12 mini-div article-info");
    let articleText = $("<div>").addClass("col-12 mini-div article-text").append(textParagraph);
    let articleTitle = $("<div>").addClass("col-12 article-title").append(titleHeader);
-   $(".section2").append(row1).append(row2);
+   let anchor = $("<a>").attr("target","_blank").attr("href",this.url).text("To the article");
+   let articleButton = $("<button>").addClass("article-btn").css("background-image","url('"+chosenArticle.urlToImage+"')");
+   let newsfeedButton = $("<button>").addClass("news-feed-btn").text("Return to the newsfeed");
+   let articleButtonCol = $("<div>").addClass("col-6 article-btn-col");
+   let newsfeedButtonCol = $("<div>").addClass("col-6 news-feed-btn-col");
+   articleButton.on("click",this.handleArticleButton);
+   newsfeedButton.on("click",this.handleNewsfeedButton);
+   $(".section2").append(row1).append(row2).append(row7);
    $(".row1").append(articleInfo);
    $(".article-info").append(row3).append(row4);
    $(".row3").append(articleTitle);
    $(".row4").append(articleAuthor);
    $(".row2").append(articleText);
+   $(".row7").append(newsfeedButtonCol).append(articleButtonCol);
+   $(".article-btn-col").append(articleButton);
+   $(".news-feed-btn-col").append(newsfeedButton);
+   $(".article-btn").append(anchor);
  }
  resetNewsFeed(){
    $(".section2").empty();
@@ -164,5 +181,29 @@ class Text{
    row5.append(newsfeedTitle);
    row6.append(newsfeed);
    $(".section2").append(row5).append(row6);
+ }
+ handleArticleButton(){
+   console.log("article button clicked!");
+ }
+ handleNewsfeedButton(){
+   console.log("newsfeed button clicked!");
+   $(".section2").empty();
+   let newsfeed = $("<div>").addClass("news-feed col-12");
+   let newsfeedTitle = $("<div>").addClass("news-feed-title col-12");
+   let newsfeedHeader = $("<h1>").text("News Feed:");
+   let row5 = $("<div>").addClass("row5 row");
+   let row6 = $("<div>").addClass("row6 row");
+   newsfeedTitle.append(newsfeedHeader);
+   row5.append(newsfeedTitle);
+   row6.append(newsfeed);
+   $(".section2").append(row5).append(row6);
+
+   for(let article of this.articles){
+     let articleTitle = $("<p>").addClass("text newsfeed-title").text(article.title);
+     let firstBr = $("<br>");
+     let secondBr = $("<br>");
+     articleTitle.on("click",this.handleTitleClick);
+     $(".news-feed").append(articleTitle).append(firstBr).append(secondBr);
+   }
  }
 }
