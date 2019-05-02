@@ -28,7 +28,7 @@ class Text{
         from: formattedDate,
         sortBy: "popularity",
         language: "en",
-        apiKey: "5e6556e5beed49609afc392ff37eb5b6"
+        apiKey: "9e7748236bd94a3b917d8405a1fc97b7"
       },
       success: this.newsDataSuccess,
       error: function(){ console.log("An error happened.");}
