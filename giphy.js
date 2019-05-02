@@ -39,11 +39,4 @@ class Giphy{
         this.newDiv = $('<div>').addClass('gifs').css("background-image", "url(" + this.newGif + ")");
         $('.gif-container').append(this.newDiv);
     }
-    // eventListener(){
-    //     $('.gif-goback').click(this.getData);
-    // }
-    // render(mood){
-    //     this.getData(mood);
-        
-    // }
 }
