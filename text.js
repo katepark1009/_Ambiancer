@@ -57,6 +57,7 @@ class Text{
     $.ajax(ajaxOptions);
   }
   newsDataSuccess(response){
+    console.log('response article:', response.articles[0]);
     $(".article-title").empty();
     $(".article-author").empty();
     let randomIndex;

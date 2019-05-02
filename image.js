@@ -16,6 +16,7 @@ class Images {
           'romantic': ['rose', 'wedding'],
           'hype': ['urban', 'courageous', 'city']
       }
+      this.randomImages = this.randomImages.bind(this);
     }
     getImages(mood) {
         var randomIndex = Math.floor(Math.random()*this.ambience[mood].length);
