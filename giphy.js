@@ -14,7 +14,7 @@ class Giphy{
             'sad': ['sad', 'gloomy'],
             'motivated': ['successful', 'achievement'],
             'chill': ['chill', 'free'],
-            'romantic': ['lovely', 'rose', 'wedding'],
+            'romantic': ['rose', 'wedding'],
             'hype': ['urban', 'hype', 'city']
         };
         var ajaxOptions = {
