@@ -71,37 +71,37 @@ function generateHeaderText(mood){
       videoHeader.text('Lift your spirit with a Song');
       newsHeader.text('Get some heartwarming news');
       poemHeader.text('Think happy thoughts');
-      otherHeader.text('');
+      otherHeader.text('How about a GIF from us to you, friend. -_o');
       break;
     case 'sad':
       videoHeader.text('Sometimes you just gotta let it out');
       newsHeader.text('Some articles that may open the flood gates');
       poemHeader.text('Let\'s go deep into the burrows of your heart');
-      otherHeader.text('How about little bit of fun!');
+      otherHeader.text('How about a GIF from us to you, friend. -_o');
       break;
     case 'motivated':
       videoHeader.text('Get pumped up');
       newsHeader.text('Some articles to get you motivated');
       poemHeader.text('Find inspiration from your soul');
-      otherHeader.text('How about little bit of fun!');
+      otherHeader.text('How about a GIF from us to you, friend. -_o');
       break;
     case 'hype':
       videoHeader.text('Let\'s get the party started..');
       newsHeader.text('What\'s poppin\' in the news');
-      poemHeader.text('');
-      otherHeader.text('How about little bit of fun!');
+      poemHeader.text('Legit poems to check out. Cop it, yo');
+      otherHeader.text('How about a GIF from us to you, friend. -_o');
       break;
     case 'chill':
       videoHeader.text('Relax your mind with some smooth beats');
       newsHeader.text('Some casual reading for you');
       poemHeader.text('Grab a cup o\' joe and have a seat');
-      otherHeader.text('How about little bit of fun!');
+      otherHeader.text('How about a GIF from us to you, friend. -_o');
       break;
     case 'romantic':
       videoHeader.text('Set the mood right with a song');
       newsHeader.text('Love is in the air. Check out these stories');
-      poemHeader.text('Mi cheri, mi amor');
-      otherHeader.text('How about little bit of fun!');
+      poemHeader.text('My cherie, amour');
+      otherHeader.text('How about a GIF from us to you, friend. -_o');
       break;
     default:
       videoHeader.text('Video');
