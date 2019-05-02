@@ -11,9 +11,9 @@ class Giphy{
     getData(mood){
         this.ambience = {
             'happy': ['fun', 'happy'],
-            'sad': ['sad', 'gloomy','rainy'],
+            'sad': ['sad', 'gloomy'],
             'motivated': ['successful', 'achievement'],
-            'chill': ['chill', 'ambience', 'free'],
+            'chill': ['chill', 'free'],
             'romantic': ['lovely', 'rose', 'wedding'],
             'hype': ['urban', 'hype', 'city']
         };
