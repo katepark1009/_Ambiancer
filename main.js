@@ -70,7 +70,7 @@ function generateHeaderText(mood){
       videoHeader.text('Lift your spirit with a Song');
       newsHeader.text('Get some heartwarming news');
       poemHeader.text('Think happy thoughts');
-      otherHeader.text('');
+      otherHeader.text('How about little bit of fun!');
       break;
     case 'sad':
       videoHeader.text('Sometimes you just gotta let it out');
