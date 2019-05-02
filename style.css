@@ -193,6 +193,9 @@ pre{
   border-top: 1px solid white;
   border-bottom: 1px solid white;
 }
+.header-music h1, .header-news h1, .header-poem h1, .header-other h1 {
+  font-size: 3rem;
+}
 .section-title{
   padding-top: 2%;
   font-family: 'Raleway', sans-serif;
@@ -310,28 +313,23 @@ ul {
   font-size: 1.3rem;
 }
 .newsfeed-title:hover{
+  color: yellow;
   cursor: pointer;
 }
 .news-feed-title{
+  font-size: 2.5rem;
   text-shadow:1px 1px 2px black;
-  border-bottom:1px solid black;
+  /*border-bottom:2px solid black;*/
 }
-/*.news-feed-container, .news-article-container{*/
-  /*width: 40%;*/
-  /*margin:auto;*/
-  /*text-align:center;*/
-/*}*/
 .news-feed-container, .news-article-container {
-  display: inline-block;
   width:60%;
   padding: 0 0 15px 0;
   text-align: center;
-  background: #2d2d2d;
-  border: 1px solid black;
   margin:auto;
 }
 .newsfeed-title {
+  font-size:1.8rem;
   padding-bottom:5px;
-  border-bottom: 1px solid black;
+  border-bottom: 5px dotted #5f858a;
   margin:0;
 }
