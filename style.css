@@ -91,6 +91,33 @@ pre{
   font-size: 1.5rem;
   font-weight: bold;
 }
+.news-feed-btn-col {
+  width: 20%;
+  margin: auto;
+  margin-bottom: 1%;
+}
+.article-btn-col{
+  width: 20%;
+  margin: auto;
+}
+.article-image{
+  width: 26%;
+  height: 46%;
+  margin: auto;
+  display: inherit;
+}
+.article-info {
+  display: inherit;
+}
+.article-btn{
+  width: 100%;
+  margin: auto;
+  background-color:whitesmoke;
+}
+.article-btn-col{
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
 .happy-col, .sad-col, .chill-col, .hype-col, .romantic-col, .confident-col{
   height: 105px;
   border-radius: 4px;
@@ -108,6 +135,16 @@ pre{
 .article{
   height:33%;
 }
+.article-preview{
+    display: inline-block;
+    width: 42%;
+    font-size: 1.3rem;
+    line-height: 2;
+    padding-bottom: 1%;
+}
+.row7 {
+  justify-content: center;
+}
 .article-text{
   height:90%;
   overflow-y: auto;
@@ -118,6 +155,8 @@ pre{
   text-shadow: 1px 1px 1px grey;
   color: white;
   padding-top: 1%;
+  width: 80%;
+  margin: auto;
 }
 .poem-author{
   font-style: italic;
@@ -126,6 +165,9 @@ pre{
   display: flex;
   justify-content: center;
   font-family: 'Raleway', sans-serif;
+}
+.article-author{
+  padding-bottom: 2%;
 }
 .blank-row{
   height: 80%;
@@ -364,6 +406,9 @@ ul {
   display:inline-block;
   width: 100%;
   font-size: 1.3rem;
+}
+.poemrow{
+  justify-content: center;
 }
 .newsfeed-title:hover{
   color: yellow;
