@@ -365,6 +365,9 @@ ul {
   width: 100%;
   font-size: 1.3rem;
 }
+.poemrow{
+  justify-content: center;
+}
 .newsfeed-title:hover{
   color: yellow;
   cursor: pointer;
