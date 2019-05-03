@@ -13,7 +13,7 @@ class Images {
           'motivated': ['successful', 'motivational'],
           'chill': ['ambience', 'adventurous'],
           'romantic': ['rose', 'wedding'],
-          'hype': ['urban','city']
+          'hype': ['hiphop','rapper']
       }
       this.randomImages = this.randomImages.bind(this);
     }
