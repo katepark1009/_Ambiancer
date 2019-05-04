@@ -5,20 +5,35 @@ class TextDataHandler{
     this.newsDataSuccess = this.newsDataSuccess.bind(this);
     this.handleTitleClick = this.handleTitleClick.bind(this);
     this.handleNewsfeedButton = this.handleNewsfeedButton.bind(this);
-    this.handleArticleButton = this.handleArticleButton.bind(this);
+    this.mood = "";
   }
   getNewsData(query, day=30, month=4, year=2019){
+    this.mood = query;
     let formattedDate = year+"-"+month+"-"+day;
-    let formattedQuery = {
-      happy:["puppy","thanks"],
-      sad:["dead","accident","tragic"],
-      chill:["cafe","vacation"],
-      hype:["party","intense"],
-      romantic:["love","flower"],
-      motivated:["business","success"]
+    let search = "";
+    if(presentationMode){
+      let formattedQuery = {
+        happy:"thanks",
+        sad:"tragic",
+        chill:"vacation",
+        hype:"party",
+        romantic:"love",
+        motivated:"success"
+      }
+      search = formattedQuery[query];
     }
-    let randomIndex = getRandomIndex(formattedQuery[query]);
-    let search = formattedQuery[query][randomIndex];
+    else{
+      let formattedQuery = {
+        happy:["puppy","thanks"],
+        sad:["dead","accident","tragic"],
+        chill:["cafe","vacation"],
+        hype:["party","intense"],
+        romantic:["love","flower"],
+        motivated:["business","success"]
+      }
+      let randomIndex = getRandomIndex(formattedQuery[query]);
+      search = formattedQuery[query][randomIndex];
+    }
     let ajaxOptions = {
       url: 'https://newsapi.org/v2/everything',
       method: 'get',
@@ -36,16 +51,31 @@ class TextDataHandler{
     $.ajax(ajaxOptions);
   }
   getPoems(query){
-    let formattedQuery = {
-      happy:["joy","happy","wonderful"],
-      sad:["funeral","dead","sorrowful","sad"],
-      chill:["relax","coffee"],
-      hype:["party"],
-      romantic:["love"],
-      motivated:["business"]
+    this.mood = query;
+    let search = "";
+    if(presentationMode){
+      let formattedQuery = {
+        happy:"joy",
+        sad:"funeral",
+        chill:"relax",
+        hype:"party",
+        romantic:"love",
+        motivated:"business"
+      }
+      search = formattedQuery[query];
     }
-    let randomIndex = getRandomIndex(formattedQuery[query]);
-    let search = formattedQuery[query][randomIndex];
+    else{
+      let formattedQuery = {
+        happy:["joy","happy","wonderful"],
+        sad:["funeral","dead","sorrowful","sad"],
+        chill:["relax","coffee"],
+        hype:["party"],
+        romantic:["love"],
+        motivated:["business"]
+      }
+      let randomIndex = getRandomIndex(formattedQuery[query]);
+      search = formattedQuery[query][randomIndex];
+    }
     let url = "http://poetrydb.org/lines/"+search;
     let ajaxOptions = {
       url: url,
@@ -58,24 +88,64 @@ class TextDataHandler{
   }
   newsDataSuccess(response){
     if(presentationMode){
-      console.log('response article:', response.articles[0]);
+      console.log('response articles:', response.articles);
       $(".article-title").empty();
       $(".article-author").empty();
-      let randomIndex;
-      let counter = 0;
-      while(response.articles.length > 0 && counter < 5){
-        randomIndex = Math.floor(Math.random()*response.articles.length);
-        let article = response.articles.splice(randomIndex,1)[0];
-        if(article.content){
-          this.articles.push(article);
-          let articleTitle = $("<p>").addClass("text newsfeed-title neon-text").text(article.title);
-          articleTitle.on("click",this.handleTitleClick);
-          $(".news-feed").append(articleTitle);
-          counter++;
-        }
-        else{
-        }
+      let article1;
+      let article2;
+      let article3;
+      let article4;
+      let article5;
+      let articleTitle1;
+      let articleTitle2;
+      let articleTitle3;
+      let articleTitle4;
+      let articleTitle5;
+      switch(this.mood){
+        case "happy":
+          article1 = response.articles[7];
+          this.articles.push(article1);
+          articleTitle1 = $("<p>").addClass("text newsfeed-title neon-text").text(article1.title);
+          articleTitle1.on("click",this.handleTitleClick);
+          $(".news-feed").append(articleTitle1);
+          break;
+        case "sad":
+          article1 = response.articles[7];
+          this.articles.push(article1);
+          articleTitle1 = $("<p>").addClass("text newsfeed-title neon-text").text(article1.title);
+          articleTitle1.on("click",this.handleTitleClick);
+          $(".news-feed").append(articleTitle1);
+          article2 = response.articles[7];
+          this.articles.push(article2);
+          articleTitle2 = $("<p>").addClass("text newsfeed-title neon-text").text(article2.title);
+          articleTitle2.on("click",this.handleTitleClick);
+          $(".news-feed").append(articleTitle1);
+          article3 = response.articles[7];
+          this.articles.push(article3);
+          articleTitle3 = $("<p>").addClass("text newsfeed-title neon-text").text(article3.title);
+          articleTitle3.on("click",this.handleTitleClick);
+          $(".news-feed").append(articleTitle1);
+          article4 = response.articles[7];
+          this.articles.push(article1);
+          articleTitle4 = $("<p>").addClass("text newsfeed-title neon-text").text(article4.title);
+          articleTitle4.on("click",this.handleTitleClick);
+          $(".news-feed").append(articleTitle1);
+          article5 = response.articles[7];
+          this.articles.push(article1);
+          articleTitle5 = $("<p>").addClass("text newsfeed-title neon-text").text(article5.title);
+          articleTitle5.on("click",this.handleTitleClick);
+          $(".news-feed").append(articleTitle1);
+          break;
+        case "chill":
+          break;
+        case "hype":
+          break;
+        case "romantic":
+          break;
+        case "motivated":
       }
+
+
     }
     else{
       console.log('response article:', response.articles[0]);
@@ -84,7 +154,7 @@ class TextDataHandler{
       let randomIndex;
       let counter = 0;
       while(response.articles.length > 0 && counter < 5){
-        randomIndex = Math.floor(Math.random()*response.articles.length);
+        randomIndex = getRandomIndex(response.articles);
         let article = response.articles.splice(randomIndex,1)[0];
         if(article.content){
           this.articles.push(article);
@@ -103,7 +173,7 @@ class TextDataHandler{
     $(".poem-author").empty();
     console.log("poems:",response);
     this.poems = response;
-    let randomIndex = Math.floor(Math.random()*response.length);
+    let randomIndex = getRandomIndex(response);
     var poemTitle = $("<h1>").addClass("neon-text").text(response[randomIndex].title);
     var poemAuthor = $("<h2>").addClass("neon-text").text("- Author: "+response[randomIndex].author+ " -" )
     $(".poem-title").append(poemTitle);
@@ -172,11 +242,7 @@ class TextDataHandler{
    newsfeedContainer.append(row5).append(row6);
    $(".section2").append(newsfeedContainer);
  }
- handleArticleButton(){
-   console.log("article button clicked!");
- }
  handleNewsfeedButton(){
-   console.log("newsfeed button clicked!");
    $(".section2").empty();
    let newsfeed = $("<div>").addClass("news-feed");
    let newsfeedTitle = $("<div>").addClass("news-feed-title");
