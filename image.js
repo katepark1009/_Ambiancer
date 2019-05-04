@@ -6,20 +6,20 @@ class Images {
       this.images = [];
       this.randomImage;
       this.ambience = {
-          'happy': ['happy', 'joy'],
-          'sad': ['sad', 'gloomy','rainy'],
-          'motivated': ['successful', 'motivational'],
-          'chill': ['ambience', 'free', 'adventurous'],
-          'romantic': ['rose', 'wedding'],
-          'hype': ['urban', 'courageous', 'city']
+        'happy': ['happy', 'puppy'],
+        'sad': ['gloomy', 'rainy'],
+        'motivated': ['successful', 'motivational'],
+        'chill': ['ambience', 'adventurous'],
+        'romantic': ['rose', 'wedding'],
+        'hype': ['hiphop','rapper']
       }
       this.randomImages = this.randomImages.bind(this);
     }
     getImages(mood) {
       console.log('key.image :', keys.images);
-        var randomIndex = Math.floor(Math.random()*this.ambience[mood].length);
-        console.log('random mood-image search keyword :', this.ambience[mood][randomIndex]);
-        this.url = "https://pixabay.com/api/?key="+this.api_KEY+"&q="+encodeURIComponent(this.ambience[mood][randomIndex]);
+      var random = Math.random() < 0.5 ? 1 : 0;
+      console.log('random mood-image search keyword :', this.ambience[mood][random]);
+      this.url = "https://pixabay.com/api/?key="+this.api_KEY+"&q="+encodeURIComponent(this.ambience[mood][random]);
       $.getJSON(this.url, data => {
         if (parseInt(data.totalHits) > 0) {
           $.each(data.hits, (i, hit) => {
@@ -37,7 +37,7 @@ class Images {
     }
     randomImages() {
       var newImageArray = [];
-      for (var i = 0; i < 5; i++) {
+      for (var i = 0; i < 4; i++) {
         this.random = Math.floor(Math.random() * this.images.length);
         this.randomImage = this.images.splice(this.random, 1);
         newImageArray.push(this.randomImage);
@@ -45,6 +45,7 @@ class Images {
       $('.section1').css("background-image", "url(" + newImageArray[0] + ")");
       $('.section2').css("background-image", "url(" + newImageArray[1] + ")");
       $('.section3').css("background-image", "url(" + newImageArray[2] + ")");
-      $('.section4').css("background-image", "url(" + newImageArray[3] + ")");  
+      $('.section4').css("background-image", "url(" + newImageArray[3] + ")"); 
+      this.images=[]; 
     }
   }
