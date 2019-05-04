@@ -1,7 +1,7 @@
 $(document).ready(startApp);
 
 let images = new Images();
-let text = new Text();
+let text = new TextDataHandler();
 let music = new MusicPlayer();
 let giphy = new Giphy();
 let clock = new Clock();
