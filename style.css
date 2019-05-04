@@ -161,7 +161,7 @@ pre{
 .poem-author{
   font-style: italic;
 }
-.article-title, .article-author, .poem-title, .poem-author, .poem-text, .article-text{
+.article-title, .article-author, .poem-title, .poem-author, .article-text{
   display: flex;
   justify-content: center;
   font-family: 'Raleway', sans-serif;
@@ -205,6 +205,8 @@ pre{
 .poem-text{
   height: 650px;
   overflow-y: auto;
+  text-align: center;
+
 }
 .poem-title {
   font-size: 2rem;
@@ -403,8 +405,7 @@ ul {
   padding-top: 1%;
 }
 .text{
-  display:inline-block;
-  width: 100%;
+  display: block;
   font-size: 1.3rem;
 }
 .poemrow{
