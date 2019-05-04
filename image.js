@@ -21,15 +21,17 @@ class Images {
       this.url = "https://pixabay.com/api/?key="+this.api_KEY+"&q="+encodeURIComponent(this.ambience[mood][random]);
       $.getJSON(this.url, data => {
         if (parseInt(data.totalHits) > 0) {
+          this.images = data.hits.map( hit => hit.largeImageURL );
           $.each(data.hits, (i, hit) => {
             this.images.push(hit.largeImageURL);
           });
+          console.log(this.images);
           console.log("images array:", this.images);
           this.randomImages();
         } else {
           console.log('no hits');
         }
-      })
+      });
     }
     randomImages() {
       var newImageArray = [];

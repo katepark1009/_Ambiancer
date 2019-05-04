@@ -239,8 +239,18 @@ pre{
   margin:0;
   padding-top: 1%;
 }
+.section1 {
+  background-image: url("images/bg1.jpg");
+}
 .section2{
   margin:auto;
+  background-image: url("images/bg2.jpg");
+}
+.section3 {
+  background-image: url("images/bg3.jpg");
+}
+.section4 {
+  background-image: url("images/bg4.jpg");
 }
 .section1:after, .section2:after, .section3:after, .section4:after {
   content: '';
