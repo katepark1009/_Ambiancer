@@ -66,6 +66,46 @@ function generateHeaderText(mood){
   let poemHeader = $('.header-poem h1');
   let otherHeader = $('.header-other h1');
 
+
+  var moodData = {
+    happy: {
+      video: 'Lift your spirit with a Song',
+      news: 'Get some heartwarming news',
+      poem: 'Think happy thoughts',
+      gif: 'How about a GIF from us to you, friend. -_o'
+    },
+    sad: {
+      video: 'Lift your spirit with a Song',
+      news: 'Get some heartwarming news',
+      poem: 'Think happy thoughts',
+      gif: 'How about a GIF from us to you, friend. -_o'
+    },
+    motivated: {
+      video: 'Lift your spirit with a Song',
+      news: 'Get some heartwarming news',
+      poem: 'Think happy thoughts',
+      gif: 'How about a GIF from us to you, friend. -_o'
+    },
+    hype: {
+      video: 'Lift your spirit with a Song',
+      news: 'Get some heartwarming news',
+      poem: 'Think happy thoughts',
+      gif: 'How about a GIF from us to you, friend. -_o'
+    },
+    chill: {
+      video: 'Lift your spirit with a Song',
+      news: 'Get some heartwarming news',
+      poem: 'Think happy thoughts',
+      gif: 'How about a GIF from us to you, friend. -_o'
+    },
+    romantic: {
+      video: 'Lift your spirit with a Song',
+      news: 'Get some heartwarming news',
+      poem: 'Think happy thoughts',
+      gif: 'How about a GIF from us to you, friend. -_o'
+    },
+  };
+
   switch(mood){
     case 'happy':
       videoHeader.text('Lift your spirit with a Song');
