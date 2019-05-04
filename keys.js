@@ -1,4 +1,4 @@
-class ApiKeys{
+class ApiKeys{ // store api keys
     constructor(){
         this.images = "12346261-e063da4b76d894b5549aed673"; 
         this.giphy = "OmexmAMBeMV58485Yx26ACsbWpSEZXCr";

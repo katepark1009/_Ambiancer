@@ -8,7 +8,7 @@ let clock = new Clock();
 let weather = new Weather();
 let keys = new ApiKeys();
 
-function startApp(){
+function startApp(){ 
   $('#fullpage').hide();
   addEventHandlers();
   clock.init();

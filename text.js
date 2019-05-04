@@ -82,8 +82,8 @@ class TextDataHandler{
     console.log("poems:",response);
     this.poems = response;
     let randomIndex = Math.floor(Math.random()*response.length);
-    var poemTitle = $("<h1>").addClass("neon-text").text(response[randomIndex].title);
-    var poemAuthor = $("<h2>").addClass("neon-text").text("- Author: "+response[randomIndex].author+ " -" )
+    var poemTitle = $("<h1>").addClass("neon-text poemtitle").text(response[randomIndex].title);
+    var poemAuthor = $("<h2>").addClass("neon-text poemauthor").text("- Author: "+response[randomIndex].author+ " -" )
     $(".poem-title").append(poemTitle);
     $(".poem-author").append(poemAuthor);
     for(let line of response[randomIndex].lines){

@@ -4,7 +4,7 @@ class Weather{
         this.coords = 'coords';
         this.handleGeoSuccess = this.handleGeoSuccess.bind(this);
     }
-    getWeather (lat,lng) {
+    getWeather (lat,lng) { 
         this.api_key = keys.weather;
         fetch (`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${this.api_key}&units=imperial`
         )
