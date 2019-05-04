@@ -88,34 +88,37 @@ class TextDataHandler{
     var poemAuthor = $("<p>").text("- Author: "+response[randomIndex].author+ " -" )
     $(".poem-title").append(poemTitle);
     $(".poem-author").append(poemAuthor);
-    let preString = "";
-    let postString = response[randomIndex].lines.join(" ");
-    let semiIndex = postString.indexOf(";");
-    let periodIndex = postString.indexOf(".");
-    let commaIndex = postString.indexOf(",");
+    // let preString = "";
 
-    while(semiIndex > -1){
-      preString += postString.substring(0,semiIndex+1);
-      postString = postString.substring(semiIndex+1,postString.length);
-      postString = postString.split("");
-      postString.unshift("<br><br>");
-      postString = postString.join("");
-      semiIndex = postString.indexOf(";");
+    for(let line of response[randomIndex].lines){
+      let poemline = $("<p>").text(line);
+      $(".poem-text").append(poemline);
     }
-    preString += postString;
-    postString = preString;
-    preString = "";
-    while(periodIndex > -1){
-      preString += postString.substring(0,periodIndex+1);
-      postString = postString.substring(periodIndex+1,postString.length);
-      postString = postString.split("");
-      postString.unshift("<br><br>");
-      postString = postString.join("");
-      periodIndex = postString.indexOf(".");
-    }
-    preString += postString;
-    postString = preString;
-    $(".poem-text").html("<p class='text'>"+preString+"</p>");
+    // let semiIndex = postString.indexOf(";");
+    // let periodIndex = postString.indexOf(".");
+    // let commaIndex = postString.indexOf(",");
+    //
+    // while(semiIndex > -1){
+    //   preString += postString.substring(0,semiIndex+1);
+    //   postString = postString.substring(semiIndex+1,postString.length);
+    //   postString = postString.split("");
+    //   postString.unshift("<br><br>");
+    //   postString = postString.join("");
+    //   semiIndex = postString.indexOf(";");
+    // }
+    // preString += postString;
+    // postString = preString;
+    // preString = "";
+    // while(periodIndex > -1){
+    //   preString += postString.substring(0,periodIndex+1);
+    //   postString = postString.substring(periodIndex+1,postString.length);
+    //   postString = postString.split("");
+    //   postString.unshift("<br><br>");
+    //   postString = postString.join("");
+    //   periodIndex = postString.indexOf(".");
+    // }
+    // preString += postString;
+    // postString = preString;
   }
   handleTitleClick(event){
    $(".section2").empty();
