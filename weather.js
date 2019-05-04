@@ -1,10 +1,11 @@
 class Weather{
     constructor(){
-        this.api_key = "97649e666d867598790f35d22987b2be";
+        this.api_key;
         this.coords = 'coords';
         this.handleGeoSuccess = this.handleGeoSuccess.bind(this);
     }
     getWeather (lat,lng) {
+        this.api_key = keys.weather;
         fetch (`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${this.api_key}&units=imperial`
         )
         
@@ -13,7 +14,6 @@ class Weather{
         })
         .then(function(json) {
             let temperature = json.main.temp;
-            console.log('temperature :', json.main);
             const place = json.name;
             let weather = $('.weather');
             temperature = Math.floor(temperature);
