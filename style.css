@@ -114,6 +114,9 @@ pre{
   margin: auto;
   background-color:whitesmoke;
 }
+.article-btn a {
+  display: block;
+}
 .article-btn-col{
   background-repeat: no-repeat;
   background-size: 100% 100%;
