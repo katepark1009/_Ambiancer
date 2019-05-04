@@ -451,3 +451,9 @@ ul {
 {
 	background-color: #000000;
 }
+p{
+  font-size: 1.5rem;
+}
+.neon-text{
+  text-shadow: #FC0 1px 0 10px;
+}

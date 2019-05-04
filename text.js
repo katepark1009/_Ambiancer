@@ -67,7 +67,7 @@ class TextDataHandler{
       let article = response.articles.splice(randomIndex,1)[0];
       if(article.content){
         this.articles.push(article);
-        let articleTitle = $("<p>").addClass("text newsfeed-title").text(article.title);
+        let articleTitle = $("<p>").addClass("text newsfeed-title neon-text").text(article.title);
         articleTitle.on("click",this.handleTitleClick);
         $(".news-feed").append(articleTitle);
         counter++;
@@ -82,12 +82,12 @@ class TextDataHandler{
     console.log("poems:",response);
     this.poems = response;
     let randomIndex = Math.floor(Math.random()*response.length);
-    var poemTitle = $("<p>").text(response[randomIndex].title);
-    var poemAuthor = $("<p>").text("- Author: "+response[randomIndex].author+ " -" )
+    var poemTitle = $("<h1>").addClass("neon-text").text(response[randomIndex].title);
+    var poemAuthor = $("<h2>").addClass("neon-text").text("- Author: "+response[randomIndex].author+ " -" )
     $(".poem-title").append(poemTitle);
     $(".poem-author").append(poemAuthor);
     for(let line of response[randomIndex].lines){
-      let poemline = $("<p>").text(line);
+      let poemline = $("<p>").addClass("neon-text").text(line);
       $(".poem-text").append(poemline);
     }
   }
@@ -109,9 +109,9 @@ class TextDataHandler{
    let row3 = $("<div>");
    let row4 = $("<div>");
    let row7 = $("<div>");
-   let titleHeader = $("<h1>").text(chosenArticle.title);
-   let textParagraph = $("<p>").addClass("article-preview").text(formattedText);
-   let authorHeader = $("<h2>").text("Author: "+chosenArticle.author);
+   let titleHeader = $("<h1>").addClass("neon-text").text(chosenArticle.title);
+   let textParagraph = $("<p>").addClass("article-preview neon-text").text(formattedText);
+   let authorHeader = $("<h2>").addClass("neon-text").text("Author: "+chosenArticle.author);
    let articleAuthor = $("<div>").addClass("article-author").append(authorHeader);
    let articleInfo = $("<div>").addClass("mini-div article-info");
    let articleText = $("<div>").addClass("mini-div article-text").append(textParagraph);
@@ -140,7 +140,7 @@ class TextDataHandler{
    this.articles = [];
    let newsfeed = $("<div>").addClass("news-feed");
    let newsfeedTitle = $("<div>").addClass("news-feed-title");
-   let newsfeedHeader = $("<h1>").text("News Feed");
+   let newsfeedHeader = $("<h1>").addClass("neon-text").text("News Feed");
    let newsfeedContainer = $("<div>").addClass("news-feed-container");
    let row5 = $("<div>");
    let row6 = $("<div>");
@@ -158,7 +158,7 @@ class TextDataHandler{
    $(".section2").empty();
    let newsfeed = $("<div>").addClass("news-feed");
    let newsfeedTitle = $("<div>").addClass("news-feed-title");
-   let newsfeedHeader = $("<h1>").text("News Feed");
+   let newsfeedHeader = $("<h1>").addClass("neon-text").text("News Feed");
    let newsfeedContainer = $("<div>").addClass("news-feed-container");
    let row5 = $("<div>");
    let row6 = $("<div>");
@@ -169,7 +169,7 @@ class TextDataHandler{
    $(".section2").append(newsfeedContainer);
 
    for(let article of this.articles){
-     let articleTitle = $("<p>").addClass("text newsfeed-title").text(article.title);
+     let articleTitle = $("<p>").addClass("text newsfeed-title neon-text").text(article.title);
      articleTitle.on("click",this.handleTitleClick);
      $(".news-feed").append(articleTitle);
    }
