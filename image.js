@@ -25,11 +25,9 @@ class Images {
           $.each(data.hits, (i, hit) => {
             this.images.push(hit.largeImageURL);
           });
-          console.log(this.images);
-          console.log("images array:", this.images);
           this.randomImages();
         } else {
-          console.log('no hits');
+          handleError();
         }
       });
     }
