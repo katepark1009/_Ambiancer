@@ -9,6 +9,7 @@ class Giphy{
         this.mood;
     }
     getData(mood){
+        this.mood = mood;
         this.ambience = {
             'happy': ['fun', 'happy'],
             'sad': ['sad', 'gloomy'],
@@ -23,7 +24,6 @@ class Giphy{
             method: 'get',
             dataType: "json",
             data: {'api_key':'', 
-                // 'tag': 'fun',
                 'rating': 'g'
             },
             success: this.getDataSuccess
@@ -33,9 +33,7 @@ class Giphy{
         $.ajax( ajaxOptions );  
     }
     getDataSuccess(data){
-        console.log('data.data :', data.data);
-        console.log('giphy: ', data.data.image_url);
-        this.newGif = data.data.image_url;
+        this.newGif = data.data.image_url;     
         this.newDiv = $('<div>').addClass('gifs').css("background-image", "url(" + this.newGif + ")");
         $('.gif-container').append(this.newDiv);
     }

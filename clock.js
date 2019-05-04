@@ -14,34 +14,17 @@ class Clock {
         $('.clock').text(clockcontent);
     }
     sayHi(){
-        switch(this.hours) {
-            case 5:
-            case 6:
-            case 7:
-            case 8:
-            case 9:
-            case 10:
-            case 11:
-                $('.sayhi').text('Good mornig!')
-                break;
-            case 12:
-            case 13:
-            case 14:
-            case 15:
-            case 16:
-                $('.sayhi').text('Good afternoon!')
-                break;
-            case 17:
-            case 18:
-            case 19:
-            case 20:
-            case 21:
-                $('.sayhi').text('Good evening!')
-                break;
-            default :
-                $('.sayhi').text('Good night!')
-                break;
+        var text = '';
+        if(this.hours> 4 && this.hours< 12){
+           text = 'Good morning';
+        } else if(this.hours< 17){
+           text = 'Good afternoon';
+        } else if(this.hours< 22){
+           text='Good evening!';
+        } else {
+           text = 'Good night';
         }
+        $('.sayhi').text(text);
     }
     init() {
         this.getTime();
