@@ -332,7 +332,7 @@ ul {
   /* background-color: rgba(112, 97, 97, 0.2); */
   height: 32rem;
   margin: auto;
-  width: 97rem;
+  width: auto;
 }
 .gifs{
   background-color: rgba(132, 0, 255, 0.);
