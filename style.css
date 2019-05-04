@@ -403,8 +403,7 @@ ul {
   padding-top: 1%;
 }
 .text{
-  display:inline-block;
-  width: 100%;
+  display: block;
   font-size: 1.3rem;
 }
 .poemrow{
