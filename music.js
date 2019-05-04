@@ -14,7 +14,7 @@ class MusicPlayer{
             chill: ['lo-fi', 'smooth jazz'],
             romantic: ['ballad', 'romantic']
         };
-        let randomIndex = Math.floor(Math.random() * moodVariations[mood].length);
+        let randomIndex = getRandomIndex(moodVariations[mood]);
         let searchWord = moodVariations[mood][randomIndex];
         let ajaxOptions = {
             url: 'http://s-apis.learningfuze.com/hackathon/youtube/search.php',
@@ -26,7 +26,7 @@ class MusicPlayer{
                 // detailLevel: 'verbose', // default is low. how much information you will get about the video
             },
             success: this.handleSuccess,
-            error: this.handleAjaxError
+            error: handleError
         };
         $.ajax(ajaxOptions);
     }
