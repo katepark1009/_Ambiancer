@@ -130,11 +130,11 @@ class TextDataHandler{
    this.url = chosenArticle.url;
    let textIndex = chosenArticle.content.indexOf("[+");
    let formattedText = chosenArticle.content.substring(0,textIndex);
-   let row1 = $("<div>").addClass("row1 row");
-   let row2 = $("<div>").addClass("row2 row");
-   let row3 = $("<div>").addClass("row3 row");
-   let row4 = $("<div>").addClass("row4 row");
-   let row7 = $("<div>").addClass("row7");
+   let row1 = $("<div>");
+   let row2 = $("<div>");
+   let row3 = $("<div>");
+   let row4 = $("<div>");
+   let row7 = $("<div>");
    let titleHeader = $("<h1>").text(chosenArticle.title);
    let textParagraph = $("<p>").addClass("article-preview").text(formattedText);
    let authorHeader = $("<h2>").text("Author: "+chosenArticle.author);
