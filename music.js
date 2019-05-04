@@ -17,7 +17,7 @@ class MusicPlayer{
         let randomIndex = getRandomIndex(moodVariations[mood]);
         let searchWord = moodVariations[mood][randomIndex];
         let ajaxOptions = {
-            url: 'http://s-apis.learningfuze.com/hackathon/youtube/searc.php',
+            url: 'http://s-apis.learningfuze.com/hackathon/youtube/search.php',
             method: 'post',
             dataType: 'json',
             data: {
