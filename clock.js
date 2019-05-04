@@ -10,7 +10,7 @@ class Clock {
         this.minutes = date.getMinutes();
         this.hours = date.getHours();
         this.seconds = date.getSeconds();
-        let clockcontent = `${this.hours <10 ? `0${this.hours}` : this.hours} : ${this.minutes <10 ?  `0${this.minutes}` : this.minutes } : ${this.seconds < 10 ? `0${this.seconds}` : this.seconds }`;     
+        let clockcontent = `${this.hours <10 ? `0${this.hours}` : this.hours} : ${this.minutes <10 ?  `0${this.minutes}` : this.minutes } : ${this.seconds < 10 ? `0${this.seconds}` : this.seconds }`;
         $('.clock').text(clockcontent);
     }
     sayHi(){
@@ -22,7 +22,7 @@ class Clock {
             case 9:
             case 10:
             case 11:
-                $('.sayhi').text('Good mornig!')
+                $('.sayhi').text('Good morning!')
                 break;
             case 12:
             case 13:
