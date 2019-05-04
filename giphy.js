@@ -8,7 +8,7 @@ class Giphy{
         this.newDiv;
         this.mood;
     }
-    getData(mood){
+    getData(mood){ //get Ajax data according to mood parameter
         this.mood = mood;
         this.ambience = {
             'happy': ['fun', 'happy'],
@@ -33,7 +33,7 @@ class Giphy{
         ajaxOptions.data['tag'] = this.ambience[this.mood][randomIndex];
         $.ajax( ajaxOptions );
     }
-    getDataSuccess(data){
+    getDataSuccess(data){ //display gif on DOM
         this.newGif = data.data.image_url;
         this.newDiv = $('<div>').addClass('gifs').css("background-image", "url(" + this.newGif + ")");
         $('.gif-container').append(this.newDiv);
