@@ -120,6 +120,9 @@ pre{
   margin: auto;
   background-color:whitesmoke;
 }
+.article-btn a {
+  display: block;
+}
 .article-btn-col{
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -450,4 +453,10 @@ ul {
 
 #style-3::-webkit-scrollbar-thumb{
 	background-color: #000000;
+}
+p{
+  font-size: 1.5rem;
+}
+.neon-text{
+  text-shadow: #FC0 1px 0 10px;
 }

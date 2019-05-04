@@ -9,26 +9,8 @@ let weather = new Weather();
 let keys = new ApiKeys();
 
 function startApp(){
-  $('a').on('click', event => {
-    if (event.currentTarget.hash !== ''){
-      event.preventDefault();
-      let hash = event.currentTarget.hash;
-      console.log('this is the position of the target: ', $(hash).offset().top);
-      $('html, body').animate({
-        scrollTop: $(hash).offset().top - ($('#navigation-menu').height() + $('.header-music').height())
-      }, 600);
-    }
-  });
   $('#fullpage').hide();
-  $(".happy").on("click",function(){switchToAmbience("happy");});
-  $(".sad").on("click",function(){switchToAmbience("sad");});
-  $(".chill").on("click",function(){switchToAmbience("chill");});
-  $(".hype").on("click",function(){switchToAmbience("hype");});
-  $(".romantic").on("click",function(){switchToAmbience("romantic");});
-  $(".confident").on("click",function(){switchToAmbience("motivated");});
-  $(".goback").on("click", function(){returnToMain();});
-  $(".main-title").on("click", function(){returnToMain();});
-  $('.gif-goback').on("click", function(){returnToMain();});
+  addEventHandlers();
   clock.init();
   weather.init();
 }
@@ -62,7 +44,6 @@ function returnToMain(){
 }
 
 function generateHeaderText(mood) {
-
   const moodHeaderData = {
     happy: {
       video: 'Lift your spirit with a Song',
@@ -105,4 +86,27 @@ function generateHeaderText(mood) {
   $('.header-news h1').text(moodHeaderData[mood].news);
   $('.header-poem h1').text(moodHeaderData[mood].poem);
   $('.header-other h1').text(moodHeaderData[mood].other);
+}
+
+function addEventHandlers(){
+  // Click handler for smooth scrolling
+  $('a').on('click', event => {
+    if (event.currentTarget.hash !== ''){
+      event.preventDefault();
+      let hash = event.currentTarget.hash;
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top - ($('#navigation-menu').height() + $('.header-music').height())
+      }, 650);
+    }
+  });
+  // Click handlers for setting the mood
+  $(".happy").on("click",()=> {switchToAmbience("happy");});
+  $(".sad").on("click",()=> {switchToAmbience("sad");});
+  $(".chill").on("click",() => {switchToAmbience("chill");});
+  $(".hype").on("click",()=> {switchToAmbience("hype");});
+  $(".romantic").on("click",()=> {switchToAmbience("romantic");});
+  $(".confident").on("click",()=> {switchToAmbience("motivated");});
+  $(".goback").on("click", returnToMain);
+  $(".main-title").on("click", returnToMain);
+  $('.gif-goback').on("click", returnToMain);
 }
