@@ -1,13 +1,10 @@
 
 class Images {
     constructor() {
-    //   this.ambience = ["happy", "sad", "cafe", "urban", "ambience", 'successful','courageous','adventurous'];
       this.api_KEY = "12346261-e063da4b76d894b5549aed673";
       this.url = "https://pixabay.com/api/?key="+this.api_KEY+"&q="+encodeURIComponent('baloon');
       this.images = [];
-      this.ramdom;
       this.randomImage;
-      this.newDiv;
       this.ambience = {
           'happy': ['happy', 'joy'],
           'sad': ['sad', 'gloomy','rainy'],
@@ -19,6 +16,7 @@ class Images {
       this.randomImages = this.randomImages.bind(this);
     }
     getImages(mood) {
+      console.log('key.image :', keys.images);
         var randomIndex = Math.floor(Math.random()*this.ambience[mood].length);
         console.log('random mood-image search keyword :', this.ambience[mood][randomIndex]);
         this.url = "https://pixabay.com/api/?key="+this.api_KEY+"&q="+encodeURIComponent(this.ambience[mood][randomIndex]);
@@ -30,12 +28,12 @@ class Images {
           console.log("images array:", this.images);
           this.randomImages();
         } else {
-          console.log("No hits");
+          $('.section1').css("background-image", 'url("images/bg1.jpg")');
+          $('.section2').css("background-image", 'url("images/bg2.jpg")');
+          $('.section3').css("background-image", 'url("images/bg3.jpg")');
+          $('.section4').css("background-image", 'url("images/bg4.jpg")');
         }
       })
-      // .done(function(){
-      //   $('.loading').hide();
-      // });
     }
     randomImages() {
       var newImageArray = [];
@@ -47,13 +45,6 @@ class Images {
       $('.section1').css("background-image", "url(" + newImageArray[0] + ")");
       $('.section2').css("background-image", "url(" + newImageArray[1] + ")");
       $('.section3').css("background-image", "url(" + newImageArray[2] + ")");
-      $('.section4').css("background-image", "url(" + newImageArray[3] + ")");
-      
-      // setInterval(function(){  $('.loading').hide(); }, 1500);
-     
+      $('.section4').css("background-image", "url(" + newImageArray[3] + ")");  
     }
-    // renderImage(str){ //Parent class name in parameter, will append new div.
-    //     str = '.' + str;
-    //     $(str).append(newDiv);
-    // }
   }

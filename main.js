@@ -1,4 +1,4 @@
-$(document).ready(onload);
+$(document).ready(startApp);
 
 let images = new Images();
 let text = new Text();
@@ -6,8 +6,9 @@ let music = new MusicPlayer();
 let giphy = new Giphy();
 let clock = new Clock();
 let weather = new Weather();
+let keys = new ApiKeys();
 
-function onload(){
+function startApp(){
   $('a').on('click', event => {
     if (event.currentTarget.hash !== ''){
       event.preventDefault();
