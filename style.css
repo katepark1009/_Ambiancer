@@ -7,11 +7,7 @@ font-family: 'Abril Fatface', cursive;
 font-family: 'Bitter', serif; */
 
 
-@include media-breakpoint-up(md){
-  p.clock{
-    font-size: 12vmin;
-  }
-}
+
 body{
   position: relative;
   margin: 0;
@@ -393,7 +389,7 @@ ul {
 }
 .clock {
   color: white;
-  font-size: 5.5rem;
+  font-size: 10vmin;
   font-family: 'Bitter', serif;
   text-shadow: 1px 1px 1px rgb(46, 41, 41);
   text-align: center;
@@ -485,3 +481,38 @@ body{
   font-size: 2rem;
   text-shadow: rgb(4, 201, 236) 1px 0 10px;
 }
+
+@media only screen and (max-width: 576px) {
+  .blank{
+    height: 30vh;
+    text-align:center;
+  }
+  .blank-row{
+    height: 50vh;
+  }
+  .title{
+    font-size: 13vmin;
+    margin-top: 10%;
+    text-align:center;
+  }
+  .clock {
+    font-size: 15vmin;
+  }
+  .sayhi{
+    font-size: 10vmin;
+  }
+  .subtitle{
+    font-size: 8vmin;
+  }
+  .subtitle2{
+    font-size: 6vmin;
+  }
+  .happy-col, .sad-col, .chill-col, .chill-col, .romantic-col, .hype-col, .confident-col{
+    height: 45px;
+    margin-bottom: 15px;
+  }
+
+  
+}
+
+@media only screen and (max-width: )
