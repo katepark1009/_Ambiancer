@@ -22,9 +22,6 @@ class Images {
       $.getJSON(this.url, data => {
         if (parseInt(data.totalHits) > 0) {
           this.images = data.hits.map( hit => hit.largeImageURL );
-          $.each(data.hits, (i, hit) => {
-            this.images.push(hit.largeImageURL);
-          });
           this.randomImages();
         } else {
           handleError();
