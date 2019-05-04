@@ -16,13 +16,13 @@ class Clock {
     sayHi(){
         var text = '';
         if(this.hours> 4 && this.hours< 12){
-           text = 'Good morning';
+           text = 'Good morning!';
         } else if(this.hours< 17){
-           text = 'Good afternoon';
+           text = 'Good afternoon!';
         } else if(this.hours< 22){
            text='Good evening!';
         } else {
-           text = 'Good night';
+           text = 'Good night!';
         }
         $('.sayhi').text(text);
     }

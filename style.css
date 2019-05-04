@@ -38,6 +38,10 @@ body{
   text-shadow: 1px 1px 1px white;
   text-align: center;
 }
+.js-clock {
+  height: 52%;
+  width: 100%;
+}
 #style-4::-webkit-scrollbar-track
 {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
@@ -56,11 +60,10 @@ body{
 	border: 2px solid #555555;
 }
 .subtitle2{
-  left: 31%;
+  position: relative;
+  top: -10%;
   color: rgb(250, 236, 210);
   text-align: center;
-  position: absolute;
-  bottom: 6%;
   font-size: 2rem;
   font-family: 'Bitter', serif;
   text-shadow: 1px 1px 1px rgb(46, 41, 41);
@@ -71,6 +74,9 @@ body{
   font-family: 'Bitter', serif;
   font-size: 1.2rem;
   padding-left: 2%;
+}
+.blank-row{
+  height: 70%;
 }
 button{
   all: unset;
@@ -171,9 +177,6 @@ pre{
 }
 .article-author{
   padding-bottom: 2%;
-}
-.blank-row{
-  height: 80%;
 }
 .candles{
   background-image: url("images/bg1.jpg");
@@ -372,40 +375,40 @@ ul {
 .mini-div{
   color: white;
 }
+.blank{
+  padding-left: 4%;
+}
 .formatted-poem-text{
   display: inline-block;
   width: 33%;
   text-align: center
 }
 .clock {
-  left: 34%;
   color: white;
-  position: absolute;
-  bottom: 19%;
-  font-size: 5rem;
+  font-size: 5.5rem;
   font-family: 'Bitter', serif;
   text-shadow: 1px 1px 1px rgb(46, 41, 41);
   text-align: center;
 }
 .sayhi {
-  left: 35%;
+  position: relative;
+  top: -9%;
   color: white;
   text-align: center;
-  position: absolute;
-  bottom: 12%;
   font-size: 3rem;
   font-family: 'Raleway', sans-serif;
   text-shadow: 1px 1px 1px rgb(46, 41, 41);
   text-align: center;
 }
 .weather {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   font-family: 'Raleway', sans-serif;
   text-shadow: 1px 1px 1px white;
   position: absolute;
   right: 0%;
   color: gray;
   padding-top: 1%;
+  padding-right: 1%;
 }
 .text{
   display: block;
