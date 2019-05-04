@@ -17,7 +17,7 @@ class TextDataHandler{
       romantic:["love","flower"],
       motivated:["business","skydiving"]
     }
-    let randomIndex = Math.floor(Math.random()*formattedQuery[query].length);
+    let randomIndex = getRandomIndex(formattedQuery[query]);
     let search = formattedQuery[query][randomIndex];
     let ajaxOptions = {
       url: 'https://newsapi.org/v2/everything',
@@ -31,7 +31,7 @@ class TextDataHandler{
         apiKey: "9e7748236bd94a3b917d8405a1fc97b7"
       },
       success: this.newsDataSuccess,
-      error: function(){ console.log("An error happened.");}
+      error: handleError
     }
     $.ajax(ajaxOptions);
   }
@@ -44,7 +44,7 @@ class TextDataHandler{
       romantic:["love"],
       motivated:["business"]
     }
-    let randomIndex = Math.floor(Math.random()*formattedQuery[query].length);
+    let randomIndex = getRandomIndex(formattedQuery[query]);
     let search = formattedQuery[query][randomIndex];
     let url = "http://poetrydb.org/lines/"+search;
     let ajaxOptions = {
@@ -52,7 +52,7 @@ class TextDataHandler{
       method: 'get',
       dataType: 'json',
       success: this.poemSuccess,
-      error: function(){ console.log("An error happened.");}
+      error: handleError
     }
     $.ajax(ajaxOptions);
   }
