@@ -200,6 +200,9 @@ pre{
   background-size: 100% 100%;
 }
 .moods-container{
+  background-image: url("images/bg1.jpg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   height: 100%;
 }
 .moods-row{
