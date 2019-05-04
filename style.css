@@ -460,3 +460,6 @@ p{
 .neon-text{
   text-shadow: #FC0 1px 0 10px;
 }
+body{
+  overflow-x: hidden;
+}
