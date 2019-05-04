@@ -60,94 +60,48 @@ function returnToMain(){
   text.resetNewsFeed();
 }
 
-function generateHeaderText(mood){
-  let videoHeader = $('.header-music h1');
-  let newsHeader = $('.header-news h1');
-  let poemHeader = $('.header-poem h1');
-  let otherHeader = $('.header-other h1');
+function generateHeaderText(mood) {
 
-
-  var moodData = {
+  const moodHeaderData = {
     happy: {
       video: 'Lift your spirit with a Song',
       news: 'Get some heartwarming news',
       poem: 'Think happy thoughts',
-      gif: 'How about a GIF from us to you, friend. -_o'
+      other: 'How about a GIF from us to you, friend. -_o'
     },
     sad: {
-      video: 'Lift your spirit with a Song',
-      news: 'Get some heartwarming news',
-      poem: 'Think happy thoughts',
-      gif: 'How about a GIF from us to you, friend. -_o'
+      video: 'Sometimes you just gotta let it out',
+      news: 'Some articles that may open the flood gates',
+      poem: 'Let\'s go deep into the burrows of your heart',
+      other: 'How about a GIF from us to you, friend. -_o'
     },
     motivated: {
-      video: 'Lift your spirit with a Song',
-      news: 'Get some heartwarming news',
-      poem: 'Think happy thoughts',
-      gif: 'How about a GIF from us to you, friend. -_o'
+      video: 'Get pumped up',
+      news: 'Some articles to get you motivated',
+      poem: 'Find inspiration from your soul',
+      other: 'How about a GIF from us to you, friend. -_o'
     },
     hype: {
-      video: 'Lift your spirit with a Song',
-      news: 'Get some heartwarming news',
-      poem: 'Think happy thoughts',
-      gif: 'How about a GIF from us to you, friend. -_o'
+      video: 'Let\'s get the party started',
+      news: 'What\'s poppin\' in the news',
+      poem: 'Legit poems to check out. Cop it, yo',
+      other: 'How about a GIF from us to you, friend. -_o'
     },
     chill: {
-      video: 'Lift your spirit with a Song',
-      news: 'Get some heartwarming news',
-      poem: 'Think happy thoughts',
-      gif: 'How about a GIF from us to you, friend. -_o'
+      video: 'Relax your mind with some smooth beats',
+      news: 'Some casual reading for you',
+      poem: 'Grab a cup o\' joe and have a seat',
+      other: 'How about a GIF from us to you, friend. -_o'
     },
     romantic: {
-      video: 'Lift your spirit with a Song',
-      news: 'Get some heartwarming news',
-      poem: 'Think happy thoughts',
-      gif: 'How about a GIF from us to you, friend. -_o'
+      video: 'Set the mood right with a song',
+      news: 'Love is in the air. Check out these stories',
+      poem: 'My cherie, amour',
+      other: 'How about a GIF from us to you, friend. -_o'
     },
   };
-
-  switch(mood){
-    case 'happy':
-      videoHeader.text('Lift your spirit with a Song');
-      newsHeader.text('Get some heartwarming news');
-      poemHeader.text('Think happy thoughts');
-      otherHeader.text('How about a GIF from us to you, friend. -_o');
-      break;
-    case 'sad':
-      videoHeader.text('Sometimes you just gotta let it out');
-      newsHeader.text('Some articles that may open the flood gates');
-      poemHeader.text('Let\'s go deep into the burrows of your heart');
-      otherHeader.text('How about a GIF from us to you, friend. -_o');
-      break;
-    case 'motivated':
-      videoHeader.text('Get pumped up');
-      newsHeader.text('Some articles to get you motivated');
-      poemHeader.text('Find inspiration from your soul');
-      otherHeader.text('How about a GIF from us to you, friend. -_o');
-      break;
-    case 'hype':
-      videoHeader.text('Let\'s get the party started..');
-      newsHeader.text('What\'s poppin\' in the news');
-      poemHeader.text('Legit poems to check out. Cop it, yo');
-      otherHeader.text('How about a GIF from us to you, friend. -_o');
-      break;
-    case 'chill':
-      videoHeader.text('Relax your mind with some smooth beats');
-      newsHeader.text('Some casual reading for you');
-      poemHeader.text('Grab a cup o\' joe and have a seat');
-      otherHeader.text('How about a GIF from us to you, friend. -_o');
-      break;
-    case 'romantic':
-      videoHeader.text('Set the mood right with a song');
-      newsHeader.text('Love is in the air. Check out these stories');
-      poemHeader.text('My cherie, amour');
-      otherHeader.text('How about a GIF from us to you, friend. -_o');
-      break;
-    default:
-      videoHeader.text('Video');
-      newsHeader.text('News');
-      poemHeader.text('Poem');
-      otherHeader.text('Other');
-      break;
-  }
+  $('.header-music h1').text(moodHeaderData[mood].video);
+  $('.header-news h1').text(moodHeaderData[mood].news);
+  $('.header-poem h1').text(moodHeaderData[mood].poem);
+  $('.header-other h1').text(moodHeaderData[mood].other);
 }
