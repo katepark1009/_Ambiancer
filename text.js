@@ -10,12 +10,12 @@ class TextDataHandler{
   getNewsData(query, day=30, month=4, year=2019){
     let formattedDate = year+"-"+month+"-"+day;
     let formattedQuery = {
-      happy:["puppy","pizza"],
-      sad:["dead","accident"],
+      happy:["puppy","thanks"],
+      sad:["dead","accident","tragic"],
       chill:["cafe","vacation"],
       hype:["party","intense"],
       romantic:["love","flower"],
-      motivated:["business","skydiving"]
+      motivated:["business","success"]
     }
     let randomIndex = getRandomIndex(formattedQuery[query]);
     let search = formattedQuery[query][randomIndex];
@@ -37,9 +37,9 @@ class TextDataHandler{
   }
   getPoems(query){
     let formattedQuery = {
-      happy:["puppy"],
-      sad:["dead"],
-      chill:["cafe"],
+      happy:["joy","happy","wonderful"],
+      sad:["funeral","dead","sorrowful","sad"],
+      chill:["relax","coffee"],
       hype:["party"],
       romantic:["love"],
       motivated:["business"]
@@ -57,22 +57,44 @@ class TextDataHandler{
     $.ajax(ajaxOptions);
   }
   newsDataSuccess(response){
-    console.log('response article:', response.articles[0]);
-    $(".article-title").empty();
-    $(".article-author").empty();
-    let randomIndex;
-    let counter = 0;
-    while(response.articles.length > 0 && counter < 5){
-      randomIndex = Math.floor(Math.random()*response.articles.length);
-      let article = response.articles.splice(randomIndex,1)[0];
-      if(article.content){
-        this.articles.push(article);
-        let articleTitle = $("<p>").addClass("text newsfeed-title neon-text").text(article.title);
-        articleTitle.on("click",this.handleTitleClick);
-        $(".news-feed").append(articleTitle);
-        counter++;
+    if(presentationMode){
+      console.log('response article:', response.articles[0]);
+      $(".article-title").empty();
+      $(".article-author").empty();
+      let randomIndex;
+      let counter = 0;
+      while(response.articles.length > 0 && counter < 5){
+        randomIndex = Math.floor(Math.random()*response.articles.length);
+        let article = response.articles.splice(randomIndex,1)[0];
+        if(article.content){
+          this.articles.push(article);
+          let articleTitle = $("<p>").addClass("text newsfeed-title neon-text").text(article.title);
+          articleTitle.on("click",this.handleTitleClick);
+          $(".news-feed").append(articleTitle);
+          counter++;
+        }
+        else{
+        }
       }
-      else{
+    }
+    else{
+      console.log('response article:', response.articles[0]);
+      $(".article-title").empty();
+      $(".article-author").empty();
+      let randomIndex;
+      let counter = 0;
+      while(response.articles.length > 0 && counter < 5){
+        randomIndex = Math.floor(Math.random()*response.articles.length);
+        let article = response.articles.splice(randomIndex,1)[0];
+        if(article.content){
+          this.articles.push(article);
+          let articleTitle = $("<p>").addClass("text newsfeed-title neon-text").text(article.title);
+          articleTitle.on("click",this.handleTitleClick);
+          $(".news-feed").append(articleTitle);
+          counter++;
+        }
+        else{
+        }
       }
     }
   }
