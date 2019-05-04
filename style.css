@@ -4,13 +4,19 @@ font-family: 'Cormorant Unicase', serif;
 font-family: 'Raleway', sans-serif;
 font-family: 'Bitter', serif; */
 
+
+@include media-breakpoint-up(md){
+  p.clock{
+    font-size: 12vmin;
+  }
+}
 body{
   position: relative;
   margin: 0;
 }
 .title{
   padding-top: 4%;
-  font-size: 4.5rem;
+  font-size: 10vmin;
   font-weight: bold;
   font-family: 'Bitter', serif;
   text-shadow: 2px 3px 1px white;
@@ -64,7 +70,7 @@ body{
   top: -10%;
   color: rgb(250, 236, 210);
   text-align: center;
-  font-size: 2rem;
+  font-size: 5vmin;
   font-family: 'Bitter', serif;
   text-shadow: 1px 1px 1px rgb(46, 41, 41);
   text-align: center;
@@ -76,7 +82,7 @@ body{
   padding-left: 2%;
 }
 .blank-row{
-  height: 70%;
+  height: 65vh;
 }
 button{
   all: unset;
@@ -190,19 +196,17 @@ pre{
   height: 100%;
 }
 .home-screen{
+  background-image: url("images/bg1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
   font-family: "Roboto", sans-serif;
   position: absolute;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   z-index: 1;
   justify-content: center;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
 }
 .moods-container{
-  background-image: url("images/bg1.jpg");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
   height: 100%;
 }
 .moods-row{
