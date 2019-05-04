@@ -15,23 +15,20 @@ class Images {
       }
       this.randomImages = this.randomImages.bind(this);
     }
-    getImages(mood) {
+    getImages(mood) { //getting images from pixbay using .getJSON
       this.api_KEY = keys.images;
       var random = Math.random() < 0.5 ? 1 : 0;
       this.url = "https://pixabay.com/api/?key="+this.api_KEY+"&q="+encodeURIComponent(this.ambience[mood][random]);
       $.getJSON(this.url, data => {
         if (parseInt(data.totalHits) > 0) {
-          $.each(data.hits, (i, hit) => {
-            this.images.push(hit.largeImageURL);
-          });
-          console.log("images array:", this.images);
+          this.images = data.hits.map( hit => hit.largeImageURL );
           this.randomImages();
         } else {
-          console.log('no hits');
+          handleError();
         }
-      })
+      });
     }
-    randomImages() {
+    randomImages() { // pick random 4 images and set those as a background for each sections
       var newImageArray = [];
       for (var i = 0; i < 5; i++) {
         this.random = Math.floor(Math.random() * this.images.length);

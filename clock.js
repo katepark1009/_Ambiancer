@@ -5,7 +5,7 @@ class Clock {
         this.hours;
         this.seconds;
     }
-    getTime() {
+    getTime() { //generating time and display time on DOM
         const date = new Date();
         this.minutes = date.getMinutes();
         this.hours = date.getHours();
@@ -13,7 +13,7 @@ class Clock {
         let clockcontent = `${this.hours <10 ? `0${this.hours}` : this.hours} : ${this.minutes <10 ?  `0${this.minutes}` : this.minutes } : ${this.seconds < 10 ? `0${this.seconds}` : this.seconds }`;
         $('.clock').text(clockcontent);
     }
-    sayHi(){
+    sayHi(){ //display text on DOM with time
         var text = '';
         if(this.hours> 4 && this.hours< 12){
            text = 'Good morning!';
@@ -26,7 +26,7 @@ class Clock {
         }
         $('.sayhi').text(text);
     }
-    init() {
+    init() { //initiating time and text, and update every seconds.
         this.getTime();
         this.sayHi();
         setInterval(this.getTime,1000);
