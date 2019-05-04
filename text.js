@@ -15,7 +15,7 @@ class Text{
       chill:["cafe","vacation"],
       hype:["party","intense"],
       romantic:["love","flower"],
-      confident:["business","skydiving"]
+      motivated:["business","skydiving"]
     }
     let randomIndex = Math.floor(Math.random()*formattedQuery[query].length);
     let search = formattedQuery[query][randomIndex];
@@ -42,7 +42,7 @@ class Text{
       chill:["cafe"],
       hype:["party"],
       romantic:["love"],
-      confident:["business"]
+      motivated:["business"]
     }
     let randomIndex = Math.floor(Math.random()*formattedQuery[query].length);
     let search = formattedQuery[query][randomIndex];
