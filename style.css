@@ -337,8 +337,8 @@ ul {
 .gifs{
   background-color: rgba(132, 0, 255, 0.);
   height: 79%;
-  /* margin: auto; */
-  width: 30%;
+  margin: auto;
+  width: 46%;
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }

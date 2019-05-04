@@ -17,18 +17,18 @@ class Giphy{
             'romantic': ['lovely', 'rose', 'wedding'],
             'hype': ['urban', 'hype', 'city']
         };
+        var randomIndex = Math.floor(Math.random()*this.ambience[this.mood].length);
         var ajaxOptions = {
             url: "http://api.giphy.com/v1/gifs/random",
             method: 'get',
             dataType: "json",
-            data: {'api_key':'OmexmAMBeMV58485Yx26ACsbWpSEZXCr', 
+            data: {'api_key':'', 
                 // 'tag': 'fun',
                 'rating': 'g'
             },
             success: this.getDataSuccess
          };
-        this.mood = mood;
-        var randomIndex = Math.floor(Math.random()*this.ambience[this.mood].length);
+        ajaxOptions.data['api_key'] = keys.giphy;
         ajaxOptions.data['tag'] = this.ambience[this.mood][randomIndex];
         $.ajax( ajaxOptions );  
     }
