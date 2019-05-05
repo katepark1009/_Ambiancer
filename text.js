@@ -114,7 +114,6 @@ class TextDataHandler{
   newsDataSuccess(response){
     this.newsResponse = response;
     if(presentationMode){
-      console.log('response articles:', response.articles);
       $(".article-title").empty();
       $(".article-author").empty();
       let titlearr = [];
@@ -232,7 +231,7 @@ class TextDataHandler{
    let row3 = $("<div>");
    let row4 = $("<div>");
    let row7 = $("<div>");
-   let titleHeader = $("<h1>").addClass("neon-text").text(chosenArticle.title);
+   let titleHeader = $("<h1>").addClass("newstitle").text(chosenArticle.title);
    let textParagraph = $("<p>").addClass("article-preview neon-text").text(formattedText);
    let authorHeader = $("<h2>").addClass("neon-text").text("Author: "+chosenArticle.author);
    let articleAuthor = $("<div>").addClass("article-author").append(authorHeader);
@@ -241,7 +240,7 @@ class TextDataHandler{
    let articleTitle = $("<div>").addClass("article-title").append(titleHeader);
    let anchor = $("<a>").attr("target","_blank").attr("href",this.url).text("To the article");
    let articleButton = $("<button>").addClass("article-btn");
-   let newsfeedButton = $("<button>").addClass("news-feed-btn").text("Return to the newsfeed");
+   let newsfeedButton = $("<button>").addClass("news-feed-btn").text("Back");
    let articleButtonCol = $("<div>").addClass("article-btn-col");
    let newsfeedButtonCol = $("<div>").addClass("news-feed-btn-col");
    let imageFromArticle = $('<img>').attr("src", chosenArticle.urlToImage).addClass("article-image");
@@ -266,7 +265,7 @@ class TextDataHandler{
    this.articles = [];
    let newsfeed = $("<div>").addClass("news-feed");
    let newsfeedTitle = $("<div>").addClass("news-feed-title");
-   let newsfeedHeader = $("<h1>").addClass("neon-text").text("News Feed");
+   let newsfeedHeader = $("<h1>").addClass("neon-text newstitle").text("News Feed");
    let newsfeedContainer = $("<div>").addClass("news-feed-container");
    let row5 = $("<div>");
    let row6 = $("<div>");
@@ -280,7 +279,7 @@ class TextDataHandler{
    $(".section2").empty();
    let newsfeed = $("<div>").addClass("news-feed");
    let newsfeedTitle = $("<div>").addClass("news-feed-title");
-   let newsfeedHeader = $("<h1>").addClass("neon-text").text("News Feed");
+   let newsfeedHeader = $("<h1>").addClass("neon-text newstitle").text("News Feed");
    let newsfeedContainer = $("<div>").addClass("news-feed-container");
    let row5 = $("<div>");
    let row6 = $("<div>");
@@ -305,7 +304,6 @@ class TextDataHandler{
   }
   presentationTitles(arr){
     for(let description of arr){
-      console.log(description);
       for(let index = 0; index < this.newsResponse.articles.length; index++){
         if(this.newsResponse.articles[index].title.indexOf(description) > -1){
           this.presentationTitle(index);

@@ -15,7 +15,6 @@ class Weather{
             console.log('json form weather :', json);
             let temperature = json.main.temp;
             let currentWeather = json.weather[0].description;
-            console.log('currentWeather :', currentWeather);
             const place = json.name;
             let weather = $('.weather');
             temperature = Math.floor(temperature);
