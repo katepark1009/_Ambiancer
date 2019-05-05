@@ -123,6 +123,11 @@ pre{
   width: 100%;
   margin: auto;
   background-color:whitesmoke;
+  font-family: 'Cormorant Unicase', serif;
+}
+.article-btn a:hover, button:hover{
+  text-decoration: none;
+  color: black;
 }
 .article-btn a {
   display: block;
@@ -486,7 +491,17 @@ p{
   font-size: 2rem;
   text-shadow: rgb(4, 201, 236) 1px 0 10px;
 }
-
+.currentweather{
+  font-size: 1.7rem;
+  font-family: 'Raleway', sans-serif;
+  text-shadow: 1px 1px 1px white;
+  position: absolute;
+  right: 0%;
+  padding-top: 1%;
+  padding-right: 1%;
+  top: 5%;
+  color: rgb(100, 92, 92);
+}
 @media only screen and (max-width: 576px) {
   /*LANDING PAGE*/
   .blank{
