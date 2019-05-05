@@ -427,6 +427,17 @@ ul {
   padding-top: 1%;
   padding-right: 1%;
 }
+.currentweather{
+  font-size: 1.7rem;
+  font-family: 'Raleway', sans-serif;
+  text-shadow: 1px 1px 1px white;
+  position: absolute;
+  right: 0%;
+  color: rgb(53, 49, 49);
+  padding-top: 1%;
+  padding-right: 1%;
+
+}
 .text{
   display: block;
   font-size: 1.3rem;

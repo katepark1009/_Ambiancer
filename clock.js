@@ -17,9 +17,9 @@ class Clock {
         var text = '';
         if(this.hours> 4 && this.hours< 12){
            text = 'Good morning!';
-        } else if(this.hours< 17){
+        } else if(this.hours>=12 && this.hours< 17){
            text = 'Good afternoon!';
-        } else if(this.hours< 22){
+        } else if(this.hours >=17 && this.hours< 19){
            text='Good evening!';
         } else {
            text = 'Good night!';
