@@ -46,8 +46,8 @@ class MusicPlayer{
             src: null,
             id: 'player',
             type: 'text/html',
-            width: 800, // 160
-            height: 450, // 120
+            width: 100 + '%', // 160
+            height: 80 + '%', // 120
             frameborder: 0,
             allow: 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture;'
         };

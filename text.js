@@ -109,7 +109,7 @@ class TextDataHandler{
    let row3 = $("<div>");
    let row4 = $("<div>");
    let row7 = $("<div>");
-   let titleHeader = $("<h1>").addClass("neon-text").text(chosenArticle.title);
+   let titleHeader = $("<h1>").addClass("neon-text ").text(chosenArticle.title);
    let textParagraph = $("<p>").addClass("article-preview neon-text").text(formattedText);
    let authorHeader = $("<h2>").addClass("neon-text").text("Author: "+chosenArticle.author);
    let articleAuthor = $("<div>").addClass("article-author").append(authorHeader);
