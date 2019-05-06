@@ -3,10 +3,13 @@ class TextDataHandler{
     this.articles = [];
     this.url = "";
     this.newsDataSuccess = this.newsDataSuccess.bind(this);
+    this.poemSuccess = this.poemSuccess.bind(this);
     this.handleTitleClick = this.handleTitleClick.bind(this);
     this.handleNewsfeedButton = this.handleNewsfeedButton.bind(this);
     this.mood = "";
     this.newsResponse = [];
+    this.poemResponse = [];
+    this.keys = new ApiKeys();
   }
   getNewsData(query, day=30, month=4, year=2019){
     this.mood = query;
@@ -29,7 +32,7 @@ class TextDataHandler{
         sad:["dead","accident","tragic"],
         chill:["cafe","vacation"],
         hype:["party","intense"],
-        romantic:["love",""],
+        romantic:["love"],
         motivated:["business","success"]
       }
       let randomIndex = getRandomIndex(formattedQuery[query]);
@@ -44,7 +47,7 @@ class TextDataHandler{
         from: formattedDate,
         sortBy: "popularity",
         language: "en",
-        apiKey: "9e7748236bd94a3b917d8405a1fc97b7"
+        apiKey: this.keys.news
       },
       success: this.newsDataSuccess,
       error: handleError
@@ -54,69 +57,122 @@ class TextDataHandler{
   getPoems(query){
     this.mood = query;
     let search = "";
+    let ajaxOptions;
+    let url = "";
+    let title = "";
+    let formattedQuery = {
+      happy:"joy",
+      sad:"funeral",
+      chill:"coffee",
+      hype:"amazing",
+      romantic:"rose",
+      motivated:"strength"
+    }
     if(presentationMode){
-      let formattedQuery = {
-        happy:"joy",
-        sad:"funeral",
-        chill:"coffee",
-        hype:"party",
-        romantic:"love",
-        motivated:"business"
+      switch(query){
+        case "happy":
+          title = "the moon"
+          break;
+        case "sad":
+          title = "on Two Lovers Struck Dead by Lightning";
+          break;
+        case "chill":
+          title = "goodtime jesus";
+          break;
+        case "romantic":
+          title = "love";
+          break;
+        case "hype":
+          title = "o sun of real peace";
+          break;
+        case "motivated":
+          title = "Cancelled Passage of the Ode to Liberty";
+          break;
       }
-      search = formattedQuery[query];
+      url = "http://poetrydb.org/title/"+title;
+      ajaxOptions = {
+        url: url,
+        method: 'get',
+        dataType: 'json',
+        success: this.poemSuccess,
+        error: handleError
+      };
     }
     else{
-      let formattedQuery = {
-        happy:["joy","happy","wonderful"],
-        sad:["funeral","dead","sorrowful","sad"],
-        chill:["relax","coffee"],
-        hype:["party"],
-        romantic:["love"],
-        motivated:["business"]
-      }
       let randomIndex = getRandomIndex(formattedQuery[query]);
       search = formattedQuery[query][randomIndex];
-    }
-    let url = "http://poetrydb.org/lines/"+search;
-    let ajaxOptions = {
-      url: url,
-      method: 'get',
-      dataType: 'json',
-      success: this.poemSuccess,
-      error: handleError
+      url = "http://poetrydb.org/lines/"+search;
+      ajaxOptions = {
+        url: url,
+        method: 'get',
+        dataType: 'json',
+        success: this.poemSuccess,
+        error: handleError
+      };
     }
     $.ajax(ajaxOptions);
   }
   newsDataSuccess(response){
     this.newsResponse = response;
+    console.log("news articles:",response)
     if(presentationMode){
-      console.log('response articles:', response.articles);
       $(".article-title").empty();
       $(".article-author").empty();
+      let titlearr = [];
       switch(this.mood){
         case "happy":
-            this.presentationTitles(9,16,15,17,19);
+          titlearr = [
+            "Photographer Grey Hutton gives us a joyful glimpse into the Jewish festival of Purim",
+            "How a Marvel fan made sure his blind friend enjoyed Avengers: Endgame is heartwarming",
+            "Kids Who Beat Cancer Come Together for Annual Reunion — and Recreate a Stunning Photo from 2014",
+            "Victoria Beckham Shares Sweet Tribute to David Beckham for His Birthday: 'You Are Our Everything'",
+            "Heart Transplant Recipient, Donor's Family Meet at Cardinals-Reds Game"];
           break;
         case "sad":
-            this.presentationTitles(7,10,11,15,17);
+          titlearr = [
+            "Factbox - 'This is tragic': Environmental studies student, sportswriter among victims in North",
+            "President Donald Trump falsely stated that doctors",
+            "K.I. mourns 'tragic loss' after fire claims five lives - Tbnewswatch.com",
+            "North Carolina police charge suspect with murder after college shooting",
+            "Anti-Semitism in US remained at near-record high in 2018: ADL"];
           break;
         case "chill":
-            this.presentationTitles(2,5,7,13,17);
+          titlearr = [
+            "Chinese Astronomers Saw an Exploding Star 2,000 Years Ago. Scientists May Have Just Found the",
+            "See plasma clouds burst out of this animated black hole",
+            "This $400 air purifier clears my house of odors, vape clouds, and dust mites while barely making",
+            "Snow in May? This week's top three weather videos",
+            "Hubble spots giant 'buckyballs' jiggling like Jell-O in space"];
           break;
         case "hype":
-            this.presentationTitles(1,2,3,10,19);
+          titlearr = [
+            "How to Celebrate National Space Day",
+            "What's on TV: 'Knock Down the House,' and 'Ingress: The Animation",
+            "F. Gary Gray Is Working on a 'Saints Row' Movie Adaptation",
+            "Amazing POV ride on the Yukon Striker coaster",
+            "Islandeering: The woman walking on the edge of hidden islands"];
           break;
         case "romantic":
-            this.presentationTitles(7,8,13,16,19);
+          titlearr = [
+            "Why You Keep Getting Into Toxic Relationships (And How to Stop)",
+            "50 Toxic Things Every Girl Should Stop Romanticizing About Love, Life, And Relationships",
+            "Fiction: Love, Sex and Robots Collide in a New Ian McEwan Novel",
+            "Theron and Rogen pair up for classier update on odd-couple rom-com",
+            "Artist Jaime Hernandez reunites his ‘Love and Rockets’ women, but only loves one now"];
           break;
         case "motivated":
-            this.presentationTitles(13,14,15,16,17);
+          titlearr = [
+            "Hitting the gym makes esports athletes more successful",
+            "Girl Boss editor-in-chief Neha Gandhi shares the soundtrack for her life",
+            "4 steps to reclaim your weekend for fun instead of chores",
+            "How successful CEOs start their mornings",
+            "Yoga class while waiting for refills? CVS tests new "];
       }
+      this.presentationTitles(titlearr);
 
 
     }
     else{
-      console.log('response article:', response.articles[0]);
       $(".article-title").empty();
       $(".article-author").empty();
       let randomIndex;
@@ -139,17 +195,24 @@ class TextDataHandler{
   poemSuccess(response){
     $(".poem-title").empty();
     $(".poem-author").empty();
-    console.log("poems:",response);
-    this.poems = response;
-    let randomIndex = getRandomIndex(response);
-    console.log("the chosen poem's index is:",randomIndex);
-    let poemTitle = $("<h1>").addClass("neon-text poemtitle").text(response[randomIndex].title);
-    let poemAuthor = $("<h2>").addClass("neon-text").text("- Author: "+response[randomIndex].author+ " -" )
-    $(".poem-title").append(poemTitle);
-    $(".poem-author").append(poemAuthor);
-    for(let line of response[randomIndex].lines){
-      let poemline = $("<p>").addClass("neon-text").text(line);
-      $(".poem-text").append(poemline);
+    $(".poem-text").empty();
+    this.poemResponse = response;
+    if(presentationMode){
+
+      switch(this.mood){
+        case "happy":
+          this.displayPoem(16);
+          break;
+        case "romantic":
+          this.displayPoem(2);
+          break;
+        default:
+          this.displayPoem(0);
+      }
+    }
+    else{
+      let randomIndex = getRandomIndex(response);
+      this.displayPoem(randomIndex);
     }
   }
   handleTitleClick(event){
@@ -198,6 +261,9 @@ class TextDataHandler{
  }
  resetNewsFeed(){
    $(".section2").empty();
+   $(".poem-title").empty();
+   $(".poem-author").empty();
+   $(".poem-text").empty();
    this.articles = [];
    let newsfeed = $("<div>").addClass("news-feed");
    let newsfeedTitle = $("<div>").addClass("news-feed-title");
@@ -238,12 +304,24 @@ class TextDataHandler{
     articleTitle1.on("click",this.handleTitleClick);
     $(".news-feed").append(articleTitle1);
   }
-  presentationTitles(index1,index2,index3,index4,index5){
-    this.presentationTitle(index1);
-    this.presentationTitle(index2);
-    this.presentationTitle(index3);
-    this.presentationTitle(index4);
-    this.presentationTitle(index5);
+  presentationTitles(arr){
+    for(let description of arr){
+      for(let index = 0; index < this.newsResponse.articles.length; index++){
+        if(this.newsResponse.articles[index].title.indexOf(description) > -1){
+          this.presentationTitle(index);
+          break;
+        }
+      }
+    }
   }
-
+  displayPoem(index){
+    let poemTitle = $("<h1>").addClass("neon-text").text(this.poemResponse[index].title);
+    let poemAuthor = $("<h2>").addClass("neon-text").text("- Author: "+this.poemResponse[index].author+ " -" );
+    $(".poem-title").append(poemTitle);
+    $(".poem-author").append(poemAuthor);
+    for(let line of this.poemResponse[index].lines){
+      let poemline = $("<p>").addClass("neon-text").text(line);
+      $(".poem-text").append(poemline);
+    }
+  }
 }

@@ -7,7 +7,6 @@ font-family: 'Abril Fatface', cursive;
 font-family: 'Bitter', serif; */
 
 
-
 body{
   position: relative;
   margin: 0;
@@ -26,7 +25,7 @@ body{
   font-family: 'Bitter', serif;
   text-shadow: 2px 3px 1px white;
   padding-left: 4%;
-  cursor: pointer;
+  cursors: pointer;
   display: inline-block;
   margin-bottom: 1%;
 }
