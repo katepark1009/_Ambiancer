@@ -2,7 +2,6 @@
 
 class MusicPlayer{
     constructor( ) {
-        this.handleAjaxError = this.handleAjaxError.bind(this);
         this.handleSuccess = this.handleSuccess.bind(this);
     }
     getMusic( mood ) {
@@ -32,14 +31,8 @@ class MusicPlayer{
     }
     handleSuccess( result ){
         if (result.success) {
-            console.log('the result is...', result);
             this.render(result);
-        } else {
-            console.log('connection made, but request was denied...', result);
         }
-    }
-    handleAjaxError( result ){
-        console.log('the error object...', result);
     }
     render( result ){
         const iframeOptions = {
@@ -54,11 +47,8 @@ class MusicPlayer{
         if (result.playlists) {
             let randomIndex = Math.floor(Math.random() * result.playlists.id.length);
             let randomPlaylist = result.playlists.id[randomIndex];
-
             iframeOptions.src = `http://www.youtube.com/embed?autoplay=1&disablekb=1&fs=0&rel=0&modestbranding=1&listType=playlist&list=${randomPlaylist}`;
             let iFrame = $('<iframe>', iframeOptions);
-
-            console.log('the final element will be: ', iFrame);
             $('.mini-div-video').append(iFrame);
         } else if (result.id.length >= 1){
             let randomIndex = Math.floor(Math.random() * result.playlists.id.length);
@@ -66,10 +56,7 @@ class MusicPlayer{
 
             iframeOptions.src = `http://www.youtube.com/embed/${randomSong}?autoplay=1&fs=0&modestbranding=1&rel=0`;
             let iFrame = $('<iframe>', iframeOptions);
-
-            console.log('the final element will be: ', iFrame);
             $('.mini-div-video').append(iFrame);
         }
-        console.log('video not found, the resulst is: ', result.playlists);
     }
 }
