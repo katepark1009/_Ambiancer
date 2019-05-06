@@ -9,6 +9,7 @@ class TextDataHandler{
     this.mood = "";
     this.newsResponse = [];
     this.poemResponse = [];
+    this.keys = new ApiKeys();
   }
   getNewsData(query, day=30, month=4, year=2019){
     this.mood = query;
@@ -46,7 +47,7 @@ class TextDataHandler{
         from: formattedDate,
         sortBy: "popularity",
         language: "en",
-        apiKey: "9e7748236bd94a3b917d8405a1fc97b7"
+        apiKey: this.keys.news
       },
       success: this.newsDataSuccess,
       error: handleError
@@ -113,6 +114,7 @@ class TextDataHandler{
   }
   newsDataSuccess(response){
     this.newsResponse = response;
+    console.log("news articles:",response)
     if(presentationMode){
       $(".article-title").empty();
       $(".article-author").empty();
@@ -131,8 +133,8 @@ class TextDataHandler{
             "Factbox - 'This is tragic': Environmental studies student, sportswriter among victims in North",
             "President Donald Trump falsely stated that doctors",
             "K.I. mourns 'tragic loss' after fire claims five lives - Tbnewswatch.com",
-            "Anti-Semitic attacks in the US have doubled: ADL",
-            "Officer calls 911 after shooting man in his home: 'I thought it was my apartment'"];
+            "North Carolina police charge suspect with murder after college shooting",
+            "Anti-Semitism in US remained at near-record high in 2018: ADL"];
           break;
         case "chill":
           titlearr = [
@@ -148,7 +150,7 @@ class TextDataHandler{
             "What's on TV: 'Knock Down the House,' and 'Ingress: The Animation",
             "F. Gary Gray Is Working on a 'Saints Row' Movie Adaptation",
             "Amazing POV ride on the Yukon Striker coaster",
-            "What honeybees have to teach us about the fate of the earth — and our country."];
+            "Islandeering: The woman walking on the edge of hidden islands"];
           break;
         case "romantic":
           titlearr = [
