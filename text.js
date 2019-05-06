@@ -114,7 +114,6 @@ class TextDataHandler{
   }
   newsDataSuccess(response){
     this.newsResponse = response;
-    console.log("news articles:",response)
     if(presentationMode){
       $(".article-title").empty();
       $(".article-author").empty();

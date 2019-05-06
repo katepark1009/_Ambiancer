@@ -66,7 +66,7 @@ function generateHeaderText(mood) {
     hype: {
       video: 'Let\'s get the party started',
       news: 'What\'s poppin\' in the news',
-      poem: 'Legit poems to check out. Cop it, yo',
+      poem: 'A legit poem to check out, yo',
       other: 'How about a GIF from us to you, friend. -_o'
     },
     chill: {

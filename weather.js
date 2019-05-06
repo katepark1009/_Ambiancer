@@ -12,7 +12,6 @@ class Weather{
             return response.json();
         })
         .then(function(json) { //when json data is ready, do this
-            console.log('json form weather :', json);
             let temperature = json.main.temp;
             let currentWeather = json.weather[0].description;
             const place = json.name;
@@ -53,6 +52,5 @@ class Weather{
     this.loadCoords();
    }
    handleGeoError(){
-        console.log("Can't get the user's location");
    }
 }
