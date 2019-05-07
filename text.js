@@ -19,7 +19,6 @@ class TextDataHandler{
       let formattedQuery = {
         happy:"heartwarming",
         sad:"tragic",
-        chill:"clouds",
         hype:"amazing",
         romantic:"infatuation",
         motivated:"workout"
