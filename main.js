@@ -1,33 +1,16 @@
-$(document).ready(onload);
+$(document).ready(startApp);
 
 let images = new Images();
-let text = new Text();
+let text = new TextDataHandler();
 let music = new MusicPlayer();
 let giphy = new Giphy();
 let clock = new Clock();
 let weather = new Weather();
+let keys = new ApiKeys();
 
-function onload(){
-  $('a').on('click', event => {
-    if (event.currentTarget.hash !== ''){
-      event.preventDefault();
-      let hash = event.currentTarget.hash;
-      console.log('this is the position of the target: ', $(hash).offset().top);
-      $('html, body').animate({
-        scrollTop: $(hash).offset().top - ($('#navigation-menu').height() + $('.header-music').height())
-      }, 600);
-    }
-  });
+function startApp(){ 
   $('#fullpage').hide();
-  $(".happy").on("click",function(){switchToAmbience("happy");});
-  $(".sad").on("click",function(){switchToAmbience("sad");});
-  $(".chill").on("click",function(){switchToAmbience("chill");});
-  $(".hype").on("click",function(){switchToAmbience("hype");});
-  $(".romantic").on("click",function(){switchToAmbience("romantic");});
-  $(".confident").on("click",function(){switchToAmbience("motivated");});
-  $(".goback").on("click", function(){returnToMain();});
-  $(".main-title").on("click", function(){returnToMain();});
-  $('.gif-goback').on("click", function(){returnToMain();});
+  addEventHandlers();
   clock.init();
   weather.init();
 }
@@ -60,54 +43,70 @@ function returnToMain(){
   text.resetNewsFeed();
 }
 
-function generateHeaderText(mood){
-  let videoHeader = $('.header-music h1');
-  let newsHeader = $('.header-news h1');
-  let poemHeader = $('.header-poem h1');
-  let otherHeader = $('.header-other h1');
+function generateHeaderText(mood) {
+  const moodHeaderData = {
+    happy: {
+      video: 'Lift your spirit with a Song',
+      news: 'Get some heartwarming news',
+      poem: 'Think happy thoughts',
+      other: 'How about a GIF from us to you, friend. -_o'
+    },
+    sad: {
+      video: 'Sometimes you just gotta let it out',
+      news: 'Some articles that may open the flood gates',
+      poem: 'Let\'s go deep into the burrows of your heart',
+      other: 'How about a GIF from us to you, friend. -_o'
+    },
+    motivated: {
+      video: 'Get pumped up',
+      news: 'Some articles to get you motivated',
+      poem: 'Find inspiration from your soul',
+      other: 'How about a GIF from us to you, friend. -_o'
+    },
+    hype: {
+      video: 'Let\'s get the party started',
+      news: 'What\'s poppin\' in the news',
+      poem: 'A legit poem to check out, yo',
+      other: 'How about a GIF from us to you, friend. -_o'
+    },
+    chill: {
+      video: 'Relax your mind with some smooth beats',
+      news: 'Some casual reading for you',
+      poem: 'Grab a cup o\' joe and have a seat',
+      other: 'How about a GIF from us to you, friend. -_o'
+    },
+    romantic: {
+      video: 'Set the mood right with a song',
+      news: 'Love is in the air. Check out these stories',
+      poem: 'My cherie, amour',
+      other: 'How about a GIF from us to you, friend. -_o'
+    },
+  };
+  $('.header-music h1').text(moodHeaderData[mood].video);
+  $('.header-news h1').text(moodHeaderData[mood].news);
+  $('.header-poem h1').text(moodHeaderData[mood].poem);
+  $('.header-other h1').text(moodHeaderData[mood].other);
+}
 
-  switch(mood){
-    case 'happy':
-      videoHeader.text('Lift your spirit with a Song');
-      newsHeader.text('Get some heartwarming news');
-      poemHeader.text('Think happy thoughts');
-      otherHeader.text('How about a GIF from us to you, friend. -_o');
-      break;
-    case 'sad':
-      videoHeader.text('Sometimes you just gotta let it out');
-      newsHeader.text('Some articles that may open the flood gates');
-      poemHeader.text('Let\'s go deep into the burrows of your heart');
-      otherHeader.text('How about a GIF from us to you, friend. -_o');
-      break;
-    case 'motivated':
-      videoHeader.text('Get pumped up');
-      newsHeader.text('Some articles to get you motivated');
-      poemHeader.text('Find inspiration from your soul');
-      otherHeader.text('How about a GIF from us to you, friend. -_o');
-      break;
-    case 'hype':
-      videoHeader.text('Let\'s get the party started..');
-      newsHeader.text('What\'s poppin\' in the news');
-      poemHeader.text('Legit poems to check out. Cop it, yo');
-      otherHeader.text('How about a GIF from us to you, friend. -_o');
-      break;
-    case 'chill':
-      videoHeader.text('Relax your mind with some smooth beats');
-      newsHeader.text('Some casual reading for you');
-      poemHeader.text('Grab a cup o\' joe and have a seat');
-      otherHeader.text('How about a GIF from us to you, friend. -_o');
-      break;
-    case 'romantic':
-      videoHeader.text('Set the mood right with a song');
-      newsHeader.text('Love is in the air. Check out these stories');
-      poemHeader.text('My cherie, amour');
-      otherHeader.text('How about a GIF from us to you, friend. -_o');
-      break;
-    default:
-      videoHeader.text('Video');
-      newsHeader.text('News');
-      poemHeader.text('Poem');
-      otherHeader.text('Other');
-      break;
-  }
+function addEventHandlers(){
+  // Click handler for smooth scrolling
+  $('a').on('click', event => {
+    if (event.currentTarget.hash !== ''){
+      event.preventDefault();
+      let hash = event.currentTarget.hash;
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top - ($('#navigation-menu').height() + $('.header-music').height())
+      }, 650);
+    }
+  });
+  // Click handlers for setting the mood
+  $(".happy").on("click",()=> {switchToAmbience("happy");});
+  $(".sad").on("click",()=> {switchToAmbience("sad");});
+  $(".chill").on("click",() => {switchToAmbience("chill");});
+  $(".hype").on("click",()=> {switchToAmbience("hype");});
+  $(".romantic").on("click",()=> {switchToAmbience("romantic");});
+  $(".confident").on("click",()=> {switchToAmbience("motivated");});
+  $(".goback").on("click", returnToMain);
+  $(".main-title").on("click", returnToMain);
+  $('.gif-goback').on("click", returnToMain);
 }

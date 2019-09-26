@@ -1,24 +1,42 @@
-class Text{
+class TextDataHandler{
   constructor(){
     this.articles = [];
     this.url = "";
     this.newsDataSuccess = this.newsDataSuccess.bind(this);
+    this.poemSuccess = this.poemSuccess.bind(this);
     this.handleTitleClick = this.handleTitleClick.bind(this);
     this.handleNewsfeedButton = this.handleNewsfeedButton.bind(this);
-    this.handleArticleButton = this.handleArticleButton.bind(this);
+    this.mood = "";
+    this.newsResponse = [];
+    this.poemResponse = [];
+    this.keys = new ApiKeys();
   }
   getNewsData(query, day=30, month=4, year=2019){
+    this.mood = query;
     let formattedDate = year+"-"+month+"-"+day;
-    let formattedQuery = {
-      happy:["puppy","pizza"],
-      sad:["dead","accident"],
-      chill:["cafe","vacation"],
-      hype:["party","intense"],
-      romantic:["love","flower"],
-      confident:["business","skydiving"]
+    let search = "";
+    if(presentationMode){
+      let formattedQuery = {
+        happy:"heartwarming",
+        sad:"tragic",
+        hype:"amazing",
+        romantic:"infatuation",
+        motivated:"workout"
+      }
+      search = formattedQuery[query];
     }
-    let randomIndex = Math.floor(Math.random()*formattedQuery[query].length);
-    let search = formattedQuery[query][randomIndex];
+    else{
+      let formattedQuery = {
+        happy:["puppy","thanks"],
+        sad:["dead","accident","tragic"],
+        chill:["cafe","vacation"],
+        hype:["party","intense"],
+        romantic:["love"],
+        motivated:["business","success"]
+      }
+      let randomIndex = getRandomIndex(formattedQuery[query]);
+      search = formattedQuery[query][randomIndex];
+    }
     let ajaxOptions = {
       url: 'https://newsapi.org/v2/everything',
       method: 'get',
@@ -28,94 +46,172 @@ class Text{
         from: formattedDate,
         sortBy: "popularity",
         language: "en",
-        apiKey: "9e7748236bd94a3b917d8405a1fc97b7"
+        apiKey: this.keys.news
       },
       success: this.newsDataSuccess,
-      error: function(){ console.log("An error happened.");}
+      error: handleError
     }
     $.ajax(ajaxOptions);
   }
   getPoems(query){
+    this.mood = query;
+    let search = "";
+    let ajaxOptions;
+    let url = "";
+    let title = "";
     let formattedQuery = {
-      happy:["puppy"],
-      sad:["dead"],
-      chill:["cafe"],
-      hype:["party"],
-      romantic:["love"],
-      confident:["business"]
+      happy:"joy",
+      sad:"funeral",
+      chill:"coffee",
+      hype:"amazing",
+      romantic:"rose",
+      motivated:"strength"
     }
-    let randomIndex = Math.floor(Math.random()*formattedQuery[query].length);
-    let search = formattedQuery[query][randomIndex];
-    let url = "http://poetrydb.org/lines/"+search;
-    let ajaxOptions = {
-      url: url,
-      method: 'get',
-      dataType: 'json',
-      success: this.poemSuccess,
-      error: function(){ console.log("An error happened.");}
+    if(presentationMode){
+      switch(query){
+        case "happy":
+          title = "the moon"
+          break;
+        case "sad":
+          title = "on Two Lovers Struck Dead by Lightning";
+          break;
+        case "chill":
+          title = "goodtime jesus";
+          break;
+        case "romantic":
+          title = "love";
+          break;
+        case "hype":
+          title = "o sun of real peace";
+          break;
+        case "motivated":
+          title = "Cancelled Passage of the Ode to Liberty";
+          break;
+      }
+      url = "http://poetrydb.org/title/"+title;
+      ajaxOptions = {
+        url: url,
+        method: 'get',
+        dataType: 'json',
+        success: this.poemSuccess,
+        error: handleError
+      };
+    }
+    else{
+      let randomIndex = getRandomIndex(formattedQuery[query]);
+      search = formattedQuery[query][randomIndex];
+      url = "http://poetrydb.org/lines/"+search;
+      ajaxOptions = {
+        url: url,
+        method: 'get',
+        dataType: 'json',
+        success: this.poemSuccess,
+        error: handleError
+      };
     }
     $.ajax(ajaxOptions);
   }
   newsDataSuccess(response){
-    console.log('response article:', response.articles[0]);
-    $(".article-title").empty();
-    $(".article-author").empty();
-    let randomIndex;
-    let counter = 0;
-    while(response.articles.length > 0 && counter < 5){
-      randomIndex = Math.floor(Math.random()*response.articles.length);
-      let article = response.articles.splice(randomIndex,1)[0];
-      if(article.content){
-        this.articles.push(article);
-        let articleTitle = $("<p>").addClass("text newsfeed-title").text(article.title);
-        let firstBr = $("<br>");
-        let secondBr = $("<br>");
-        articleTitle.on("click",this.handleTitleClick);
-        $(".news-feed").append(articleTitle).append(firstBr).append(secondBr);
-        counter++;
+    this.newsResponse = response;
+    if(presentationMode){
+      $(".article-title").empty();
+      $(".article-author").empty();
+      let titlearr = [];
+      switch(this.mood){
+        case "happy":
+          titlearr = [
+            "Photographer Grey Hutton gives us a joyful glimpse into the Jewish festival of Purim",
+            "How a Marvel fan made sure his blind friend enjoyed Avengers: Endgame is heartwarming",
+            "Kids Who Beat Cancer Come Together for Annual Reunion — and Recreate a Stunning Photo from 2014",
+            "Victoria Beckham Shares Sweet Tribute to David Beckham for His Birthday: 'You Are Our Everything'",
+            "Heart Transplant Recipient, Donor's Family Meet at Cardinals-Reds Game"];
+          break;
+        case "sad":
+          titlearr = [
+            "Factbox - 'This is tragic': Environmental studies student, sportswriter among victims in North",
+            "President Donald Trump falsely stated that doctors",
+            "K.I. mourns 'tragic loss' after fire claims five lives - Tbnewswatch.com",
+            "North Carolina police charge suspect with murder after college shooting",
+            "Anti-Semitism in US remained at near-record high in 2018: ADL"];
+          break;
+        case "chill":
+          titlearr = [
+            "Chinese Astronomers Saw an Exploding Star 2,000 Years Ago. Scientists May Have Just Found the",
+            "See plasma clouds burst out of this animated black hole",
+            "This $400 air purifier clears my house of odors, vape clouds, and dust mites while barely making",
+            "Snow in May? This week's top three weather videos",
+            "Hubble spots giant 'buckyballs' jiggling like Jell-O in space"];
+          break;
+        case "hype":
+          titlearr = [
+            "How to Celebrate National Space Day",
+            "What's on TV: 'Knock Down the House,' and 'Ingress: The Animation",
+            "F. Gary Gray Is Working on a 'Saints Row' Movie Adaptation",
+            "Amazing POV ride on the Yukon Striker coaster",
+            "Islandeering: The woman walking on the edge of hidden islands"];
+          break;
+        case "romantic":
+          titlearr = [
+            "Why You Keep Getting Into Toxic Relationships (And How to Stop)",
+            "50 Toxic Things Every Girl Should Stop Romanticizing About Love, Life, And Relationships",
+            "Fiction: Love, Sex and Robots Collide in a New Ian McEwan Novel",
+            "Theron and Rogen pair up for classier update on odd-couple rom-com",
+            "Artist Jaime Hernandez reunites his ‘Love and Rockets’ women, but only loves one now"];
+          break;
+        case "motivated":
+          titlearr = [
+            "Hitting the gym makes esports athletes more successful",
+            "Girl Boss editor-in-chief Neha Gandhi shares the soundtrack for her life",
+            "4 steps to reclaim your weekend for fun instead of chores",
+            "How successful CEOs start their mornings",
+            "Yoga class while waiting for refills? CVS tests new "];
       }
-      else{
+      this.presentationTitles(titlearr);
+
+
+    }
+    else{
+      $(".article-title").empty();
+      $(".article-author").empty();
+      let randomIndex;
+      let counter = 0;
+      while(response.articles.length > 0 && counter < 5){
+        randomIndex = getRandomIndex(response.articles);
+        let article = response.articles.splice(randomIndex,1)[0];
+        if(article.content){
+          this.articles.push(article);
+          let articleTitle = $("<p>").addClass("text newsfeed-title neon-text").text(article.title);
+          articleTitle.on("click",this.handleTitleClick);
+          $(".news-feed").append(articleTitle);
+          counter++;
+        }
+        else{
+        }
       }
     }
   }
   poemSuccess(response){
     $(".poem-title").empty();
     $(".poem-author").empty();
-    console.log("poems:",response);
-    this.poems = response;
-    let randomIndex = Math.floor(Math.random()*response.length);
-    var poemTitle = $("<p>").text(response[randomIndex].title);
-    var poemAuthor = $("<p>").text("- Author: "+response[randomIndex].author+ " -" )
-    $(".poem-title").append(poemTitle);
-    $(".poem-author").append(poemAuthor);
-    let preString = "";
-    let postString = response[randomIndex].lines.join(" ");
-    let semiIndex = postString.indexOf(";");
-    let periodIndex = postString.indexOf(".");
-    let commaIndex = postString.indexOf(",");
+    $(".poem-text").empty();
+    this.poemResponse = response;
+    if(presentationMode){
 
-    while(semiIndex > -1){
-      preString += postString.substring(0,semiIndex+1);
-      postString = postString.substring(semiIndex+1,postString.length);
-      postString = postString.split("");
-      postString.unshift("<br><br>");
-      postString = postString.join("");
-      semiIndex = postString.indexOf(";");
+      switch(this.mood){
+        case "happy":
+          this.displayPoem(16);
+          break;
+        case "romantic":
+          this.displayPoem(2);
+          break;
+        default:
+          this.displayPoem(0);
+      }
     }
-    preString += postString;
-    postString = preString;
-    preString = "";
-    while(periodIndex > -1){
-      preString += postString.substring(0,periodIndex+1);
-      postString = postString.substring(periodIndex+1,postString.length);
-      postString = postString.split("");
-      postString.unshift("<br><br>");
-      postString = postString.join("");
-      periodIndex = postString.indexOf(".");
+    else{
+      let randomIndex = getRandomIndex(response);
+      this.displayPoem(randomIndex);
     }
-    preString += postString;
-    postString = preString;
-    $(".poem-text").html("<p class='text'>"+preString+"</p>");
   }
   handleTitleClick(event){
    $(".section2").empty();
@@ -130,71 +226,100 @@ class Text{
    this.url = chosenArticle.url;
    let textIndex = chosenArticle.content.indexOf("[+");
    let formattedText = chosenArticle.content.substring(0,textIndex);
-   let row1 = $("<div>").addClass("row1 row");
-   let row2 = $("<div>").addClass("row2 row");
-   let row3 = $("<div>").addClass("row3 row");
-   let row4 = $("<div>").addClass("row4 row");
-   let row7 = $("<div>").addClass("row7");
-   let titleHeader = $("<h1>").text(chosenArticle.title);
-   let textParagraph = $("<p>").addClass("article-preview").text(formattedText);
-   let authorHeader = $("<h2>").text("Author: "+chosenArticle.author);
+   let row1 = $("<div>");
+   let row2 = $("<div>");
+   let row3 = $("<div>");
+   let row4 = $("<div>");
+   let row7 = $("<div>");
+   let titleHeader = $("<h1>").addClass("newstitle").text(chosenArticle.title);
+   let textParagraph = $("<p>").addClass("article-preview neon-text").text(formattedText);
+   let authorHeader = $("<h2>").addClass("neon-text").text("Author: "+chosenArticle.author);
    let articleAuthor = $("<div>").addClass("article-author").append(authorHeader);
    let articleInfo = $("<div>").addClass("mini-div article-info");
    let articleText = $("<div>").addClass("mini-div article-text").append(textParagraph);
    let articleTitle = $("<div>").addClass("article-title").append(titleHeader);
    let anchor = $("<a>").attr("target","_blank").attr("href",this.url).text("To the article");
    let articleButton = $("<button>").addClass("article-btn");
-   let newsfeedButton = $("<button>").addClass("news-feed-btn").text("Return to the newsfeed");
+   let newsfeedButton = $("<button>").addClass("news-feed-btn").text("Back");
    let articleButtonCol = $("<div>").addClass("article-btn-col");
    let newsfeedButtonCol = $("<div>").addClass("news-feed-btn-col");
    let imageFromArticle = $('<img>').attr("src", chosenArticle.urlToImage).addClass("article-image");
    articleButton.on("click",this.handleArticleButton);
    newsfeedButton.on("click",this.handleNewsfeedButton);
    $(".section2").append(row1,articleAuthor, imageFromArticle).append(row2).append(row7);
-   $(".row1").append(articleInfo);
-   $(".article-info").append(row3).append(row4);
-   $(".row3").append(articleTitle);
+   row1.append(articleInfo);
+   articleInfo.append(row3).append(row4);
+   row3.append(articleTitle);
   //  $(".row4").append(articleAuthor);
-   $(".row2").append(articleText);
-   $(".row7").append(newsfeedButtonCol).append(articleButtonCol);
-   $(".article-btn-col").append(articleButton);
-   $(".news-feed-btn-col").append(newsfeedButton);
-   $(".article-btn").append(anchor);
+   row2.append(articleText);
+   row7.append(newsfeedButtonCol).append(articleButtonCol);
+   articleButtonCol.append(articleButton);
+   newsfeedButtonCol.append(newsfeedButton);
+   articleButton.append(anchor);
  }
  resetNewsFeed(){
    $(".section2").empty();
+   $(".poem-title").empty();
+   $(".poem-author").empty();
+   $(".poem-text").empty();
+   this.articles = [];
    let newsfeed = $("<div>").addClass("news-feed");
    let newsfeedTitle = $("<div>").addClass("news-feed-title");
-   let newsfeedHeader = $("<h1>").text("News Feed:");
-   let row5 = $("<div>").addClass("row5 row");
-   let row6 = $("<div>").addClass("row6 row");
+   let newsfeedHeader = $("<h1>").addClass("neon-text newstitle").text("News Feed");
+   let newsfeedContainer = $("<div>").addClass("news-feed-container");
+   let row5 = $("<div>");
+   let row6 = $("<div>");
    newsfeedTitle.append(newsfeedHeader);
    row5.append(newsfeedTitle);
    row6.append(newsfeed);
-   $(".section2").append(row5).append(row6);
- }
- handleArticleButton(){
-   console.log("article button clicked!");
+   newsfeedContainer.append(row5).append(row6);
+   $(".section2").append(newsfeedContainer);
  }
  handleNewsfeedButton(){
-   console.log("newsfeed button clicked!");
    $(".section2").empty();
-   let newsfeed = $("<div>").addClass("news-feed col-12");
-   let newsfeedTitle = $("<div>").addClass("news-feed-title col-12");
-   let newsfeedHeader = $("<h1>").text("News Feed:");
-   let row5 = $("<div>").addClass("row5 row");
-   let row6 = $("<div>").addClass("row6 row");
+   let newsfeed = $("<div>").addClass("news-feed");
+   let newsfeedTitle = $("<div>").addClass("news-feed-title");
+   let newsfeedHeader = $("<h1>").addClass("neon-text newstitle").text("News Feed");
+   let newsfeedContainer = $("<div>").addClass("news-feed-container");
+   let row5 = $("<div>");
+   let row6 = $("<div>");
    newsfeedTitle.append(newsfeedHeader);
    row5.append(newsfeedTitle);
    row6.append(newsfeed);
-   $(".section2").append(row5).append(row6);
+   newsfeedContainer.append(row5).append(row6);
+   $(".section2").append(newsfeedContainer);
 
    for(let article of this.articles){
-     let articleTitle = $("<p>").addClass("text newsfeed-title").text(article.title);
-     let firstBr = $("<br>");
-     let secondBr = $("<br>");
+     let articleTitle = $("<p>").addClass("text newsfeed-title neon-text").text(article.title);
      articleTitle.on("click",this.handleTitleClick);
-     $(".news-feed").append(articleTitle).append(firstBr).append(secondBr);
+     $(".news-feed").append(articleTitle);
    }
  }
+  presentationTitle(index){
+    let article1 = this.newsResponse.articles[index];
+    this.articles.push(article1);
+    let articleTitle1 = $("<p>").addClass("text newsfeed-title neon-text").text(article1.title);
+    articleTitle1.on("click",this.handleTitleClick);
+    $(".news-feed").append(articleTitle1);
+  }
+  presentationTitles(arr){
+    for(let description of arr){
+      for(let index = 0; index < this.newsResponse.articles.length; index++){
+        if(this.newsResponse.articles[index].title.indexOf(description) > -1){
+          this.presentationTitle(index);
+          break;
+        }
+      }
+    }
+  }
+  displayPoem(index){
+    let poemTitle = $("<h1>").addClass("neon-text").text(this.poemResponse[index].title);
+    let poemAuthor = $("<h2>").addClass("neon-text").text("- Author: "+this.poemResponse[index].author+ " -" );
+    $(".poem-title").append(poemTitle);
+    $(".poem-author").append(poemAuthor);
+    for(let line of this.poemResponse[index].lines){
+      let poemline = $("<p>").addClass("neon-text").text(line);
+      $(".poem-text").append(poemline);
+    }
+  }
 }

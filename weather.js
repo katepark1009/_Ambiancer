@@ -1,30 +1,32 @@
 class Weather{
     constructor(){
-        this.api_key = "97649e666d867598790f35d22987b2be";
+        this.api_key;
         this.coords = 'coords';
         this.handleGeoSuccess = this.handleGeoSuccess.bind(this);
     }
-    getWeather (lat,lng) {
+    getWeather (lat,lng) { 
+        this.api_key = keys.weather;
         fetch (`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${this.api_key}&units=imperial`
         )
-        
-        .then(function(response) {
+        .then(function(response) { //when fetch is completed, do this
             return response.json();
         })
-        .then(function(json) {
+        .then(function(json) { //when json data is ready, do this
             let temperature = json.main.temp;
-            console.log('temperature :', json.main);
+            let currentWeather = json.weather[0].description;
             const place = json.name;
             let weather = $('.weather');
             temperature = Math.floor(temperature);
             weather.text(`${temperature}°F @${place}`
                         );
+            let weatherDiv = $('.currentweather');
+            weatherDiv.text(`"${currentWeather}"`)
         });
     }
-    saveCoords(coordsObj) {
+    saveCoords(coordsObj) { //save latitude & longitude in local storage
     localStorage.setItem(this.coords, JSON.stringify(coordsObj));
     }
-    handleGeoSuccess(positon) {
+    handleGeoSuccess(positon) { //if askForCoords success, get the latitude & longitude
         const latitude = positon.coords.latitude; 
         const longitude = positon.coords.longitude;
         const coordsObj = {
@@ -34,7 +36,7 @@ class Weather{
         this.saveCoords(coordsObj);
         this.getWeather(latitude, longitude);
     }
-    askForCoords() {
+    askForCoords() { //getting user's geo location 
         navigator.geolocation.getCurrentPosition(this.handleGeoSuccess, this.handleGeoError)
     }
     loadCoords(){
@@ -50,6 +52,5 @@ class Weather{
     this.loadCoords();
    }
    handleGeoError(){
-        console.log('there was an error');
    }
 }

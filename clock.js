@@ -5,45 +5,28 @@ class Clock {
         this.hours;
         this.seconds;
     }
-    getTime() {
+    getTime() { //generating time and display time on DOM
         const date = new Date();
         this.minutes = date.getMinutes();
         this.hours = date.getHours();
         this.seconds = date.getSeconds();
-        let clockcontent = `${this.hours <10 ? `0${this.hours}` : this.hours} : ${this.minutes <10 ?  `0${this.minutes}` : this.minutes } : ${this.seconds < 10 ? `0${this.seconds}` : this.seconds }`;     
+        let clockcontent = `${this.hours <10 ? `0${this.hours}` : this.hours} : ${this.minutes <10 ?  `0${this.minutes}` : this.minutes } : ${this.seconds < 10 ? `0${this.seconds}` : this.seconds }`;
         $('.clock').text(clockcontent);
     }
-    sayHi(){
-        switch(this.hours) {
-            case 5:
-            case 6:
-            case 7:
-            case 8:
-            case 9:
-            case 10:
-            case 11:
-                $('.sayhi').text('Good mornig!')
-                break;
-            case 12:
-            case 13:
-            case 14:
-            case 15:
-            case 16:
-                $('.sayhi').text('Good afternoon!')
-                break;
-            case 17:
-            case 18:
-            case 19:
-            case 20:
-            case 21:
-                $('.sayhi').text('Good evening!')
-                break;
-            default :
-                $('.sayhi').text('Good night!')
-                break;
+    sayHi(){ //display text on DOM with time
+        var text = '';
+        if(this.hours> 4 && this.hours< 12){
+           text = 'Good morning!';
+        } else if(this.hours>=12 && this.hours< 17){
+           text = 'Good afternoon!';
+        } else if(this.hours >=17 && this.hours< 19){
+           text='Good evening!';
+        } else {
+           text = 'Good night!';
         }
+        $('.sayhi').text(text);
     }
-    init() {
+    init() { //initiating time and text, and update every seconds.
         this.getTime();
         this.sayHi();
         setInterval(this.getTime,1000);

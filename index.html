@@ -3,9 +3,13 @@
   <head>
     <meta charset="utf-8">
     <title>Ambiencer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script
     src="https://code.jquery.com/jquery-3.4.0.js"
     crossorigin="anonymous"></script>
+    <script type="text/javascript" src="sharedFunctions.js"></script>
+    <script type="text/javascript" src="keys.js"></script>
     <script type="text/javascript" src="weather.js"></script>
     <script type="text/javascript" src="clock.js"></script>
     <script type="text/javascript" src="giphy.js"></script>
@@ -13,67 +17,74 @@
     <script type="text/javascript" src="text.js"></script>
     <script type="text/javascript" src="image.js"></script>
     <script type="text/javascript" src="main.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
   </head>
   <body id='style-3'>
     <div class="home-screen">
-      <div class="container-fluid">
-        <div class="candles-row row">
-          <div class="candles col-sm">
-            <div class="moods-container container">
-              <div class="blank-row row">
-                <div class="blank col-sm">
-                  <div class="weather"></div>
-                  <div class="title">Ambiencer</div>
-                  <div class="subtitle">THe best way to Set your mood</div>
-                  <div class="js-clock">
-                    <p class='clock'>00:00</p>
-                    <p class='sayhi'></p>
-                  </div>
-                  <div class="subtitle2">Choose your ambience below </div>
-                </div>
-              </div>
-              <div class="moods-row row">
-                <div class="moods col-sm">
-                  <div class="container">
-                    <div class="row">
-                      <div class="happy-col col-sm-2">
-                        <button type="button" name="button" class="happy"><pre>  Happy  </pre></button>
-                      </div>
-                      <div class="sad-col col-sm-2">
-                        <button type="button" name="button" class="sad"><pre>   Sad   </pre></button>
-                      </div>
-                      <div class="chill-col col-sm-2">
-                        <button type="button" name="button" class="chill"><pre>  Chill  </pre></button>
-                      </div>
-                      <div class="hype-col col-sm-2">
-                        <button type="button" name="button" class="hype"><pre>  Hype  </pre></button>
-                      </div>
-                      <div class="romantic-col col-sm-2">
-                        <button type="button" name="button" class="romantic"><pre>Romantic</pre></button>
-                      </div>
-                      <div class="confident-col col-sm-2">
-                        <button type="button" name="button" class="confident"><pre>motivated</pre></button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+      <div class="moods-container">
+        <div class="blank-row row">
+          <div class="weather"></div>
+          <!--<div class="currentweather"></div>-->
+          <div class="blank">
+            <div class="title">Ambiencer</div>
+            <div class="subtitle">The best way to Set your mood</div>
+          </div>
+          <div class="js-clock">
+            <p class='clock'>00:00</p>
+            <p class='sayhi'></p>
+          </div>
+        </div>
+        <div class="container">
+          <p class="subtitle2">Choose your ambience below </p>
+          <div class="row">
+            <div class="happy-col col-xs-12 col-sm-6 col-md-6 col-xl-2">
+              <button type="button" name="button" class="happy"><pre>  Happy  </pre></button>
+            </div>
+            <div class="sad-col col-xs-12 col-sm-6 col-md-6 col-xl-2">
+              <button type="button" name="button" class="sad"><pre>   Sad   </pre></button>
+            </div>
+            <div class="chill-col col-xs-12 col-sm-6 col-md-6 col-xl-2">
+              <button type="button" name="button" class="chill"><pre>  Chill  </pre></button>
+            </div>
+            <div class="hype-col col-xs-12 col-sm-6 col-md-6 col-xl-2">
+              <button type="button" name="button" class="hype"><pre>  Hype  </pre></button>
+            </div>
+            <div class="romantic-col col-xs-12 col-sm-6 col-md-6 col-xl-2">
+              <button type="button" name="button" class="romantic"><pre>Romantic</pre></button>
+            </div>
+            <div class="confident-col col-xs-12 col-sm-6 col-md-6 col-xl-2">
+              <button type="button" name="button" class="confident"><pre>motivated</pre></button>
             </div>
           </div>
         </div>
       </div>
     </div>
 
+    <div id="error-modal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Error:</h4>
+          </div>
+          <div class="modal-body">
+            <p class="error-message">There was an error while communicating through an API endpoint.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div id = 'fullpage' class="ambience-screen">
       <div class = 'title-bg'>
         <p class='main-title'>Ambiencer</p>
         <p class="subtitle-mainpage">The best way to Set your MOOD</p>
         <p class='current-mood'>sad</p>
-        <div class="goback">Change ambience</div>
       </div>
+      <div class="goback">Change ambience</div>
       <div id="fullpage2">
         <div class = "menu-container">
 
@@ -92,9 +103,6 @@
           <div id="section-1" class="section1 row">
             <!-- can add or change col - * -->
 
-            <div class="col-12 mini-div">
-              <!--<p class="section-title">Set the mood right with a little music</p>-->
-            </div>
             <div class="mini-div-video"></div>
           </div>
 
@@ -104,7 +112,7 @@
           <div id="section-2" class="section2">
             <div class="news-feed-container">
               <div class="news-feed-title">
-                <h1>News Feed</h1>
+                <h1 class="neon-text newstitle">News Feed</h1>
               </div>
               <hr>
               <div>

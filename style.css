@@ -1,16 +1,20 @@
 @import url('https://fonts.googleapis.com/css?family=Bitter|Cormorant+Unicase|Gugi|Raleway');
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface');
 /* font-family: 'Gugi', cursive;
 font-family: 'Cormorant Unicase', serif;
 font-family: 'Raleway', sans-serif;
+font-family: 'Abril Fatface', cursive;
 font-family: 'Bitter', serif; */
+
 
 body{
   position: relative;
   margin: 0;
+  overlfow-x: hidden;
 }
 .title{
   padding-top: 4%;
-  font-size: 4.5rem;
+  font-size: 10vmin;
   font-weight: bold;
   font-family: 'Bitter', serif;
   text-shadow: 2px 3px 1px white;
@@ -21,9 +25,8 @@ body{
   font-family: 'Bitter', serif;
   text-shadow: 2px 3px 1px white;
   padding-left: 4%;
-  cursor: pointer;
+  cursors: pointer;
   display: inline-block;
-  margin-top: 1%;
   margin-bottom: 1%;
 }
 .subtitle{
@@ -37,6 +40,10 @@ body{
   font-family: 'Bitter', serif;
   text-shadow: 1px 1px 1px white;
   text-align: center;
+}
+.js-clock {
+  height: 52%;
+  width: 100%;
 }
 #style-4::-webkit-scrollbar-track
 {
@@ -56,12 +63,11 @@ body{
 	border: 2px solid #555555;
 }
 .subtitle2{
-  left: 31%;
+  position: relative;
+  top: -10%;
   color: rgb(250, 236, 210);
   text-align: center;
-  position: absolute;
-  bottom: 6%;
-  font-size: 2rem;
+  font-size: 5vmin;
   font-family: 'Bitter', serif;
   text-shadow: 1px 1px 1px rgb(46, 41, 41);
   text-align: center;
@@ -71,6 +77,9 @@ body{
   font-family: 'Bitter', serif;
   font-size: 1.2rem;
   padding-left: 2%;
+}
+.blank-row{
+  height: 65vh;
 }
 button{
   all: unset;
@@ -113,6 +122,14 @@ pre{
   width: 100%;
   margin: auto;
   background-color:whitesmoke;
+  font-family: 'Cormorant Unicase', serif;
+}
+.article-btn a:hover, button:hover{
+  text-decoration: none;
+  color: black;
+}
+.article-btn a {
+  display: block;
 }
 .article-btn-col{
   background-repeat: no-repeat;
@@ -161,16 +178,13 @@ pre{
 .poem-author{
   font-style: italic;
 }
-.article-title, .article-author, .poem-title, .poem-author, .poem-text, .article-text{
+.article-title, .article-author, .poem-title, .poem-author, .article-text{
   display: flex;
   justify-content: center;
   font-family: 'Raleway', sans-serif;
 }
 .article-author{
   padding-bottom: 2%;
-}
-.blank-row{
-  height: 80%;
 }
 .candles{
   background-image: url("images/bg1.jpg");
@@ -184,14 +198,16 @@ pre{
   height: 100%;
 }
 .home-screen{
+  background-image: url("images/bg1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
   font-family: "Roboto", sans-serif;
   position: absolute;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   z-index: 1;
   justify-content: center;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+  overflow: hidden;
 }
 .moods-container{
   height: 100%;
@@ -205,6 +221,8 @@ pre{
 .poem-text{
   height: 650px;
   overflow-y: auto;
+  text-align: center;
+
 }
 .poem-title {
   font-size: 2rem;
@@ -244,6 +262,9 @@ pre{
   background-color: rgba(0, 0, 0, 0.5);
   z-index: -1;
 }
+.section1{
+  padding-top: 10%;
+}
 .section1, .section2 {
   justify-content: center;
 }
@@ -260,7 +281,7 @@ pre{
   font-family: 'Bitter', serif
 }
 .header-music h1, .header-news h1, .header-poem h1, .header-other h1 {
-  font-size: 3rem;
+  font-size: 6vmin;
 }
 .section-title{
   padding-top: 2%;
@@ -332,13 +353,13 @@ ul {
   /* background-color: rgba(112, 97, 97, 0.2); */
   height: 32rem;
   margin: auto;
-  width: 97rem;
+  width: auto;
 }
 .gifs{
   background-color: rgba(132, 0, 255, 0.);
-  height: 25rem;
+  height: 79%;
   margin: auto;
-  width: 25rem;
+  width: 46%;
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
@@ -367,45 +388,62 @@ ul {
 .mini-div{
   color: white;
 }
+.mini-div-video{
+  width:80%;
+}
+.blank{
+  padding-left: 4%;
+}
 .formatted-poem-text{
   display: inline-block;
   width: 33%;
   text-align: center
 }
 .clock {
-  left: 34%;
   color: white;
-  position: absolute;
-  bottom: 19%;
-  font-size: 5rem;
+  font-size: 10vmin;
   font-family: 'Bitter', serif;
   text-shadow: 1px 1px 1px rgb(46, 41, 41);
   text-align: center;
 }
 .sayhi {
-  left: 35%;
+  position: relative;
+  top: -9%;
   color: white;
   text-align: center;
-  position: absolute;
-  bottom: 12%;
   font-size: 3rem;
   font-family: 'Raleway', sans-serif;
   text-shadow: 1px 1px 1px rgb(46, 41, 41);
   text-align: center;
 }
 .weather {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   font-family: 'Raleway', sans-serif;
   text-shadow: 1px 1px 1px white;
   position: absolute;
   right: 0%;
   color: gray;
   padding-top: 1%;
+  padding-right: 1%;
+}
+.currentweather{
+  font-size: 1.7rem;
+  font-family: 'Raleway', sans-serif;
+  text-shadow: 1px 1px 1px white;
+  position: absolute;
+  right: 0%;
+  color: rgb(53, 49, 49);
+  padding-top: 1%;
+  padding-right: 1%;
+
 }
 .text{
-  display:inline-block;
-  width: 100%;
+  display: block;
   font-size: 1.3rem;
+}
+.currentweather {
+  top: 5%;
+  color: rgb(100, 92, 92);
 }
 .poemrow{
   justify-content: center;
@@ -434,19 +472,146 @@ ul {
 .news-feed-btn{
   color: black;
 }
-#style-3::-webkit-scrollbar-track
-{
+#style-3::-webkit-scrollbar-track{
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 	background-color: #F5F5F5;
 }
 
-#style-3::-webkit-scrollbar
-{
+#style-3::-webkit-scrollbar{
 	width: 6px;
 	background-color: #F5F5F5;
 }
 
-#style-3::-webkit-scrollbar-thumb
-{
+#style-3::-webkit-scrollbar-thumb{
 	background-color: #000000;
+}
+p{
+  font-size: 1.5rem;
+}
+.neon-text{
+  text-shadow: #FC0 1px 0 10px;
+}
+.newstitle, .poemtitle{
+  font-family: 'Abril Fatface', cursive;
+  font-size: 4rem;
+  text-shadow: rgb(4, 201, 236) 1px 0 10px;
+}
+.poemauthor {
+  font-family: 'Abril Fatface', cursive;
+  font-size: 2rem;
+  text-shadow: rgb(4, 201, 236) 1px 0 10px;
+}
+.currentweather{
+  font-size: 1.7rem;
+  font-family: 'Raleway', sans-serif;
+  text-shadow: 1px 1px 1px white;
+  position: absolute;
+  right: 0%;
+  padding-top: 1%;
+  padding-right: 1%;
+  top: 5%;
+  color: rgb(100, 92, 92);
+}
+@media only screen and (max-width: 576px) {
+  /*LANDING PAGE*/
+  .blank{
+    height: 30vh;
+    text-align:center;
+  }
+  .blank-row{
+    height: 50vh;
+  }
+  .title{
+    font-size: 13vmin;
+    margin-top: 10%;
+    text-align:center;
+  }
+  .clock {
+    font-size: 15vmin;
+  }
+  .sayhi{
+    font-size: 10vmin;
+  }
+  .subtitle{
+    font-size: 8vmin;
+  }
+  .subtitle2{
+    font-size: 6vmin;
+  }
+  .happy-col, .sad-col, .chill-col, .chill-col, .romantic-col, .hype-col, .confident-col{
+    height: 45px;
+    margin-bottom: 15px;
+  }
+
+  /*MAIN PAGE*/
+  .title-bg{
+    text-align:center;
+  }
+  .main-title{
+    font-size: 17vmin;
+  }
+  .subtitle-mainpage{
+    display:none;
+  }
+  .current-mood{
+    font-size: 8vmin;
+  }
+  .mini-div-video{
+    width: 80%;
+  }
+  .news-feed-container{
+    width: 100%;
+    padding: 10%;
+  }
+  .newstitle{
+    font-size: 10vmin;
+  }
+  .newsfeed-title{
+    font-size: 5vmin;
+  }
+  .article-title h1, .poem-title h1{
+    font-size: 7vmin;
+    text-shadow: rgb(4, 201, 236) 1px 0 10px;
+    margin:auto;
+  }
+  .poem-title {
+    text-align: center;
+    margin-bottom: 2%;
+  }
+  .article-author h2, .poem-author h2{
+    font-size: 5vmin;
+    margin:auto;
+  }
+  .poem-author{
+    margin-bottom: 4%;
+  }
+  .article-preview{
+    width: 90%;
+    font-size: 5vmin;
+    line-height: 1.3;
+  }
+  .article-image{
+    margin-bottom: 5%;
+    width: 85%;
+  }
+  .news-feed-btn-col {
+    width: 63%;
+  }
+  .article-btn-col {
+    width: 63%;
+  }
+  .poem-text p{
+    font-size: 4.5vmin;
+    line-height: 1.2;
+  }
+  .gifs {
+    width: 90%;
+  }
+  .gif-goback{
+    width: 53%;
+    left:24%;
+  }
+  .goback{
+    display:none;
+  }
 }
